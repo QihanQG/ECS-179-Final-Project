@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://i.postimg.cc/1yj3WM3Z/Screenshot-2024-11-25-175736.png" alt="Alt text" width="300" height="300">
+</p>
+
 This is a artic theme tower defense game. It's a single level and a single town. Enemies will spawn nearby to attack it. We will use the blocky styles are similar to Roblox.
 
 The objective is to protect the town of penguins. Preventing monsters from breaching the wall and killing the King Penguin. If the king penguin dies, the player will have no ability to deploy any more units or command anything else in the game.
