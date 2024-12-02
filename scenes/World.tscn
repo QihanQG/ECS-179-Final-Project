@@ -1,11 +1,11 @@
 [gd_scene load_steps=16 format=3 uid="uid://cgpw7jwcreeku"]
 
-[ext_resource type="Script" path="res://scripts/MainEnemy.gd" id="1_f6dcx"]
-[ext_resource type="Script" path="res://scripts/camera_3d.gd" id="2_wj62w"]
+[ext_resource type="Script" path="res://scripts/EnemySpawner.gd" id="1_f6dcx"]
+[ext_resource type="Script" path="res://scripts/main_camera.gd" id="2_wj62w"]
 [ext_resource type="PackedScene" uid="uid://c3qbhftm3v3re" path="res://scenes/surface.tscn" id="3_snqtl"]
 [ext_resource type="PackedScene" uid="uid://ck8dje7r6rv2v" path="res://scenes/turret.tscn" id="5_rcr1x"]
 [ext_resource type="Script" path="res://scripts/test_object.gd" id="6_5l6yb"]
-[ext_resource type="Script" path="res://scripts/enemycamera.gd" id="7_fm5u4"]
+[ext_resource type="Script" path="res://scripts/camera2.gd" id="7_fm5u4"]
 
 [sub_resource type="MeshTexture" id="MeshTexture_lepjr"]
 
@@ -53,12 +53,8 @@ script = ExtResource("2_wj62w")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12174, -0.318877, 0.0939145)
 
 [node name="Turret" parent="." instance=ExtResource("5_rcr1x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23454, -4.43723)
-rotation_speed = 50.0
-barrel_length = 1.2
-projectile_speed = 120.0
-fire_rate = 0.4
-target_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00687122, 1.23454, -4.35021)
+debug_mode = true
 
 [node name="Test_object" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.1988, 1.99328, -18.4627)
