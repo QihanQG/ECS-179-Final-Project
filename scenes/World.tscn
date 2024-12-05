@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cgpw7jwcreeku"]
+[gd_scene load_steps=17 format=3 uid="uid://cgpw7jwcreeku"]
 
 [ext_resource type="Script" path="res://scripts/EnemySpawner.gd" id="1_f6dcx"]
 [ext_resource type="Script" path="res://scripts/main_camera.gd" id="2_wj62w"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ck8dje7r6rv2v" path="res://scenes/turret.tscn" id="5_rcr1x"]
 [ext_resource type="Script" path="res://scripts/test_object.gd" id="6_5l6yb"]
 [ext_resource type="Script" path="res://scripts/camera2.gd" id="7_fm5u4"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="7_saagv"]
 
 [sub_resource type="MeshTexture" id="MeshTexture_lepjr"]
 
@@ -73,3 +74,8 @@ shape = SubResource("CylinderShape3D_2ldjc")
 [node name="Camera3D" type="Camera3D" parent="Test_object/purple"]
 transform = Transform3D(-0.999474, 0.00482798, -0.0320596, -0.0313173, 0.112065, 0.993207, 0.00838793, 0.993689, -0.111854, -0.178032, 5.64421, -0.0167394)
 script = ExtResource("7_fm5u4")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("7_saagv")
+
+[node name="ManagerTest" type="Node" parent="GameManager"]
