@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cgpw7jwcreeku"]
+[gd_scene load_steps=18 format=3 uid="uid://cgpw7jwcreeku"]
 
 [ext_resource type="Script" path="res://scripts/EnemySpawner.gd" id="1_f6dcx"]
 [ext_resource type="Script" path="res://scripts/main_camera.gd" id="2_wj62w"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/test_object.gd" id="6_5l6yb"]
 [ext_resource type="Script" path="res://scripts/camera2.gd" id="7_fm5u4"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="7_saagv"]
+[ext_resource type="Script" path="res://scripts/town.gd" id="8_wqoua"]
 
 [sub_resource type="MeshTexture" id="MeshTexture_lepjr"]
 
@@ -79,3 +80,8 @@ script = ExtResource("7_fm5u4")
 script = ExtResource("7_saagv")
 
 [node name="ManagerTest" type="Node" parent="GameManager"]
+
+[node name="Town" type="Node3D" parent="."]
+script = ExtResource("8_wqoua")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Town"]

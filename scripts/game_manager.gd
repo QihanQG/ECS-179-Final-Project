@@ -60,7 +60,7 @@ func _ready():
 func _process(delta: float) -> void:
 	if is_draining and game_state == "playing":
 		# Drain resources over time
-		modify_resources(delta * -10)
+		#modify_resources(delta * -10)
 		
 		# Print when resources drop below certain thresholds
 		if resources <= 750 and resources > 740:
