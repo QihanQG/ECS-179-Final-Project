@@ -34,13 +34,15 @@
   * **The castle at the center**: Where king penguins(player) and other penguins reside.  
 	* The castle produces x amount of penguins per given amount of time.  
 	* Can assign these penguins to the research or factoring building or wall:
+
 				  research building    -> increse resource cap
 				  factory              -> build faster 
   * **The research building**:   
 	* Can upgrade : 
-				  weapon               -> higher base damage
-  *               wall                 -> reduce incoming damage
-	*               resources            -> gain more resources per time frame
+
+	*			  weapon               -> higher base damage
+  *       wall                 -> reduce incoming damage
+	*       resources            -> gain more resources per time frame
   * **The factory**:   
 	* Responsible for producing turrets and items. 
 
