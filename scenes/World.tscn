@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cgpw7jwcreeku"]
+[gd_scene load_steps=20 format=3 uid="uid://cgpw7jwcreeku"]
 
 [ext_resource type="Script" path="res://scripts/EnemySpawner.gd" id="1_f6dcx"]
 [ext_resource type="Script" path="res://scripts/main_camera.gd" id="2_wj62w"]
@@ -7,7 +7,9 @@
 [ext_resource type="Script" path="res://scripts/test_object.gd" id="6_5l6yb"]
 [ext_resource type="Script" path="res://scripts/camera2.gd" id="7_fm5u4"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="7_saagv"]
+[ext_resource type="Script" path="res://scripts/penguin_manager.gd" id="8_u885u"]
 [ext_resource type="Script" path="res://scripts/town.gd" id="8_wqoua"]
+[ext_resource type="Script" path="res://scripts/base_building.gd" id="10_j2ymi"]
 
 [sub_resource type="MeshTexture" id="MeshTexture_lepjr"]
 
@@ -81,7 +83,43 @@ script = ExtResource("7_saagv")
 
 [node name="ManagerTest" type="Node" parent="GameManager"]
 
+[node name="PenguinManager" type="Node" parent="GameManager"]
+script = ExtResource("8_u885u")
+
 [node name="Town" type="Node3D" parent="."]
 script = ExtResource("8_wqoua")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Town"]
+[node name="TownBoundaryMesh" type="MeshInstance3D" parent="Town"]
+
+[node name="WallSystem" type="StaticBody3D" parent="Town"]
+script = ExtResource("10_j2ymi")
+
+[node name="TurretMount" type="Node3D" parent="Town/WallSystem"]
+
+[node name="WallSegments" type="Node3D" parent="Town/WallSystem"]
+
+[node name="Buildings" type="Node3D" parent="Town"]
+
+[node name="Castle" type="StaticBody3D" parent="Town/Buildings"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Town/Buildings/Castle"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Town/Buildings/Castle"]
+
+[node name="PenguinSpawn" type="Marker3D" parent="Town/Buildings/Castle"]
+
+[node name="Research" type="StaticBody3D" parent="Town/Buildings"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Town/Buildings/Research"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Town/Buildings/Research"]
+
+[node name="ResearchArea" type="Area3D" parent="Town/Buildings/Research"]
+
+[node name="Factory" type="StaticBody3D" parent="Town/Buildings"]
+
+[node name="ProductionArea" type="Area3D" parent="Town/Buildings/Factory"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Town/Buildings/Factory"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Town/Buildings/Factory"]

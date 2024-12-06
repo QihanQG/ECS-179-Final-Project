@@ -71,6 +71,7 @@ func draw_town_boundaries():
 		)
 
 # Utility function to check if a position is within town boundaries
+@warning_ignore("shadowed_variable_base_class")
 func is_within_town_bounds(position: Vector3) -> bool:
 	var distance = position.distance_to(town_center)
 	return distance <= town_radius
