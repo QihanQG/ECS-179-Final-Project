@@ -7,7 +7,7 @@ extends CharacterBody3D
 @export var angular_speed: float = 1.0
 @export var health: float = 100
 @export var smoothing_factor: float = 5.0
-
+@export var jump_velocity: float = 4.0
 
 @onready var current_state: String 
 @onready var next_state: String
@@ -19,10 +19,9 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var theta: float = 0.0
 var target_node: Node3D
 var current_health: float
-
+var can_jump: bool = true
 var show_debug_lines: bool = true
 
-signal enemy_died(enemy)
 
 func _ready() -> void:
 	add_to_group("enemies")
@@ -46,7 +45,10 @@ func take_damage(damage: float) -> void:
 	if current_health <= 0:
 		queue_free()
 		
-
+func jump() -> void:
+	if is_on_floor() and can_jump:
+		velocity.y = jump_velocity
+	
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 		if body.is_in_group("projectiles"):
@@ -72,7 +74,9 @@ func _physics_process(delta: float) -> void:
 		"circle":  
 			if target_node:
 				circular_motion(delta)
-				
+		"jump":
+			jump()
+			next_state = "idle"
 	move_and_slide()
 
 
@@ -85,24 +89,14 @@ func circular_motion(delta: float) -> void:
 	
 	# Calculate target position on circle
 	var center = target_node.global_position
-	
-	
-	var target_position = Vector3(
-		center.x + orbit_radius * cos(theta),
-		global_position.y,                     #unchanged in 3d
-		center.z + orbit_radius * sin(theta)
-	)
+
 	
 	#Current angle relative to center
 	var angle_to_center = atan2(global_position.z - center.z, global_position.x - center.x)
 	
 	#tanget vector. For a radius vector (cos θ, sin θ), its perpendicular is (-sin θ, cos θ)
 	#rotating avector 90 degree counterlcockwise: [cos θ, sin θ] → [-sin θ, cos θ]
-	var tangent_vector = Vector3(
-		-sin(angle_to_center),
-		0,
-		cos(angle_to_center)
-	)
+	var tangent_vector = Vector3(-sin(angle_to_center),0,cos(angle_to_center))
 	
 	#set velocity in tangential direction
 	var target_velocity = tangent_vector  * movement_speed

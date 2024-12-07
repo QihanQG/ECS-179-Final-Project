@@ -1,60 +1,81 @@
 class_name Turret
 extends Object
 
-
-#Required Components"
 var parent_node: Node
-var rotation_area: Node3D 
-var detection_area: Area3D   #radius detection
-var spawn_point: Marker3D #projectile spawn point
+var rotation_area: Node3D
+var mount_rotation_pitch: Node3D
+var detection_area: Area3D
+var spawn_point: Marker3D
 var projectile_scene: PackedScene
 
-
-
-@export var rotation_speed: float = 50.0
-@export var barrel_length: float = 1.2
+@export var rotation_speed: float = 20.0
 @export var projectile_speed: float = 120.0
-@export var fire_rate: float = 0.4
-#@export var rotation_duration: float = 5.0
-@export var lock_on_till_death: bool  #lock onto one target until it's dead
-@export var debug_mode : bool = true
-
-
-#@onready var turret_vision_mesh: MeshInstance3D = $TurretRotation/detect_visual  #the mesh of the turret vision cone or "vision"
-
+@export var _fire_rate: float = 0.8
+@export var lock_on_till_death: bool = true
+@export var debug_mode: bool = true
 
 var max_lock_on_angle: float = 90.0
+var max_pitch_up: float =  -180  
+var max_pitch_down: float = 20
 
-
-#var is_rotating: bool = true
 var can_shoot: bool = true
 var shoot_timer: Timer
-var rotate_timer: Timer
 var potential_targets: Array = []
-var current_target  = null
+var current_target = null
 
-var in_turret_vison: bool = false
-
+# Debug visualization
 var debug_labels: Dictionary = {}
-var info_label: Label3D  # For main turret info
+var info_label: Label3D
+var current_rotation_direction: String = ""
+var prev_cross_y: float = 0.0
+var cross_product_label: String
+var last_intercept_time: float = 0.0
 
-
-#target normal
+# Aim modes
 enum TargetMode {NORMAL, PREDICTED_AIM}
 @export var target_mode: TargetMode = TargetMode.PREDICTED_AIM
 
+# Fire rate property
+var fire_rate: float:
+	get: return _fire_rate
+	set(value):
+		_fire_rate = value
+		if shoot_timer:
+			shoot_timer.wait_time = value
+			
+var _detection_radius: float
+var detection_radius: float:
+	get:
+		return _detection_radius
+	set(value):
+		_detection_radius = value
+		if detection_shape:
+			detection_shape.radius = value
 
+var detection_shape: CapsuleShape3D
 
-func initialize(parent_node, rotation_area: Node3D, detection_area: Area3D, spawn_point: Marker3D, projectile_scene: PackedScene):
+func initialize(parent_node, rotation_area: Node3D, mount_rotation_pitch:Node3D, detection_area: Area3D, spawn_point: Marker3D, projectile_scene: PackedScene):
 	self.parent_node = parent_node
 	self.rotation_area = rotation_area
+	self.mount_rotation_pitch = mount_rotation_pitch
 	self.detection_area = detection_area
 	self.spawn_point = spawn_point
 	self.projectile_scene = projectile_scene
 	
-	lock_on_till_death = lock_on_till_death
+		
+	# Initialize detection radius
+	var collision_shape = detection_area.get_children()
+	for child in detection_area.get_children():
+		if child is CollisionShape3D and child.shape is CapsuleShape3D:
+			detection_shape = child.shape
+			_detection_radius = detection_shape.radius  
+			break
 	
-	# Connect signals using Callable
+	
+	
+	
+	
+	# Connect signals
 	detection_area.connect("body_entered", Callable(self, "_on_detection_area_body_entered"))
 	detection_area.connect("body_exited", Callable(self, "_on_detection_area_body_exited"))
 	
@@ -63,74 +84,17 @@ func initialize(parent_node, rotation_area: Node3D, detection_area: Area3D, spaw
 	shoot_timer.wait_time = fire_rate
 	shoot_timer.one_shot = true
 	shoot_timer.connect("timeout", Callable(self, "_on_shoot_timer_timeout"))
-	rotation_area.add_child(shoot_timer)
+	parent_node.add_child(shoot_timer)
 	
-	# Initialize debug labels if debug_mode is enabled
 	if debug_mode:
 		setup_debug()
-	# Initialize debug labels if debug_mode is enabled
-
-
 
 func process(delta):
 	if debug_mode:
-		draw_angle_boundaries() 
+		draw_angle_boundaries()
 	aim_mode()
 
-func setup_debug():
-	
-	#debug_statements()
-	#debug lines/labels
-	
-	#debug_info
-	info_label = Label3D.new()
-	info_label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-	info_label.font_size = 16
-	info_label.position = Vector3(0, 2, 0)  # Above turret
-	info_label.modulate = Color.WHITE
-	rotation_area.add_child(info_label)
-	
-	var label_colors = {
-		"forward": Color.YELLOW,
-		"target": Color.RED,
-		"cross": Color.GREEN
-	}
-	
-	for label_name in label_colors:
-		var label = Label3D.new()
-		label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-		label.font_size = 16
-		label.modulate = label_colors[label_name]
-		debug_labels[label_name] = label
-		parent_node.add_child(label)
 
-
-#For handling different aim modes
-func aim_mode() -> void:
-	
-	if lock_on_till_death:
-		if current_target and is_instance_valid(current_target):
-			aim_at_target(current_target.global_position)
-			if can_shoot:
-				shoot()
-		else:
-			# Current target is invalid or null, find a new target
-			if not potential_targets.is_empty():
-				current_target = find_closest_target()
-				if current_target:
-					aim_at_target(current_target.global_position)
-					if can_shoot:
-						shoot()
-	else:
-		if not potential_targets.is_empty():
-			current_target = find_closest_target()
-			if current_target:
-				aim_at_target(current_target.global_position)
-				if can_shoot:
-					shoot()
-	
-
-	
 
 func _on_detection_area_body_entered(body: Node3D) -> void:
 	#print("Body entered: ", body.name)
@@ -148,133 +112,286 @@ func _on_detection_area_body_exited(body: Node3D) -> void:
 			current_target = null
 
 
-#not used currently
-#func _is_in_vision_cone(target_position: Vector3) -> bool:
-	## Use vision cone position instead of turret base
-	#var to_target = target_position - turret_vision_mesh.global_position
-	#
-	## Get forward direction from transform
-	#var cone_forward = -$TurretRotation.global_transform.basis.z
-	#
-	#if to_target.length() > turret_vision_mesh.mesh.height:
-		#return false
-		#
-	## Ignore Y component
-	#var flat_to_target = Vector3(to_target.x, 0, to_target.z).normalized()
-	#var flat_forward = Vector3(cone_forward.x, 0, cone_forward.z).normalized()
-	#
-	## Clamp dot product
-	#var dot_product = clampf(flat_forward.dot(flat_to_target), -1.0, 1.0)
-	#var angle_differences = rad_to_deg(acos(dot_product))
-	#
-	#var cone_angle = rad_to_deg(atan2(turret_vision_mesh.bottom_radius, turret_vision_mesh.height))
-#
-	##print(angle_differences)
-	#return angle_differences <= cone_angle
 
 
-#To-Do
-func _on_turret_vision_body_entered(body: Node3D) -> void:
-	in_turret_vison = true
 
-func _on_turret_vision_body_exited(body: Node3D) -> void:
-	in_turret_vison = false
+func aim_mode() -> void:
+	if current_target and is_instance_valid(current_target):
+		var target_position = current_target.global_position
+		
+		# Determine the position to aim at based on the target mode
+		var aim_position = target_position
+		if target_mode == TargetMode.PREDICTED_AIM:
+			aim_position = calculate_predicted_position(target_position)
+		
+		var angles = calculate_angles(aim_position)
+		
+		if angles["in_range"]:
+			if lock_on_till_death:
+				aim_at_target(aim_position)  
+				if can_shoot:
+					shoot()
+			else:
+				if not potential_targets.is_empty():
+					current_target = find_closest_target()
+					if current_target:
+						# Remove ternary operator and use if-else
+						if target_mode == TargetMode.PREDICTED_AIM:
+							aim_position = calculate_predicted_position(current_target.global_position)
+						else:
+							aim_position = current_target.global_position
+						
+						aim_at_target(aim_position)
+						if can_shoot:
+							shoot()
+	else:
+		if not potential_targets.is_empty():
+			current_target = find_closest_target()
 
+			
 
-	
-func aim_at_target(target_position:Vector3):
-	
+#old stuff /mostly use for debugs
+func orientations_to_target(target_position: Vector3) -> Dictionary:
+	# Calculate direction to target based on mode
 	var to_target: Vector3
-
 	match target_mode:
 		TargetMode.NORMAL:
 			to_target = target_position - rotation_area.global_position
 		TargetMode.PREDICTED_AIM:
-			var aim_position = aim_at_predicted_target(target_position)
+			var aim_position = calculate_predicted_position(target_position)
 			to_target = aim_position - rotation_area.global_position
-		
-	#only XZ plane projection (ignoring Y component)
-	var to_target_xz = Vector3(to_target.x, 0, to_target.z)
-	var to_target_xz_normalized = to_target_xz.normalized()
 	
+	# Only XZ plane projection (ignoring Y component)
+	var to_target_xz = Vector3(to_target.x, 0, to_target.z).normalized()
 	
-	var current_direction = get_forward_direction(rotation_area.rotation)
+	# Only Y component
+	var to_target_y = Vector3(0, to_target.y, 0).normalized()
+	
+	# Get the turret forward direction/vector o
+	var current_direction = get_forward_direction_yaw_only(rotation_area.rotation)
+	
+	# Current direction ignoring Y
 	var current_direction_xz = Vector3(current_direction.x, 0, current_direction.z).normalized()
-
-	#Use dot product to get the angle.
-	var dot_product = current_direction_xz.dot(to_target_xz_normalized)
-	dot_product = clamp(dot_product, -1.0, 1.0) 
-	var angle_diff = rad_to_deg(acos(dot_product))
-
-	# angle_diff > 0 mean the turret barrel is not facing the enemies/objects
-	if angle_diff <= max_lock_on_angle:  
-		if angle_diff > 0.1:
-			#Positive y = rotate counterclockwise around Y axis, Negative y = rotate clockwise around Y axis.
-			var cross_product = current_direction_xz.cross(to_target_xz_normalized)
-			var rotation_direction = 1 if cross_product.y > 0 else -1
-			
-			var smoothing_factor: float = 5.0
-			var rotation_amount = rotation_speed * parent_node.get_process_delta_time()
-			rotation_amount = lerp(0.0, rotation_amount, smoothing_factor * parent_node.get_process_delta_time())
-			rotation_area.rotate_y(rotation_direction * rotation_amount)
-			if debug_mode:	
-				draw_aim_debug(to_target_xz_normalized, current_direction_xz, cross_product, angle_diff)
+	
+	var current_direction_y = Vector3(0, current_direction.y, 0).normalized()
+	
+	return {
+		"to_target": to_target,                      # Full 3D vector to target
+		"to_target_xz": to_target_xz,                # Ignore Y (height)
+		"to_target_y": to_target_y,                  # Get the direction of Y component only
+		"current_direction": current_direction,      # Full 3D current direction
+		"current_direction_xz": current_direction_xz,# Ignore Y direction
+		"current_direction_y": current_direction_y   # Only Y direction
+	}
 
 
 
-func aim_at_predicted_target(target_position: Vector3) -> Vector3:
-	if not current_target or not (current_target is CharacterBody3D):
-		return target_position
+#Mostly use for debuggins
+func calculate_angles(target_position: Vector3) -> Dictionary:
+	var directions = orientations_to_target(target_position)
+	
+	# Calculate yaw (horizontal) angles
+	var target_dir_xz = directions["to_target_xz"]
+	var current_direction_xz = directions["current_direction_xz"]
+	var dot_product_yaw = current_direction_xz.dot(target_dir_xz)
+	dot_product_yaw = clamp(dot_product_yaw, -1.0, 1.0) 
+	var yaw_angle = rad_to_deg(acos(dot_product_yaw))
+	
+	# Calculate pitch (vertical) angles
+	var to_target = directions["to_target"]
+	var horizontal_distance = Vector2(to_target.x, to_target.z).length()
+	
+	# Current and target pitch
+	var current_pitch = rad_to_deg(atan2(-directions["current_direction"].y, 
+								  Vector2(directions["current_direction"].x, 
+										directions["current_direction"].z).length()))
+	var pitch_angle = rad_to_deg(atan2(to_target.y, horizontal_distance))
+	var pitch_diff = pitch_angle - current_pitch
+	
+	# Calculate total 3D angle
+	var target_dir = directions["to_target"].normalized()
+	var current_dir = directions["current_direction"]
+	var dot_product_3d = current_dir.dot(target_dir)
+	dot_product_3d = clamp(dot_product_3d, -1.0, 1.0)
+	var total_angle = rad_to_deg(acos(dot_product_3d))
+	
+	# Return both absolute angles and differences
+	return {
+		# Absolute angles
+		"yaw_angle": yaw_angle,
+		"pitch_angle": pitch_angle,
+		"total_angle": total_angle,
 		
-	var target_velocity = current_target.velocity
-	var start_pos = parent_node.global_position
-	var to_target = target_position - start_pos
+		# Differences (how far to turn)
+		"yaw_diff": yaw_angle,
+		"pitch_diff": pitch_diff,
+		"total_diff": total_angle,
+		
+		# Range checks
+		"yaw_in_range": yaw_angle <= max_lock_on_angle,
+		"pitch_in_range": pitch_angle >= max_pitch_down and pitch_angle <= max_pitch_up,
+		"in_range": total_angle <= max_lock_on_angle,
+		
+		# Distance
+		"horizontal_distance": horizontal_distance
+	}
 
-	# solve equation coefficients for interception
-	var a = target_velocity.length_squared() - (projectile_speed * projectile_speed)
-	var b = 2 * target_velocity.dot(to_target)
-	var c = to_target.length_squared()
+
+
+
+
+func aim_at_target(target_pos: Vector3):
 	
-	var time_to_target: float
+	# Calculate prediction time based on projectile speed
+	var delta = parent_node.get_process_delta_time()
+
+	# If there is a current target, estimate its future position using simple linear prediction
+	if current_target:
+		
+		var target_velocity = get_target_velocity(current_target)
+		if target_velocity != Vector3.ZERO:
+			# Vector from turret to target's current position
+			
+			var displacement_to_target = target_pos - rotation_area.global_position
+			var target_distance = displacement_to_target.length()
+			
+			# Time required for the projectile to reach the target
+			var time_to_intercept = target_distance / projectile_speed
+			
+			# Predicted future position of the target
+			target_pos += target_velocity * time_to_intercept
+
+	# Calculate Yaw (horizontal rotation) and  Determine the vector to align the turret with the target
+	var horizontal_alignment_vector = rotation_area.global_position - (target_pos - rotation_area.global_position)
 	
-	if abs(a) < 0.001:  # target speed close to projectile speed
-		if abs(b) > 0.001: 
-			time_to_target = -c / b #Lienar solution
-		else:
-			#if both a and b ≈ 0
-			time_to_target = to_target.length() / projectile_speed
+	# Ignore the vertical component Y for horizontal rotation
+	horizontal_alignment_vector.y = rotation_area.global_position.y
+
+	# Create a transform matrix that looks at the target position
+	var target_orientation_transform = rotation_area.global_transform.looking_at(horizontal_alignment_vector)
+	var target_orientation_basis = target_orientation_transform.basis
+
+	# Interpolate between the turret's current basis and the desired basis
+	var interpolated_yaw_basis = rotation_area.global_transform.basis.slerp(target_orientation_basis, rotation_speed * delta)
+	rotation_area.global_transform.basis = interpolated_yaw_basis
+
+	# Calculate Pitch (vertical rotation) : Vector from the turret's vertical mount to the target's position
+	var displacement_to_target_vertical = target_pos - mount_rotation_pitch.global_position
+
+	# Horizontal Distance = sqrt(x^2 + z^2) (flat distance on the ground).
+	var target_horizontal_distance = Vector2(displacement_to_target_vertical.x, displacement_to_target_vertical.z).length()
+	
+	# Vertical Distance = height difference
+	var target_vertical_distance = displacement_to_target_vertical.y
+
+	# tan(angle) = Vertical Distance / Horizontal Distance
+	var target_pitch_angle = atan2(target_vertical_distance, target_horizontal_distance)
+
+	# Godot inverted angle 
+	target_pitch_angle = -target_pitch_angle
+
+	# limitation
+	target_pitch_angle = clamp(target_pitch_angle, deg_to_rad(max_pitch_up), deg_to_rad(max_pitch_down))
+
+	# Interpolate the mount's pitch rotation 
+	var current_pitch_rotation = mount_rotation_pitch.rotation.x
+	mount_rotation_pitch.rotation.x = lerp_angle(current_pitch_rotation, target_pitch_angle, rotation_speed * delta)
+
+
+	if debug_mode:
+		update_debug_info(target_pos)
+
+
+
+
+
+
+func get_target_velocity(target: Node3D) -> Vector3:
+	if target is RigidBody3D:
+		return target.linear_velocity
+	elif target is CharacterBody3D:
+		return target.velocity
+	elif target.has_property("velocity"):
+		return target.velocity
+	elif target.has_method("get_velocity"):
+		return target.get_velocity()
+	elif target is Node3D and target.has_property("velocity"):
+		return target.velocity
 	else:
-		
-		#solve quadratic equation.
-		var discriminant = b * b - 4 * a * c
-		
-		if discriminant < 0:
-			# No real solution as target too fast or unreachable
-			time_to_target = to_target.length() / projectile_speed
+		return Vector3.ZERO  
+
+
+
+
+func calculate_predicted_position(target_position: Vector3) -> Vector3:
+	# Return the target position directly if there's no target
+	if not current_target:
+		return target_position
+
+	# Retrieve the target's velocity
+	var target_velocity = get_target_velocity(current_target)
+
+	# If the target is stationary, return the current position
+	if target_velocity == Vector3.ZERO:
+		return target_position
+
+	# Define known values
+	var turret_position = rotation_area.global_position
+	var relative_target_position = target_position - turret_position  # Vector from turret to target
+	var target_speed_squared = target_velocity.length_squared()
+	var projectile_speed_squared = projectile_speed * projectile_speed
+
+	# Quadratic equation: a * t^2 + b * t + c = 0
+	var a = target_speed_squared - projectile_speed_squared            # Coefficient a
+	var b = 2 * target_velocity.dot(relative_target_position)          # Coefficient b
+	var c = relative_target_position.length_squared()                  # Coefficient c
+
+	# Discriminant: Δ = b^2 - 4 * a * c
+	var discriminant = b * b - 4 * a * c
+
+	# Initialize intercept_time
+	var intercept_time: float
+
+	# Solve the quadratic equation for t (time-to-target)
+	if abs(a) < 0.001:  # Handle linear case when a is nearly zero
+		if abs(b) > 0.001:
+			intercept_time = -c / b  # Linear solution: t = -c / b
 		else:
-			#intercept times 
-			var t1 = (-b + sqrt(discriminant)) / (2 * a)
-			var t2 = (-b - sqrt(discriminant)) / (2 * a)
-			
-			#choose the smallest positive value
+			intercept_time = relative_target_position.length() / projectile_speed  # Simple aim
+	else:
+		if discriminant < 0:  # No real solutions
+			intercept_time = relative_target_position.length() / projectile_speed  # Simple aim
+		else:
+			# Roots of the quadratic equation
+			var sqrt_discriminant = sqrt(discriminant)
+			var t1 = (-b + sqrt_discriminant) / (2 * a)  # First root
+			var t2 = (-b - sqrt_discriminant) / (2 * a)  # Second root
+
+			# Select the smallest positive root
 			if t1 > 0 and t2 > 0:
-				time_to_target = min(t1, t2)
+				intercept_time = min(t1, t2)
 			elif t1 > 0:
-				time_to_target = t1
+				intercept_time = t1
 			elif t2 > 0:
-				time_to_target = t2
+				intercept_time = t2
 			else:
-				time_to_target = to_target.length() / projectile_speed
-	
-	# Calculate predicted position
-	var predicted_position = target_position + (target_velocity * time_to_target)
-	
-	# Add debug visualization
-	self.last_intercept_time = time_to_target
-	self.last_predicted_position = predicted_position
-	
+				intercept_time = relative_target_position.length() / projectile_speed  # Simple aim
+
+	# Scale the intercept time to compensate for prediction delays
+	var prediction_scale_factor = 2.0
+	intercept_time *= prediction_scale_factor
+
+	var max_intercept_time = 5.0  # Maximum allowed time for prediction
+	intercept_time = clamp(intercept_time, 0.0, max_intercept_time)
+
+	# Predicted position = current target position + (velocity * intercept time)
+	var predicted_position = target_position + (target_velocity * intercept_time)
+
+	# Return the predicted position
 	return predicted_position
 
+
+	
 
 
 func find_closest_target():
@@ -309,42 +426,67 @@ func _on_shoot_timer_timeout():
 
 
 
+
+
 func shoot():
 	var projectile = projectile_scene.instantiate()
 	parent_node.add_child(projectile)
-
-	# Set position first
 	projectile.global_position = spawn_point.global_position
-	var current_rotation = spawn_point.global_rotation
 	
-	projectile.global_rotation = spawn_point.global_rotation
+	var rotation_vector = Vector3(mount_rotation_pitch.global_rotation.x, rotation_area.global_rotation.y, 0 )
 	
-	# Calculate the direction the barrel is pointing 
-	var forward_direction = get_forward_direction(current_rotation)
-	#var forward_direction = spawn_point.global_transform.basis.z
+	var forward_direction = get_forward_direction_from_yaw_and_pitch(rotation_vector)
+	
+	projectile.global_rotation = rotation_vector
 	
 	if projectile is RigidBody3D:
-		# Apply velocity immediately after setting position
 		projectile.linear_velocity = forward_direction * projectile_speed
-		
+	
+	# Reset shooting state
 	can_shoot = false
 	shoot_timer.start()
 
 
 
 
-#only use for testing	
-func get_forward_direction(euler_angles: Vector3) -> Vector3:
+
+
+
+
+
+
+
+
+
+#scaled by both ptich and yaw 
+func get_forward_direction_from_yaw_and_pitch(euler_angles: Vector3) -> Vector3:
+	
+	var pitch = euler_angles.x
+	var yaw = euler_angles.y
+	
+	var forward_x = sin(yaw) * cos(pitch)
+	var forward_y = -sin(pitch)
+	var forward_z = cos(yaw) * cos(pitch)
+	
+	return Vector3(forward_x, forward_y, forward_z).normalized()
+	
+	#Yaw rotation = | cos(y)  0  sin(y)| |0|   |sin(y)|
+			  #	    | 0       1  0     | |0| = |  0   |
+				   #|-sin(y)  0  cos(y)| |1|   |cos(y)|
+
+
+#only use for testin, scaled only by yaw(ry)
+func get_forward_direction_yaw_only(euler_angles: Vector3) -> Vector3:
 	var rx = euler_angles.x
 	var ry = euler_angles.y
 	
 	#x,y,z components of forward direction vector
 	#i.e forward_direction = Rx * (Ry * [0,0,1]), this is give you forward or the 3rd column vector after you done the matrix multiplication
-	var forward_x = sin(ry)
-	var forward_y = -sin(rx) * cos(ry)
-	var forward_z  = cos(rx) * cos(ry)
+	var forward_x = sin(ry)  # Only affected by yaw
+	var forward_y = -sin(rx) * cos(ry)  # Affected by both  pitch and  yaw
+	var forward_z  = cos(rx) * cos(ry)  #  ^
 	
-	#[0,0,-1] is forward on godot, but because of the orientation of models i built, i didn't make it negative.
+	#[0,0,-1] is forwar
 	var forward_vector = Vector3(forward_x,forward_y,forward_z).normalized()
 	return forward_vector
 		
@@ -386,243 +528,130 @@ func get_forward_direction(euler_angles: Vector3) -> Vector3:
 
 
 ########################################Debugs purpose############################
-
+func setup_debug():
+	info_label = Label3D.new()
+	info_label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	info_label.font_size = 16
+	info_label.position = Vector3(0, 2, 0)
+	info_label.modulate = Color.WHITE
+	rotation_area.add_child(info_label)
+	
+	var label_colors = {
+		"target": Color.RED,
+		"predicted": Color.BLUE,
+		"pitch": Color.GREEN,
+		"vision_boundary": Color.RED,      
+		"detection_label": Color.BLUE   
+	}
+	
+	for label_name in label_colors:
+		var label = Label3D.new()
+		label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+		label.font_size = 16
+		label.modulate = label_colors[label_name]
+		debug_labels[label_name] = label
+		parent_node.add_child(label)
 
 func draw_angle_boundaries():
 	if not debug_mode:
 		return
-		
+
 	var start_pos = rotation_area.global_position
-	var line_length = 20.0
-	var current_dir = get_forward_direction(rotation_area.rotation)
-	
-	# Draw forward vector (yellow)
-	var forward_end = start_pos + current_dir * 3.0
-	DebugDraw3D.draw_arrow(
-		start_pos,
-		forward_end,
-		Color.YELLOW,
-		0.1
-	)
-	
-	# Draw left and right angle boundaries (red)
+	var forward_dir = rotation_area.global_transform.basis.z
+	var line_length = detection_radius
+
+	# Draw horizontal angle boundaries
 	var left_angle = deg_to_rad(-max_lock_on_angle)
 	var right_angle = deg_to_rad(max_lock_on_angle)
-	
-	# Calculate boundary vectors by rotating the forward vector
-	var left_boundary = current_dir.rotated(Vector3.UP, left_angle)
-	var right_boundary = current_dir.rotated(Vector3.UP, right_angle)
-	
-	# left boundary
+
+	var left_bound = forward_dir.rotated(Vector3.UP, left_angle)
+	var right_bound = forward_dir.rotated(Vector3.UP, right_angle)
+
+
 	DebugDraw3D.draw_line(
 		start_pos,
-		start_pos + left_boundary * line_length,
+		start_pos + left_bound * line_length,
 		Color.RED
 	)
-	
-	# right boundary
 	DebugDraw3D.draw_line(
 		start_pos,
-		start_pos + right_boundary * line_length,
+		start_pos + right_bound * line_length,
 		Color.RED
 	)
-	
-	# Draw arc segments between boundaries
-	var segments = 20
-	var prev_point = start_pos + left_boundary * line_length
-	for i in range(1, segments + 1):
-		var t = float(i) / segments
-		var angle_t = left_angle + (right_angle - left_angle) * t
-		var current_vector = current_dir.rotated(Vector3.UP, angle_t)
-		var current_point = start_pos + current_vector * line_length
+
+	if debug_labels.has("vision_boundary"):
+		debug_labels["vision_boundary"].position = right_bound + Vector3(4,0.5,0)
+		debug_labels["vision_boundary"].scale = Vector3(2,2,2)
+		debug_labels["vision_boundary"].text = "Vision_Boundary" 
+
+
+# Detection radius circle
+func draw_detection_radius():
+	if not debug_mode or not detection_shape:
+		return
 		
-		DebugDraw3D.draw_line(
-			prev_point,
-			current_point,
-			Color(1, 0, 0, 0.5)
-		)
-		prev_point = current_point
-
-
-
-
-
-
-
-
-
-
-var current_rotation_direction: String = ""
-var prev_cross_y: float = 0.0
-var cross_product_label: String 
-
-var last_intercept_time: float = 0.0
-var last_predicted_position: Vector3 = Vector3.ZERO
-
-func draw_aim_debug(to_target: Vector3, current_dir: Vector3, cross: Vector3, angle: float):
+	var segments = 32
+	var center = detection_area.global_position
+	center.y = 0
 	
+	for i in range(segments + 1):
+		var angle_from = i * TAU / segments
+		var angle_to = (i + 1) * TAU / segments
+		
+		var from = center + Vector3(cos(angle_from) * detection_radius, 0, sin(angle_from) * detection_radius)
+		var to = center + Vector3(cos(angle_to) * detection_radius, 0, sin(angle_to) * detection_radius)
+		
+		DebugDraw3D.draw_line(from, to, Color.BLUE)
+		if debug_labels.has("detection_label"):
+			debug_labels["detection_label"].position = center + Vector3(0, 1.2, -10.5) 
+			debug_labels["detection_label"].scale = Vector3(4,4,4)
+			debug_labels["detection_label"].text = "Detection Radius: %.1f" % detection_radius
+
+
+
+func update_debug_info(target_pos: Vector3):
+	if not debug_mode or not current_target:
+		return
+		
 	var start_pos = rotation_area.global_position
-	var line_length = 20.0  # Length of the visualization lines
-
-	var forward_end = start_pos + current_dir * 3.0
-	DebugDraw3D.draw_arrow(
-		start_pos,
-		forward_end,
-		Color.YELLOW,
-		0.1
-	)
-	
-	debug_labels["forward"].position = forward_end - start_pos + Vector3(0, 0.4, 0)
-	debug_labels["forward"].text = "Forward vector"
-	
-
-	if sign(cross.y) != sign(prev_cross_y) and abs(cross.y) > 0.01:
-		current_rotation_direction = "Rotating " + ("Counterclockwise" if cross.y > 0 else "Clockwise")
-		cross_product_label = "Cross Product vector y value:  "  + str(cross.y)
+	var to_target = target_pos - start_pos
 	
 	
-	# Fixed position up and forward
-	var arrow_start = start_pos + Vector3(0, 3, 0)
-			
-	var arrow_direction: Vector3
 	
-	
-	if  cross.y >= 0.01:
-			arrow_direction = Vector3(0, 1, 0)
-			
-	elif cross.y <= -0.01:
-			arrow_direction = Vector3(0, -1, 0)
-	var arrow_end = arrow_start + arrow_direction
-			
-
-	DebugDraw3D.draw_arrow(
-		arrow_start,
-		arrow_end,
-		Color.GREEN,
-		0.1
-			)
-	debug_labels["cross"].position = ((Vector3(0,1,0) + arrow_start) - start_pos)  + Vector3(0, 0.9, 0)
-	debug_labels["cross"].text = cross_product_label
-	
-
-	prev_cross_y = cross.y
-
-	# Update main info label
+	# Calculate debug info
+	var horizontal_dist = Vector2(to_target.x, to_target.z).length()
+	var height_diff = to_target.y
+	var total_dist = to_target.length()
+	var current_pitch = rad_to_deg(mount_rotation_pitch.rotation.x)
+	var target_pitch = rad_to_deg(-atan2(height_diff, horizontal_dist))
 	
 	# Update info label
-	if current_target and is_instance_valid(current_target):
-		# Draw line from current to predicted position
-		DebugDraw3D.draw_line(
-			current_target.global_position,
-			last_predicted_position,
-			Color.STEEL_BLUE,
-			0.1
-		)
-		
-		# Draw sphere at predicted position ~roughly
-		DebugDraw3D.draw_sphere(
-			last_predicted_position,
-			0.5,  # Radius
-			Color.INDIGO
-		)
-	
-	# Update info label with all debug information
-	var distance = (current_target.global_position - start_pos).length() if current_target else 0.0
-	var target_speed = current_target.velocity.length() if current_target else 0.0
 	info_label.text = (
-		"Angle to target: %.1f°\n" +
-		"Lock-on range: ±%.1f°\n" +
-		"Distance: %.1f\n" +
-		"Target Speed: %.1f\n" +
-		"Intercept Time: %.2f s\n" +
-		"%s\n" +
-		"Lock-on status: %s"
+		"Distance: %.1f m\n" +
+		"Height Diff: %.1f m\n" +
+		"Current Pitch: %.1f°\n" +
+		"Target Pitch: %.1f°\n" +
+		"Intercept Time(time to target): %.2f s"
 	) % [
-		angle,
-		max_lock_on_angle,
-		distance,
-		target_speed,
-		last_intercept_time,
-		current_rotation_direction,
-		"Locked" if angle <= max_lock_on_angle else "Out of range"
+		total_dist,
+		height_diff,
+		current_pitch,
+		target_pitch,
+		last_intercept_time
 	]
 
-
-
-
-func _debug_statements_body_entered() -> void:
-
-	pass
-	#print("Detected node: Name =", body.name, ", Path =", body.get_path(), ", Type =", body.get_class())
-	#print("\n=== DETECTION DEBUG ===")
-	#print("Enemy detected:", body.name)
-	#print("Enemy position:", body.global_position)
-	#print("Distance to turret:", body.global_position.distance_to(global_position))
-	#print("Enemy relative to vision cone:", body.global_position - turret_vision_mesh.global_position)
+	if target_mode == TargetMode.PREDICTED_AIM and current_target is CharacterBody3D:
+		info_label.text += "\nTarget Speed: %.1f m/s" % current_target.velocity.length()
 	
-	#var to_enemy = (body.global_position - turret_vision_mesh.global_position).normalized()
-	#var cone_forward = -turret_vision_mesh.global_transform.basis.y  # Because of -90 degree X rotation
-	#var angle = rad_to_deg(acos(to_enemy.dot(cone_forward)))
-	#print("Angle to vision cone axis:", angle)
-	#print("Vision cone forward direction:", cone_forward)
-		
 
 
 
 
-#func debug_statements() -> void:
-#
-	#print("vision cone top radius: ",turret_vision_mesh.mesh.top_radius)
-	#print("vision cone bottom radius: ", turret_vision_mesh.mesh.bottom_radius)
-	#print("vision cone height ", turret_vision_mesh.mesh.height)
-	#print("vision cone position ", turret_vision_mesh.global_position)
-	#print("vision cone rotation ", turret_vision_mesh.global_rotation)
-	#
-	#
-		## Debug node hierarchy
-	#print("\n=== FULL NODE HIERARCHY ===")
-	#print_node_hierarchy(self, 0)
-	#
-	#print("\n=== DETAILED NODE PROPERTIES ===")
-	## Debug turret rotation node
-	#print("\nTurret Rotation Node:")
-	#if has_node("TurretRotation"):
-		#var turret_rotation = $TurretRotation
-		#print("- Position:", turret_rotation.global_position)
-		#print("- Rotation:", turret_rotation.global_rotation)
-		#print("- Scale:", turret_rotation.scale)
-	#
-	## Debug vision cone properties
-	#print("\nVision Cone Properties:")
-	#if turret_vision_mesh:
-		#print("- Mesh Position:", turret_vision_mesh.global_position)
-		#print("- Mesh Local Position:", turret_vision_mesh.position)
-		#print("- Mesh Global Rotation:", turret_vision_mesh.global_rotation)
-		#print("- Mesh Local Rotation:", turret_vision_mesh.rotation)
-		#print("- Mesh Scale:", turret_vision_mesh.scale)
-	#
-	## Debug detection area
-	#print("\nDetection Area Properties:")
-	#if detection_area:
-		#print("- Position:", detection_area.global_position)
-		#print("- Rotation:", detection_area.global_rotation)
-		#print("- Scale:", detection_area.scale)
-		#if detection_area.get_child_count() > 0:
-			#for child in detection_area.get_children():
-				#if child is CollisionShape3D:
-					#print("- Collision Shape Type:", child.shape.get_class())
-					## If it's a cylinder shape
-					#if child.shape is CylinderShape3D:
-						#print("  - Height:", child.shape.height)
-						#print("  - Radius:", child.shape.radius)
-	#
-	## Debug spawn point
-	#print("\nProjectile Spawn Point:")
-	#if spawn_point:
-		#print("- Global Position:", spawn_point.global_position)
-		#print("- Local Position:", spawn_point.position)
-		#print("- Global Rotation:", spawn_point.global_rotation)
-		#print("- Local Rotation:", spawn_point.rotation)	
+
+
+
+
+
 
 
 	
