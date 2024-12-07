@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://ck8dje7r6rv2v"]
+[gd_scene load_steps=16 format=3 uid="uid://ck8dje7r6rv2v"]
 
 [ext_resource type="Script" path="res://scripts/turret_script.gd" id="1_6y01g"]
+[ext_resource type="PackedScene" uid="uid://bd78wcwt3ug5y" path="res://assets/models/Turret Cannon.glb" id="2_r2b2m"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_05r53"]
 top_radius = 1.0
@@ -60,7 +61,12 @@ radius = 19.8
 [node name="Turret" type="StaticBody3D"]
 script = ExtResource("1_6y01g")
 
+[node name="Root Scene" parent="." instance=ExtResource("2_r2b2m")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.0340799, -0.0867161, -0.0585291)
+
 [node name="Base" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0410161, 0.0640759, -0.0274503)
+visible = false
 mesh = SubResource("CylinderMesh_05r53")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Base"]
@@ -73,6 +79,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 
 [node name="Platform" type="MeshInstance3D" parent="TurretRotation"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+visible = false
 mesh = SubResource("CylinderMesh_iosl2")
 
 [node name="Area3D" type="Area3D" parent="TurretRotation/Platform"]
@@ -82,6 +89,7 @@ shape = SubResource("CylinderShape3D_bdlpa")
 
 [node name="BarrelMount" type="MeshInstance3D" parent="TurretRotation"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
 mesh = SubResource("BoxMesh_o1mhb")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TurretRotation/BarrelMount"]
@@ -91,6 +99,7 @@ shape = SubResource("BoxShape3D_1ucid")
 
 [node name="Barrel" type="MeshInstance3D" parent="TurretRotation"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00110865, 0.50408, 0.758056)
+visible = false
 mesh = SubResource("CylinderMesh_m5wee")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TurretRotation/Barrel"]
