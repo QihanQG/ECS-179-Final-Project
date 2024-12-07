@@ -1,11 +1,24 @@
-[gd_scene load_steps=16 format=3 uid="uid://cgpw7jwcreeku"]
+[gd_scene load_steps=25 format=3 uid="uid://cgpw7jwcreeku"]
 
 [ext_resource type="Script" path="res://scripts/EnemySpawner.gd" id="1_f6dcx"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="1_u4k6d"]
+[ext_resource type="Resource" path="res://mapterrain/data.hterrain" id="2_nkggy"]
 [ext_resource type="Script" path="res://scripts/main_camera.gd" id="2_wj62w"]
 [ext_resource type="PackedScene" uid="uid://c3qbhftm3v3re" path="res://scenes/surface.tscn" id="3_snqtl"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_xxooc"]
 [ext_resource type="PackedScene" uid="uid://ck8dje7r6rv2v" path="res://scenes/turret.tscn" id="5_rcr1x"]
 [ext_resource type="Script" path="res://scripts/test_object.gd" id="6_5l6yb"]
 [ext_resource type="Script" path="res://scripts/camera2.gd" id="7_fm5u4"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="7_saagv"]
+[ext_resource type="Script" path="res://scripts/penguin_manager.gd" id="8_u885u"]
+[ext_resource type="Script" path="res://scripts/town.gd" id="8_wqoua"]
+[ext_resource type="Script" path="res://scripts/base_building.gd" id="10_j2ymi"]
+[ext_resource type="PackedScene" uid="uid://ctppybj5h66e" path="res://assets/models/Igloo.glb" id="14_riq8w"]
+
+[sub_resource type="Resource" id="Resource_frh4k"]
+script = ExtResource("3_xxooc")
+mode = 0
+textures = [[], []]
 
 [sub_resource type="MeshTexture" id="MeshTexture_lepjr"]
 
@@ -34,7 +47,26 @@ material = SubResource("StandardMaterial3D_qtvtt")
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2ldjc"]
 
 [node name="World" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21166, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.220264, 1.21166, 0.0610809)
+
+[node name="HTerrain" type="Node3D" parent="."]
+script = ExtResource("1_u4k6d")
+centered = true
+_terrain_data = ExtResource("2_nkggy")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_frh4k")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = null
 
 [node name="EnemySpawner" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.701, 1.53817, -6.44781)
@@ -73,3 +105,61 @@ shape = SubResource("CylinderShape3D_2ldjc")
 [node name="Camera3D" type="Camera3D" parent="Test_object/purple"]
 transform = Transform3D(-0.999474, 0.00482798, -0.0320596, -0.0313173, 0.112065, 0.993207, 0.00838793, 0.993689, -0.111854, -0.178032, 5.64421, -0.0167394)
 script = ExtResource("7_fm5u4")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("7_saagv")
+
+[node name="ManagerTest" type="Node" parent="GameManager"]
+
+[node name="PenguinManager" type="Node" parent="GameManager"]
+script = ExtResource("8_u885u")
+
+[node name="Town" type="Node3D" parent="."]
+script = ExtResource("8_wqoua")
+
+[node name="TownBoundaryMesh" type="MeshInstance3D" parent="Town"]
+
+[node name="WallSystem" type="StaticBody3D" parent="Town"]
+script = ExtResource("10_j2ymi")
+
+[node name="TurretMount" type="Node3D" parent="Town/WallSystem"]
+
+[node name="WallSegments" type="Node3D" parent="Town/WallSystem"]
+
+[node name="Buildings" type="Node3D" parent="Town"]
+
+[node name="Castle" type="StaticBody3D" parent="Town/Buildings"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Town/Buildings/Castle"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Town/Buildings/Castle"]
+
+[node name="PenguinSpawn" type="Marker3D" parent="Town/Buildings/Castle"]
+
+[node name="Research" type="StaticBody3D" parent="Town/Buildings"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Town/Buildings/Research"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Town/Buildings/Research"]
+
+[node name="ResearchArea" type="Area3D" parent="Town/Buildings/Research"]
+
+[node name="Factory" type="StaticBody3D" parent="Town/Buildings"]
+
+[node name="ProductionArea" type="Area3D" parent="Town/Buildings/Factory"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Town/Buildings/Factory"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Town/Buildings/Factory"]
+
+[node name="Igloo" parent="." instance=ExtResource("14_riq8w")]
+transform = Transform3D(0.298858, 0, 0.0261467, 0, 0.3, 0, -0.0261467, 0, 0.298858, -5.12058, 0.873238, 24.4681)
+
+[node name="Igloo2" parent="." instance=ExtResource("14_riq8w")]
+transform = Transform3D(3.57746e-09, 0, -0.3, 0, 0.3, 0, 0.3, 0, 3.57746e-09, -26.081, 1.02634, -11.0574)
+
+[node name="Igloo3" parent="." instance=ExtResource("14_riq8w")]
+transform = Transform3D(-1.31134e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-08, 22.4661, 0.794435, 1.49499)
+
+[node name="Igloo4" parent="." instance=ExtResource("14_riq8w")]
+transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, 5.846, 0.86745, -25.3869)

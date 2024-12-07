@@ -30,18 +30,21 @@
 **The town:**
 
 * The tower or town has a shield and wall protecting it.   
-  * Both the shield and the wall can auto-repair or recharge as long as it’s maintained by the research building and not building is not destroyed.  
-    * The shield and its recharge function can use exercise 3 as a reference  
-    * The wall is in a fixed location, so auto-repairing is just respawning them  
 * Inside the town, It has 3 buildings:  
   * **The castle at the center**: Where king penguins(player) and other penguins reside.  
-    * The castle produces x amount of penguins per given amount of time.  
-    * Can assign these penguins to the research or factoring building for quicker results (faster production or result)  
+	* The castle produces x amount of penguins per given amount of time.  
+	* Can assign these penguins to the research or factoring building or wall:
+
+				  research building    -> increse resource cap
+				  factory              -> build faster 
   * **The research building**:   
-    * Responsible for maintaining the town shields/wall auto-repair ability.   
-    * Can also put its focus researching on turrets, shields, or other gear upgrades. Which can be given to the factory for producing these.  
+	* Can upgrade : 
+
+	*			  weapon               -> higher base damage
+  *       wall                 -> reduce incoming damage
+	*       resources            -> gain more resources per time frame
   * **The factory**:   
-    * Responsible for producing turrets and items. 
+	* Responsible for producing turrets and items. 
 
 **Resource systems:**
 
@@ -76,4 +79,3 @@
 * The game is over when 80%  of the town is destroyed  
 * After each stage ends, you are given x amount of time until the next stage starts.  
 * You win the game when the town survives all the stages
-
