@@ -1,33 +1,22 @@
-[gd_scene load_steps=25 format=3 uid="uid://cgpw7jwcreeku"]
+[gd_scene load_steps=21 format=3 uid="uid://cgpw7jwcreeku"]
 
 [ext_resource type="Script" path="res://scripts/EnemySpawner.gd" id="1_f6dcx"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="1_u4k6d"]
 [ext_resource type="Resource" path="res://mapterrain/data.hterrain" id="2_nkggy"]
-[ext_resource type="Script" path="res://scripts/main_camera.gd" id="2_wj62w"]
 [ext_resource type="PackedScene" uid="uid://c3qbhftm3v3re" path="res://scenes/surface.tscn" id="3_snqtl"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_xxooc"]
-[ext_resource type="PackedScene" uid="uid://ck8dje7r6rv2v" path="res://scenes/turret.tscn" id="5_rcr1x"]
-[ext_resource type="Script" path="res://scripts/test_object.gd" id="6_5l6yb"]
-[ext_resource type="Script" path="res://scripts/camera2.gd" id="7_fm5u4"]
+[ext_resource type="PackedScene" uid="uid://ck8dje7r6rv2v" path="res://scenes/Turret.tscn" id="5_rcr1x"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="7_saagv"]
 [ext_resource type="Script" path="res://scripts/penguin_manager.gd" id="8_u885u"]
 [ext_resource type="Script" path="res://scripts/town.gd" id="8_wqoua"]
 [ext_resource type="Script" path="res://scripts/base_building.gd" id="10_j2ymi"]
+[ext_resource type="PackedScene" uid="uid://dmr4dd1quowrh" path="res://scenes/camera.tscn" id="12_je1pq"]
 [ext_resource type="PackedScene" uid="uid://ctppybj5h66e" path="res://assets/models/Igloo.glb" id="14_riq8w"]
 
 [sub_resource type="Resource" id="Resource_frh4k"]
 script = ExtResource("3_xxooc")
 mode = 0
 textures = [[], []]
-
-[sub_resource type="MeshTexture" id="MeshTexture_lepjr"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q8nm7"]
-albedo_color = Color(0.149923, 0.0584052, 0.043815, 1)
-albedo_texture = SubResource("MeshTexture_lepjr")
-
-[sub_resource type="BoxMesh" id="BoxMesh_oklgo"]
-material = SubResource("StandardMaterial3D_q8nm7")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5my2n"]
 
@@ -38,13 +27,16 @@ sky_material = SubResource("ProceduralSkyMaterial_5my2n")
 background_mode = 2
 sky = SubResource("Sky_v644a")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qtvtt"]
-albedo_color = Color(0.650244, 0.360364, 0.726092, 1)
+[sub_resource type="MeshTexture" id="MeshTexture_lepjr"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_7svd4"]
-material = SubResource("StandardMaterial3D_qtvtt")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q8nm7"]
+albedo_color = Color(0.149923, 0.0584052, 0.043815, 1)
+albedo_texture = SubResource("MeshTexture_lepjr")
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_2ldjc"]
+[sub_resource type="BoxMesh" id="BoxMesh_oklgo"]
+material = SubResource("StandardMaterial3D_q8nm7")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ebi87"]
 
 [node name="World" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.220264, 1.21166, 0.0610809)
@@ -68,43 +60,10 @@ shader_params/u_depth_blending = true
 shader_params/u_triplanar = null
 shader_params/u_tile_reduction = null
 
-[node name="EnemySpawner" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.701, 1.53817, -6.44781)
-mesh = SubResource("BoxMesh_oklgo")
-script = ExtResource("1_f6dcx")
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5n4yu")
 
-[node name="MainCamera" type="Camera3D" parent="."]
-transform = Transform3D(0.999507, 0, -0.0313933, 0, 1, 0, 0.0313933, 0, 0.999507, -3.22582, 12.3237, 2.35061)
-current = true
-script = ExtResource("2_wj62w")
-
 [node name="surface" parent="." instance=ExtResource("3_snqtl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12174, -0.318877, 0.0939145)
-
-[node name="Turret" parent="." instance=ExtResource("5_rcr1x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00687122, 1.23454, -4.35021)
-debug_mode = true
-
-[node name="Test_object" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.1988, 1.99328, -18.4627)
-
-[node name="purple" type="CharacterBody3D" parent="Test_object"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3965)
-script = ExtResource("6_5l6yb")
-
-[node name="Player" type="MeshInstance3D" parent="Test_object/purple"]
-mesh = SubResource("CylinderMesh_7svd4")
-skeleton = NodePath("../../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Test_object/purple"]
-shape = SubResource("CylinderShape3D_2ldjc")
-
-[node name="Camera3D" type="Camera3D" parent="Test_object/purple"]
-transform = Transform3D(-0.999474, 0.00482798, -0.0320596, -0.0313173, 0.112065, 0.993207, 0.00838793, 0.993689, -0.111854, -0.178032, 5.64421, -0.0167394)
-script = ExtResource("7_fm5u4")
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("7_saagv")
@@ -163,3 +122,23 @@ transform = Transform3D(-1.31134e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-08, 
 
 [node name="Igloo4" parent="." instance=ExtResource("14_riq8w")]
 transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, 5.846, 0.86745, -25.3869)
+
+[node name="EnemySpawner" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3456, 1.53817, -24.2003)
+script = ExtResource("1_f6dcx")
+
+[node name="EnemySpawner" type="MeshInstance3D" parent="EnemySpawner"]
+mesh = SubResource("BoxMesh_oklgo")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemySpawner"]
+shape = SubResource("BoxShape3D_ebi87")
+
+[node name="Turret" parent="." instance=ExtResource("5_rcr1x")]
+transform = Transform3D(1, -0.000631163, 0.000640167, 0.000631569, 1, -0.000662779, -0.000639767, 0.000663165, 1, 0, 1.32326, 0)
+debug_mode = true
+detection_radius = 30.0
+
+[node name="main_camera" parent="." instance=ExtResource("12_je1pq")]
+transform = Transform3D(0.0566579, 0, 0.998394, 0, 1, 0, -0.998394, 0, 0.0566579, 10.5104, 6.82814, 0)
+is_enemy = true

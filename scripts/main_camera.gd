@@ -1,22 +1,21 @@
 extends Camera3D
 
-# Camera Properties
+
 @export var movement_speed: float = 5
 @export var mouse_sensitivity: float = 0.002
 @export var zoom_speed: float = 1.0
 @export var max_zoom: float  = 10.0
-
+@export var is_enemy: bool 
 
 var is_rotating: bool = false
-
 var current_zoom_level: float = 0.0
 
-#not used
-var target_zoom_level: float  = 0.0  
-var zoom_smoothness: float = 10.0
+@onready var cam_body: CharacterBody3D = $cam_body
 
 
 func _ready() -> void:
+	if is_enemy:
+		cam_body.add_to_group("enemies")
 	set_current(true)
 
 # Handle input events (mouse clicks and wasd movement)
@@ -70,20 +69,14 @@ func zoom_camera(direction: int) -> void:
 		global_position += forward_vector * zoom_amount
 		
 		
-#not used
-func handle_zoom_smooth(delta: float) -> void:
-	if current_zoom_level != target_zoom_level:
-		current_zoom_level = lerp(current_zoom_level, target_zoom_level, delta * zoom_smoothness)
-		#Apply zoom movement
-		var forward_vector = -global_transform.basis.z
-		var position_change = forward_vector * (target_zoom_level - current_zoom_level) 
-		global_position += position_change
-	 
+
 	
 
 # Handle keyboard input for camera movement
 func _process(delta: float) -> void:
 	handle_keyboard_movement(delta)
+	
+	
 # Move camera based on keyboard input
 func handle_keyboard_movement(delta: float) -> void:
 	var input_dir = Vector3.ZERO

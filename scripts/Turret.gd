@@ -10,13 +10,16 @@ var projectile_scene: PackedScene
 
 @export var rotation_speed: float = 20.0
 @export var projectile_speed: float = 120.0
-@export var _fire_rate: float = 0.8
 @export var lock_on_till_death: bool = true
 @export var debug_mode: bool = true
 
 var max_lock_on_angle: float = 90.0
-var max_pitch_up: float =  -180  
+var max_pitch_up: float =  -60  
 var max_pitch_down: float = 20
+
+#private variables
+var _fire_rate: float = 0.8
+var _detection_radius: float
 
 var can_shoot: bool = true
 var shoot_timer: Timer
@@ -43,7 +46,7 @@ var fire_rate: float:
 		if shoot_timer:
 			shoot_timer.wait_time = value
 			
-var _detection_radius: float
+
 var detection_radius: float:
 	get:
 		return _detection_radius
@@ -51,6 +54,8 @@ var detection_radius: float:
 		_detection_radius = value
 		if detection_shape:
 			detection_shape.radius = value
+
+
 
 var detection_shape: CapsuleShape3D
 
@@ -454,10 +459,6 @@ func shoot():
 
 
 
-
-
-
-
 #scaled by both ptich and yaw 
 func get_forward_direction_from_yaw_and_pitch(euler_angles: Vector3) -> Vector3:
 	
@@ -557,7 +558,11 @@ func draw_angle_boundaries():
 		return
 
 	var start_pos = rotation_area.global_position
+	
 	var forward_dir = rotation_area.global_transform.basis.z
+	forward_dir.y = 0  
+	forward_dir = forward_dir.normalized()
+	
 	var line_length = detection_radius
 
 	# Draw horizontal angle boundaries
@@ -567,7 +572,7 @@ func draw_angle_boundaries():
 	var left_bound = forward_dir.rotated(Vector3.UP, left_angle)
 	var right_bound = forward_dir.rotated(Vector3.UP, right_angle)
 
-
+	# Draw boundary lines
 	DebugDraw3D.draw_line(
 		start_pos,
 		start_pos + left_bound * line_length,
@@ -579,8 +584,25 @@ func draw_angle_boundaries():
 		Color.RED
 	)
 
+	# Draw arc segments between boundaries
+	var segments = 20
+	var prev_point = start_pos + left_bound * line_length
+	
+	for i in range(1, segments + 1):
+		var t = float(i) / segments
+		var angle_t = left_angle + (right_angle - left_angle) * t
+		var current_vector = forward_dir.rotated(Vector3.UP, angle_t)
+		var current_point = start_pos + current_vector * line_length
+		
+		DebugDraw3D.draw_line(
+			prev_point,
+			current_point,
+			Color(1, 0, 0, 0.5)  # Semi-transparent red
+		)
+		prev_point = current_point
+
 	if debug_labels.has("vision_boundary"):
-		debug_labels["vision_boundary"].position = right_bound + Vector3(4,0.5,0)
+		debug_labels["vision_boundary"].position = right_bound + Vector3(1,0.8,0)
 		debug_labels["vision_boundary"].scale = Vector3(2,2,2)
 		debug_labels["vision_boundary"].text = "Vision_Boundary" 
 
@@ -592,7 +614,7 @@ func draw_detection_radius():
 		
 	var segments = 32
 	var center = detection_area.global_position
-	center.y = 0
+
 	
 	for i in range(segments + 1):
 		var angle_from = i * TAU / segments
