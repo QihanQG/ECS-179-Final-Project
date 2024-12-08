@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cgpw7jwcreeku"]
+[gd_scene load_steps=23 format=3 uid="uid://cgpw7jwcreeku"]
 
 [ext_resource type="Script" path="res://scripts/EnemySpawner.gd" id="1_f6dcx"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="1_u4k6d"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" path="res://scripts/town.gd" id="8_wqoua"]
 [ext_resource type="Script" path="res://scripts/base_building.gd" id="10_j2ymi"]
 [ext_resource type="PackedScene" uid="uid://dmr4dd1quowrh" path="res://scenes/camera.tscn" id="12_je1pq"]
+[ext_resource type="PackedScene" uid="uid://co3h8fx7yc30r" path="res://scenes/Turret Gun.tscn" id="13_0tso4"]
+[ext_resource type="PackedScene" uid="uid://c2t8ktpfyjh8l" path="res://scenes/Turret Gun 2.tscn" id="14_2kbs7"]
 [ext_resource type="PackedScene" uid="uid://ctppybj5h66e" path="res://assets/models/Igloo.glb" id="14_riq8w"]
 
 [sub_resource type="Resource" id="Resource_frh4k"]
@@ -134,11 +136,21 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnemySpawner"]
 shape = SubResource("BoxShape3D_ebi87")
 
-[node name="Turret" parent="." instance=ExtResource("5_rcr1x")]
-transform = Transform3D(1, -0.000631163, 0.000640167, 0.000631569, 1, -0.000662779, -0.000639767, 0.000663165, 1, 0, 1.32326, 0)
-debug_mode = true
-detection_radius = 30.0
-
 [node name="main_camera" parent="." instance=ExtResource("12_je1pq")]
 transform = Transform3D(0.0566579, 0, 0.998394, 0, 1, 0, -0.998394, 0, 0.0566579, 10.5104, 6.82814, 0)
 is_enemy = true
+
+[node name="Turret" parent="." instance=ExtResource("5_rcr1x")]
+transform = Transform3D(1, -0.000631163, 0.000640167, 0.000631569, 1, -0.000662779, -0.000639767, 0.000663165, 1, 10.363, 1.35582, 0.0737114)
+debug_mode = true
+detection_radius = 5.0
+
+[node name="TurretM" parent="." instance=ExtResource("13_0tso4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.46142, 1.28737, -2.01338)
+debug_mode = true
+detection_radius = 5.0
+
+[node name="TurretC" parent="." instance=ExtResource("14_2kbs7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75577, 1.33773, -9.36463)
+debug_mode = true
+detection_radius = 5.0
