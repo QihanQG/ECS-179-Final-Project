@@ -1,10 +1,8 @@
-class_name DurativeIdleCommand
-extends DurativeAnimation
+class_name IdleCommand
+extends DurativeController
 
-var _duration:float
+func _init(player: AnimationPlayer, character: CharacterBody3D):
+	super._init(player, 0.0, character)
 
-func _init(duration:float = 0.0):
-	_duration = duration
-	
-func execute(character:Character) -> Command.Status:
-	return _manage_durative_animation_command(character, "idle", _duration)
+func setup_animation(anim):
+	anim.set_loop_mode(Animation.LOOP_LINEAR)
