@@ -66,7 +66,7 @@ material = SubResource("StandardMaterial3D_q8nm7")
 [sub_resource type="BoxShape3D" id="BoxShape3D_ebi87"]
 
 [node name="World" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.220264, 1.21166, 0.0610809)
+transform = Transform3D(0.999995, -0.00311328, 0.000721761, 0.00311416, 0.999994, -0.001219, -0.000717969, 0.00122124, 0.999999, -0.220264, 1.21166, 0.0610809)
 
 [node name="HTerrain" type="Node3D" parent="."]
 script = ExtResource("1_u4k6d")
@@ -121,7 +121,7 @@ mesh = SubResource("CapsuleMesh_g7kwa")
 [node name="Buildings" type="Node3D" parent="Town"]
 
 [node name="Castle" type="StaticBody3D" parent="Town/Buildings"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.5, 5)
+transform = Transform3D(0.999988, 0.00483455, -5.58532e-06, -0.00483454, 0.999988, -3.96371e-06, 5.56605e-06, 3.99072e-06, 1, -10, 2.5, 5)
 script = ExtResource("9_30kl7")
 building_name = "castle"
 
