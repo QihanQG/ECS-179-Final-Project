@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bg1ubuf35cf04"
+valid=false
+
+[deps]
+
+source_file="res://8-16bit+Sound+assets+(x25)/sfx pack/Block Break 2.wav"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

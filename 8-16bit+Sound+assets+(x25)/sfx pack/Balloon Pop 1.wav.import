@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d2wff452lorcv"
+path="res://.godot/imported/Balloon Pop 1.wav-3ba21e567a510e5bf083d5a93a9a9157.sample"
+
+[deps]
+
+source_file="res://8-16bit+Sound+assets+(x25)/sfx pack/Balloon Pop 1.wav"
+dest_files=["res://.godot/imported/Balloon Pop 1.wav-3ba21e567a510e5bf083d5a93a9a9157.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://it46tj4dcsh3"
+path="res://.godot/imported/powerup2.wav-7a398c4e5316a28bfa43c289bb74e62b.sample"
+
+[deps]
+
+source_file="res://Retro Sounds 32-Bit - Update 1/Retro Sounds 32-Bit - Update 1/powerup2.wav"
+dest_files=["res://.godot/imported/powerup2.wav-7a398c4e5316a28bfa43c289bb74e62b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
