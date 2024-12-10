@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cgpw7jwcreeku"]
+[gd_scene load_steps=34 format=3 uid="uid://cgpw7jwcreeku"]
 
 [ext_resource type="Script" path="res://scripts/EnemySpawner.gd" id="1_f6dcx"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="1_u4k6d"]
@@ -9,7 +9,10 @@
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="7_saagv"]
 [ext_resource type="Script" path="res://scripts/penguin_manager.gd" id="8_u885u"]
 [ext_resource type="Script" path="res://scripts/town.gd" id="8_wqoua"]
-[ext_resource type="Script" path="res://scripts/base_building.gd" id="10_j2ymi"]
+[ext_resource type="Script" path="res://scripts/wall_system.gd" id="9_2j7tf"]
+[ext_resource type="Script" path="res://scripts/castle.gd" id="9_30kl7"]
+[ext_resource type="Script" path="res://scripts/research_building.gd" id="9_hhoq0"]
+[ext_resource type="Script" path="res://scripts/factory.gd" id="10_mnfw5"]
 [ext_resource type="PackedScene" uid="uid://dmr4dd1quowrh" path="res://scenes/camera.tscn" id="12_je1pq"]
 [ext_resource type="PackedScene" uid="uid://co3h8fx7yc30r" path="res://scenes/Turret Gun.tscn" id="13_0tso4"]
 [ext_resource type="PackedScene" uid="uid://c2t8ktpfyjh8l" path="res://scenes/Turret Gun 2.tscn" id="14_2kbs7"]
@@ -28,6 +31,28 @@ sky_material = SubResource("ProceduralSkyMaterial_5my2n")
 [sub_resource type="Environment" id="Environment_5n4yu"]
 background_mode = 2
 sky = SubResource("Sky_v644a")
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_5psaf"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_g7kwa"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gdpei"]
+height = 3.0
+rings = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m8mvl"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_ggmeb"]
+left_to_right = 0.0
+size = Vector3(3, 1, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ycahs"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ulq6k"]
+radius = 1.0
+height = 0.56
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1n8ka"]
 
 [sub_resource type="MeshTexture" id="MeshTexture_lepjr"]
 
@@ -80,40 +105,64 @@ script = ExtResource("8_u885u")
 transform = Transform3D(0.99612, 0.0880077, 0, -0.0880077, 0.99612, 0, 0, 0, 1, 4.08128, 8.46747, 14.8815)
 script = ExtResource("8_wqoua")
 
-[node name="TownBoundaryMesh" type="MeshInstance3D" parent="Town"]
-
 [node name="WallSystem" type="StaticBody3D" parent="Town"]
-script = ExtResource("10_j2ymi")
+script = ExtResource("9_2j7tf")
 
 [node name="TurretMount" type="Node3D" parent="Town/WallSystem"]
 
 [node name="WallSegments" type="Node3D" parent="Town/WallSystem"]
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Town/WallSystem"]
+shape = SubResource("SeparationRayShape3D_5psaf")
+
+[node name="TownBoundaryMesh" type="MeshInstance3D" parent="Town"]
+mesh = SubResource("CapsuleMesh_g7kwa")
+
 [node name="Buildings" type="Node3D" parent="Town"]
 
 [node name="Castle" type="StaticBody3D" parent="Town/Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.5, 5)
+script = ExtResource("9_30kl7")
+building_name = "castle"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Town/Buildings/Castle"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_gdpei")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Town/Buildings/Castle"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("BoxShape3D_m8mvl")
 
 [node name="PenguinSpawn" type="Marker3D" parent="Town/Buildings/Castle"]
 
 [node name="Research" type="StaticBody3D" parent="Town/Buildings"]
+script = ExtResource("9_hhoq0")
+building_name = "research"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Town/Buildings/Research"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5, 1.5, 5)
+mesh = SubResource("PrismMesh_ggmeb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Town/Buildings/Research"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+visible = false
+shape = SubResource("CapsuleShape3D_ycahs")
 
 [node name="ResearchArea" type="Area3D" parent="Town/Buildings/Research"]
 
 [node name="Factory" type="StaticBody3D" parent="Town/Buildings"]
+script = ExtResource("10_mnfw5")
+building_name = "factory"
 
 [node name="ProductionArea" type="Area3D" parent="Town/Buildings/Factory"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Town/Buildings/Factory"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.5, 0, 5)
+mesh = SubResource("SphereMesh_ulq6k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Town/Buildings/Factory"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("CylinderShape3D_1n8ka")
 
 [node name="Igloo" parent="." instance=ExtResource("14_riq8w")]
 transform = Transform3D(0.298858, 0, 0.0261467, 0, 0.3, 0, -0.0261467, 0, 0.298858, -5.12058, 0.873238, 24.4681)
@@ -139,20 +188,17 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_ebi87")
 
 [node name="main_camera" parent="." instance=ExtResource("12_je1pq")]
-transform = Transform3D(0.0566579, 0, 0.998394, 0, 1, 0, -0.998394, 0, 0.0566579, 10.5104, 6.82814, 0)
+transform = Transform3D(0.0566579, 0, 0.998394, 0, 1, 0, -0.998394, 0, 0.0566579, 3.14401, 6.82814, 0)
 is_enemy = true
 
 [node name="Turret" parent="." instance=ExtResource("5_rcr1x")]
 transform = Transform3D(1, -0.000631163, 0.000640167, 0.000631569, 1, -0.000662779, -0.000639767, 0.000663165, 1, 10.363, 1.35582, 0.0737114)
-debug_mode = true
 detection_radius = 5.0
 
 [node name="TurretM" parent="." instance=ExtResource("13_0tso4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.46142, 1.28737, -2.01338)
-debug_mode = true
 detection_radius = 5.0
 
 [node name="TurretC" parent="." instance=ExtResource("14_2kbs7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75577, 1.33773, -9.36463)
-debug_mode = true
 detection_radius = 5.0

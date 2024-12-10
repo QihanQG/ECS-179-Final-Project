@@ -1,89 +1,90 @@
 extends Node3D
 
-# Town properties
-var town_radius: float = 45.0  # Size of town area
-var town_center: Vector3  # Central point of the town
-var show_debug_lines: bool = true  # Toggle for debugging lines
+var town_radius: float = 15.0
+var show_debug_lines: bool = true 
+var town_boundary_mesh: MeshInstance3D
 
-# Visual representation
-var town_boundary_mesh: MeshInstance3D  # Will hold our cylinder mesh
+signal town_initialized
+signal boundary_updated
 
 func _ready():
-	# Initialize town when the node enters the scene
-	town_center = Vector3(-0.006871, 2.4462, -4.35021)
-	add_to_group("town")
-	setup_visual_boundary()
-	print("Town initialized at position: ", town_center)
+	global_position = Vector3(10.363, 1.8, 0.074)  # Increased Y value
+	create_boundary_visualization()
+	emit_signal("town_initialized")
+	print("Town initialized at: ", global_position)
 
-func setup_visual_boundary():
-	# Create a visual cylinder to represent town boundaries
+func create_boundary_visualization():
 	town_boundary_mesh = MeshInstance3D.new()
 	add_child(town_boundary_mesh)
 	
-	# Create and configure the cylinder mesh
 	var cylinder = CylinderMesh.new()
 	cylinder.top_radius = town_radius
 	cylinder.bottom_radius = town_radius
-	cylinder.height = 0.1  # Thin disk to show boundary
+	cylinder.height = 5  
 	
-	# Apply the mesh to our MeshInstance3D
 	town_boundary_mesh.mesh = cylinder
 	
-	# Create and configure a semi-transparent material
 	var material = StandardMaterial3D.new()
-	material.albedo_color = Color(0.0, 0.5, 1.0, 0.3)  # Semi-transparent blue
+	material.albedo_color = Color(0.8, 0.8, 0.8, 0.2)  # Light gray, very transparent
 	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	material.cull_mode = BaseMaterial3D.CULL_DISABLED
+	#material.no_depth_test = true  
 	
-	# Apply the material to our mesh
 	town_boundary_mesh.material_override = material
+	town_boundary_mesh.position = Vector3(0, 1, 0)
 
 func _process(_delta):
 	if show_debug_lines:
-		draw_town_boundaries()
+		draw_debug_visualization()
 
-func draw_town_boundaries():
-	# Draw debug lines showing town boundary
-	var segments = 32  # Number of line segments to draw circle
+func draw_debug_visualization():
+	var pos = global_position
+	
+	# Draw a cross at the town center
+	DebugDraw3D.draw_line(
+		pos + Vector3(-5, 0.1, 0),
+		pos + Vector3(5, 0.1, 0),
+		Color.RED
+	)
+	DebugDraw3D.draw_line(
+		pos + Vector3(0, 0.1, -5),
+		pos + Vector3(0, 0.1, 5),
+		Color.BLUE
+	)
+	
+	# Draw the boundary circle slightly above ground level
+	var segments = 32
 	for i in range(segments):
-		# TAU is 2*PI 
-		var angle = (i / float(segments)) * TAU  # Current angle
-		var next_angle = ((i + 1) / float(segments)) * TAU  # Next angle
+		var angle = (i / float(segments)) * TAU
+		var next_angle = ((i + 1) / float(segments)) * TAU
 		
-		# Calculate start point of line segment
-		var start = Vector3(
-			cos(angle) * town_radius, 
-			0,                         
-			sin(angle) * town_radius 
+		var start = pos + Vector3(
+			cos(angle) * town_radius,
+			0.1,  # Slightly above ground
+			sin(angle) * town_radius
 		)
 		
-		# Calculate end point of line segment
-		var end = Vector3(
+		var end = pos + Vector3(
 			cos(next_angle) * town_radius,
-			0,
+			0.1,
 			sin(next_angle) * town_radius
 		)
 		
-		# Draw the line segment
-		DebugDraw3D.draw_line(
-			town_center + start,  # Line start
-			town_center + end,    # Line end 
-			Color.BLUE           # Line color
-		)
+		DebugDraw3D.draw_line(start, end, Color.GREEN)
 
-# Utility function to check if a position is within town boundaries
-@warning_ignore("shadowed_variable_base_class")
-func is_within_town_bounds(position: Vector3) -> bool:
-	var distance = position.distance_to(town_center)
+# Utility functions for other systems to use
+func get_boundary_radius() -> float:
+	return town_radius
+
+func is_position_within_town(position: Vector3) -> bool:
+	var distance = position.distance_to(global_position)
 	return distance <= town_radius
 
-# Helper function for valid building placement
-func get_valid_building_position(desired_position: Vector3) -> Vector3:
-	if is_within_town_bounds(desired_position):
-		return desired_position
-	
-	# If outside bounds, clamp to nearest valid position
-	var to_position = desired_position - town_center
-	to_position.y = 0  # Keep at ground level
-	to_position = to_position.normalized() * min(to_position.length(), town_radius)
-	
-	return town_center + to_position
+func get_random_position_in_town() -> Vector3:
+	var angle = randf() * TAU
+	var distance = randf() * town_radius
+	return global_position + Vector3(
+		cos(angle) * distance,
+		0,
+		sin(angle) * distance
+	)

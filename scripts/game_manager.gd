@@ -1,20 +1,3 @@
-## Initial GameManager: Core coordination system for Penguin Tower Defense
-# 
-# Current features:
-# - Resource management (tested with drain system)
-# - Game state tracking
-# - Signal system for cross-component communication
-#
-# Planned integrations:
-# - UI system will connect to resource_changed signal
-# - Enemy system will use wave management
-# - Building system will connect through damage_building()
-#
-# How:
-# 1. Access resource system through modify_resources() and can_afford()
-# 2. Connect to signals for state changes
-# 3. Use is_game_active() to check game state
-
 extends Node
 
 # Core game state and resource management

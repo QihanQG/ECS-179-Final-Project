@@ -8,7 +8,7 @@ var assigned_penguins = {
 }
 
 # Base stats that will be modified by penguin assignments
-var base_resource_cap: float = 5000.0
+var base_resource_cap: float = 3000.0
 var base_production_speed: float = 1.0
 
 # Bonus multipliers per penguin
@@ -26,7 +26,7 @@ signal penguin_spawned
 
 func _ready():
 	# Start with some initial penguins
-	add_penguins(5)
+	add_penguins(3)
 
 func add_penguins(amount: int) -> void:
 	total_penguins += amount
