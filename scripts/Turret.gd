@@ -10,7 +10,7 @@ var projectile_scene: PackedScene
 
 var target_position: Vector3 
 var barrel_ref: Vector3  # barrel reference point, i.e the barrel position
- 
+var enemies: String = "enemies"
 
 
 @export var rotation_speed: float = 20.0
@@ -99,16 +99,16 @@ func initialize(parent_node, rotation_area: Node3D, mount_rotation_pitch:Node3D,
 	if debug_mode:
 		setup_debug()
 
+
 func process(delta):
 	if debug_mode:
 		draw_angle_boundaries()
 	aim_mode()
 
 
-
 func _on_detection_area_body_entered(body: Node3D) -> void:
 	#print("Body entered: ", body.name)
-	if body.is_in_group("enemies"):
+	if body.is_in_group(enemies):
 		potential_targets.append(body)
 		print(body.name)
 		
@@ -116,12 +116,10 @@ func _on_detection_area_body_entered(body: Node3D) -> void:
 	#print(body.name)
 
 func _on_detection_area_body_exited(body: Node3D) -> void:
-	if body.is_in_group("enemies"):
+	if body.is_in_group(enemies):
 		potential_targets.erase(body)
 		if body == current_target:
 			current_target = null
-
-
 
 
 
@@ -629,7 +627,7 @@ func draw_detection_radius():
 		
 		DebugDraw3D.draw_line(from, to, Color.BLUE)
 		if debug_labels.has("detection_label"):
-			debug_labels["detection_label"].position = center + Vector3(0, 1.2, -10.5) 
+			debug_labels["detection_label"].position =  Vector3(0,3.5,0) 
 			debug_labels["detection_label"].scale = Vector3(4,4,4)
 			debug_labels["detection_label"].text = "Detection Radius: %.1f" % detection_radius
 

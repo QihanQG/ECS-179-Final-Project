@@ -2,6 +2,7 @@ extends Node3D
 
 var turret: Turret
 
+@export var target_groups: String = "friendly"
 @export var debug_mode: bool = false
 @export var lock_on_til_death = true
 @export var detection_radius: float = 10
@@ -13,16 +14,10 @@ var turret: Turret
 @onready var body: Node3D = $body
 @onready var head: Node3D = $body/head
 @onready var detection_area: Area3D = $DetectionArea
-
-
 @onready var projectile_l: Marker3D = $body/head/left_gun/projectile_L
-
 @onready var projectile_r: Marker3D = $body/head/right_gun/projectile_R
-
-
 @onready var barrel_left: Marker3D = $projectile_spawn_point/barrel_left
 @onready var barrel_right: Marker3D = $projectile_spawn_point2/barrel_right
-
 @onready var center_pos: Marker3D = $body/head/center_pos
 
 
@@ -39,6 +34,7 @@ func _ready():
 	turret.initialize(parent_node, body, head, detection_area, projectile_spawn_points, projectile_scene, center_pos)
 
 	# properties
+	turret.enemies = target_groups
 	turret.barrel_ref = center_pos.global_position
 	turret.detection_radius = detection_radius
 	turret.lock_on_till_death = lock_on_til_death

@@ -5,7 +5,7 @@ extends Camera3D
 @export var mouse_sensitivity: float = 0.002
 @export var zoom_speed: float = 1.0
 @export var max_zoom: float  = 10.0
-@export var is_enemy: bool 
+@export var is_friendly: bool 
 
 var is_rotating: bool = false
 var current_zoom_level: float = 0.0
@@ -14,8 +14,8 @@ var current_zoom_level: float = 0.0
 
 
 func _ready() -> void:
-	if is_enemy:
-		cam_body.add_to_group("enemies")
+	if is_friendly:
+		cam_body.add_to_group("friendly")
 	set_current(true)
 
 # Handle input events (mouse clicks and wasd movement)

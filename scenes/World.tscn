@@ -195,18 +195,21 @@ shape = SubResource("BoxShape3D_ebi87")
 
 [node name="main_camera" parent="." instance=ExtResource("12_je1pq")]
 transform = Transform3D(0.0566579, 0, 0.998394, 0, 1, 0, -0.998394, 0, 0.0566579, 3.14401, 6.82814, 0)
-is_enemy = true
+is_friendly = true
 
-[node name="Turret" parent="." instance=ExtResource("5_rcr1x")]
-transform = Transform3D(1, -0.000631163, 0.000640167, 0.000631569, 1, -0.000662779, -0.000639767, 0.000663165, 1, 10.363, 1.35582, 0.0737114)
+[node name="Turret_Friendly" parent="." instance=ExtResource("5_rcr1x")]
+transform = Transform3D(1, -0.000631163, 0.000640167, 0.00063157, 1, -0.000662779, -0.000639767, 0.000663165, 1, 10.3704, 3.74075, 0.0708042)
+debug_mode = true
 detection_radius = 5.0
 
 [node name="TurretM" parent="." instance=ExtResource("13_0tso4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.46142, 1.28737, -2.01338)
+transform = Transform3D(1, -1.96337e-10, 0, 2.63185e-11, 1, 0, 0, 1.16415e-10, 1, -6.45361, 3.79697, -2.01644)
+debug_mode = true
 detection_radius = 5.0
 
 [node name="TurretC" parent="." instance=ExtResource("14_2kbs7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75577, 1.33773, -9.36463)
+transform = Transform3D(1, -1.96337e-10, 0, 2.63185e-11, 1, 0, 0, 1.16415e-10, 1, -1.74788, 3.87266, -9.36772)
+debug_mode = true
 detection_radius = 5.0
 
 [node name="Path3D" type="Path3D" parent="."]
@@ -226,4 +229,4 @@ path_u_distance = 1.0
 path_joined = false
 
 [node name="zombie" parent="." instance=ExtResource("18_arnwj")]
-transform = Transform3D(0.999995, 0.00311416, -0.000717962, -0.00311328, 0.999995, 0.00122124, 0.000721768, -0.001219, 0.999999, -16.8576, 3.48281, -16.2184)
+transform = Transform3D(0.499997, 0.00155708, -0.000358984, -0.00155664, 0.499997, 0.00061062, 0.000360884, -0.000609499, 0.5, -16.8571, 3.63346, -16.2186)

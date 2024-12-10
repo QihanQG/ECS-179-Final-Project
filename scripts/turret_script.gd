@@ -2,6 +2,7 @@ extends Node3D
 
 var turret: Turret
 
+@export var target_group: String = "enemies"
 @export var debug_mode: bool = false
 @export var lock_on_til_death = true
 @export var detection_radius: float = 10
@@ -28,6 +29,7 @@ func _ready():
 	turret.initialize(parent_node, body, head, detection_area, projectile_spawn_points, projectile_scene)
 
 	# properties
+	turret.enemies = target_group
 	turret.detection_radius = detection_radius
 	turret.lock_on_till_death = lock_on_til_death
 	turret.rotation_speed = 10.0

@@ -8,7 +8,7 @@ extends CharacterBody3D
 @export var death: AnimationPlayer
 @export var run: AnimationPlayer
 @export var walk_speed: float = 5.0
-@export var run_speed: float = 10.0  # Run speed is double walk speed
+@export var run_speed: float = 10.0 
 
 # Store all command instances
 var walk_command: WalkCommand

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://co3h8fx7yc30r"]
+[gd_scene load_steps=14 format=4 uid="uid://co3h8fx7yc30r"]
 
 [ext_resource type="Script" path="res://scripts/turretM.gd" id="1_7fsxs"]
 
@@ -96,6 +96,14 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lco8e")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_odxnk"]
+albedo_color = Color(0.730015, 0.1724, 1.92523e-07, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tu034"]
+material = SubResource("StandardMaterial3D_odxnk")
+radius = 0.008
+height = 7.941
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d56qs"]
 resource_name = "Orange"
@@ -222,9 +230,14 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.469231, 0.59787)
 
 [node name="barrel" type="Node3D" parent="body/head/at_barrel"]
-visible = false
 
 [node name="projectile_spawn_point" type="Marker3D" parent="body/head/at_barrel/barrel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00991249, 0)
+
+[node name="laser" type="MeshInstance3D" parent="body/head/at_barrel/barrel/projectile_spawn_point"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00180668, -0.00882795, 3.88597)
+visible = false
+mesh = SubResource("CapsuleMesh_tu034")
 
 [node name="Turret_Gun_Base" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
