@@ -1,4 +1,3 @@
-# BaseAnimationCommand.gd
 class_name DurativeController
 extends Node
 
@@ -27,7 +26,7 @@ func execute():
 				self.is_moving = true
 
 func setup_animation(anim):
-	anim.set_loop_mode(Animation.LOOP_NONE)  # non-looping, it will stop animations at the last frame
+	anim.set_loop_mode(Animation.LOOP_NONE)  # non-looping, it will stop animations at the last frame(for death, turn right,turn-left,etc)
 
 func _process(delta):
 	if self.is_moving:
@@ -42,6 +41,7 @@ func _process(delta):
 
 func on_animation_complete():
 	pass
+
 
 func stop():
 	if animation_player and animation_player.is_playing():

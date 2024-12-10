@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=4 uid="uid://brrjjrvdtpxot"]
 
-[ext_resource type="Script" path="res://scripts/zombie.gd" id="1_gw87b"]
+[ext_resource type="Script" path="res://scripts/zombie.gd" id="1_cwdr4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jtsjd"]
 size = Vector3(15.2646, 15, 10)
@@ -2168,7 +2168,7 @@ _data = {
 }
 
 [node name="zombie" type="CharacterBody3D" node_paths=PackedStringArray("walk", "attack", "turn_right", "turn_left", "idle", "death", "run")]
-script = ExtResource("1_gw87b")
+script = ExtResource("1_cwdr4")
 walk = NodePath("walk")
 attack = NodePath("attack")
 turn_right = NodePath("turn_right")

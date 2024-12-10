@@ -1,11 +1,11 @@
-[gd_scene load_steps=35 format=3 uid="uid://cgpw7jwcreeku"]
+[gd_scene load_steps=36 format=3 uid="uid://cgpw7jwcreeku"]
 
 [ext_resource type="Script" path="res://scripts/EnemySpawner.gd" id="1_f6dcx"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="1_u4k6d"]
 [ext_resource type="Resource" path="res://mapterrain/data.hterrain" id="2_nkggy"]
 [ext_resource type="PackedScene" uid="uid://c3qbhftm3v3re" path="res://scenes/surface.tscn" id="3_snqtl"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_xxooc"]
-[ext_resource type="PackedScene" uid="uid://ck8dje7r6rv2v" path="res://scenes/turret.tscn" id="5_rcr1x"]
+[ext_resource type="PackedScene" uid="uid://ck8dje7r6rv2v" path="res://scenes/Turret.tscn" id="5_rcr1x"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="7_saagv"]
 [ext_resource type="Script" path="res://scripts/penguin_manager.gd" id="8_u885u"]
 [ext_resource type="Script" path="res://scripts/town.gd" id="8_wqoua"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://co3h8fx7yc30r" path="res://scenes/Turret Gun.tscn" id="13_0tso4"]
 [ext_resource type="PackedScene" uid="uid://c2t8ktpfyjh8l" path="res://scenes/Turret Gun 2.tscn" id="14_2kbs7"]
 [ext_resource type="PackedScene" uid="uid://ctppybj5h66e" path="res://assets/models/Igloo.glb" id="14_riq8w"]
+[ext_resource type="PackedScene" uid="uid://brrjjrvdtpxot" path="res://scenes/zombie.tscn" id="18_arnwj"]
 
 [sub_resource type="Resource" id="Resource_frh4k"]
 script = ExtResource("3_xxooc")
@@ -223,3 +224,6 @@ path_local = false
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
+
+[node name="zombie" parent="." instance=ExtResource("18_arnwj")]
+transform = Transform3D(0.999995, 0.00311416, -0.000717962, -0.00311328, 0.999995, 0.00122124, 0.000721768, -0.001219, 0.999999, -16.8576, 3.48281, -16.2184)
