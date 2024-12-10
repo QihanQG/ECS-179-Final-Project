@@ -42,16 +42,15 @@ material = SubResource("StandardMaterial3D_q8nm7")
 
 [sub_resource type="Curve3D" id="Curve3D_c78ak"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.396358, -1.54118, -29.3627, 0, 0, 0, 0, 0, 0, -11.5625, -0.355963, -27.3157, 0, 0, 0, 0, 0, 0, -10.6748, -1.71927, -10.3548, 0, 0, 0, 0, 0, 0, -32.1578, -2.04627, -8.69457, 0, 0, 0, 0, 0, 0, -32.7593, -0.265853, 11.9121, 0, 0, 0, 0, 0, 0, 25.9955, -3.76457, 11.1118, 0, 0, 0, 0, 0, 0, 26.9463, -3.73418, 37.3418, 0, 0, 0, 0, 0, 0, -30.0956, 0.738078, 31.7541, 0, 0, 0, 0, 0, 0, -29.3643, 0.368014, 48.4484, 0, 0, 0, 0, 0, 0, 3.9397, -0.973471, 54.5853, 0, 0, 0, 0, 0, 0, 3.94846, -1.08063, 67.0048, 0, 0, 0, 0, 0, 0, 18.0859, -1.18057, 67.9397, 0, 0, 0, 0, 0, 0, 19.2527, -0.78919, 83.1576),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.396358, -0.105482, -27.5646, 0, 0, 0, 0, 0, 0, -11.5625, -0.0323802, -27.3157, 0, 0, 0, 0, 0, 0, -10.8834, -0.917606, -11.9126, 0, 0, 0, 0, 0, 0, -32.1578, 1.07214, -12.1854, 0, 0, 0, 0, 0, 0, -32.6322, 1.3755, 1.52404, 0, 0, 0, 0, 0, 0, 25.9955, 0.675969, 4.08852, 0, 0, 0, 0, 0, 0, 24.0582, 1.15457, 16.8233, 0, 0, 0, 0, 0, 0, -30.0956, 1.01886, 11.8766, 0, 0, 0, 0, 0, 0, -30.0104, 2.40689, 24.8152, 0, 0, 0, 0, 0, 0, 3.9397, 0.88001, 27.14),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 13
+point_count = 10
 
 [node name="World" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.220264, 1.21166, 0.0610809)
 
 [node name="HTerrain" type="Node3D" parent="."]
-visible = false
 script = ExtResource("1_u4k6d")
 centered = true
 _terrain_data = ExtResource("2_nkggy")
@@ -135,11 +134,9 @@ visible = false
 
 [node name="Igloo3" parent="." instance=ExtResource("14_riq8w")]
 transform = Transform3D(-1.31134e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-08, 22.4661, 0.794435, 1.49499)
-visible = false
 
 [node name="Igloo4" parent="." instance=ExtResource("14_riq8w")]
 transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, 4.65625, -0.511902, -25.5194)
-visible = false
 
 [node name="EnemySpawner" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3456, 1.53817, -24.2003)
@@ -182,3 +179,17 @@ detection_radius = 5.0
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.283539, 0)
 curve = SubResource("Curve3D_c78ak")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.547636, 1.07477, 0.0405617)
+polygon = PackedVector2Array(-3.05613, -0.220956, -3.06777, -0.115005, 0.990346, 0.107945, 1, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
