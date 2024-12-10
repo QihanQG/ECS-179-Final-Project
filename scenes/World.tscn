@@ -42,10 +42,10 @@ material = SubResource("StandardMaterial3D_q8nm7")
 
 [sub_resource type="Curve3D" id="Curve3D_c78ak"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.396358, -0.105482, -27.5646, 0, 0, 0, 0, 0, 0, -11.5625, -0.0323802, -27.3157, 0, 0, 0, 0, 0, 0, -10.8834, -0.917606, -11.9126, 0, 0, 0, 0, 0, 0, -32.1578, 1.07214, -12.1854, 0, 0, 0, 0, 0, 0, -32.6322, 1.3755, 1.52404, 0, 0, 0, 0, 0, 0, 25.9955, 0.675969, 4.08852, 0, 0, 0, 0, 0, 0, 24.0582, 1.15457, 16.8233, 0, 0, 0, 0, 0, 0, -30.0956, 1.01886, 11.8766, 0, 0, 0, 0, 0, 0, -30.0104, 2.40689, 24.8152, 0, 0, 0, 0, 0, 0, 3.9397, 0.88001, 27.14),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.396358, -0.775282, -27.5646, 0, 0, 0, 0, 0, 0, -11.5625, -0.0323802, -27.3157, 0, 0, 0, 0, 0, 0, -10.8834, -0.917606, -16.2008, 0, 0, 0, 0, 0, 0, -29.267, 0.408396, -15.658, 0, 0, 0, 0, 0, 0, -29.301, -0.242535, -3.62962, 0, 0, 0, 0, 0, 0, -6.12109, -0.824014, -4.3868, 0, 0, 0, 0, 0, 0, 22.6113, -0.131155, -3.06126, 0, 0, 0, 0, 0, 0, 22.3718, 0.325859, 4.64649, 0, 0, 0, 0, 0, 0, -6.74341, -1.61056, 4.06251, 0, 0, 0, 0, 0, 0, -24.9555, 0.134307, 4.11928, 0, 0, 0, 0, 0, 0, -25.3365, 0.826975, 14.8725, 0, 0, 0, 0, 0, 0, -12.6807, -0.0203186, 14.2716, 0, 0, 0, 0, 0, 0, -12.6113, 0.0562042, 21.3622, 0, 0, 0, 0, 0, 0, 5.10832, 0.20093, 22.4383, 0, 0, 0, 0, 0, 0, 5.46456, -0.382059, 34.6809),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 10
+point_count = 15
 
 [node name="World" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.220264, 1.21166, 0.0610809)
@@ -74,7 +74,6 @@ environment = SubResource("Environment_5n4yu")
 
 [node name="surface" parent="." instance=ExtResource("3_snqtl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.06259, -10.7998, 13.9488)
-visible = false
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("7_saagv")
@@ -86,7 +85,6 @@ script = ExtResource("8_u885u")
 
 [node name="Town" type="Node3D" parent="."]
 transform = Transform3D(0.99612, 0.0880077, 0, -0.0880077, 0.99612, 0, 0, 0, 1, 4.08128, 8.46747, 14.8815)
-visible = false
 script = ExtResource("8_wqoua")
 
 [node name="TownBoundaryMesh" type="MeshInstance3D" parent="Town"]
@@ -126,11 +124,9 @@ script = ExtResource("10_j2ymi")
 
 [node name="Igloo" parent="." instance=ExtResource("14_riq8w")]
 transform = Transform3D(0.298858, 0, 0.0261467, 0, 0.3, 0, -0.0261467, 0, 0.298858, -5.12058, 0.873238, 24.4681)
-visible = false
 
 [node name="Igloo2" parent="." instance=ExtResource("14_riq8w")]
 transform = Transform3D(3.57746e-09, 0, -0.3, 0, 0.3, 0, 0.3, 0, 3.57746e-09, -26.081, 1.02634, -11.0574)
-visible = false
 
 [node name="Igloo3" parent="." instance=ExtResource("14_riq8w")]
 transform = Transform3D(-1.31134e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-08, 22.4661, 0.794435, 1.49499)
@@ -140,33 +136,27 @@ transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, 
 
 [node name="EnemySpawner" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3456, 1.53817, -24.2003)
-visible = false
 script = ExtResource("1_f6dcx")
 
 [node name="EnemySpawner" type="MeshInstance3D" parent="EnemySpawner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.9282, 0.239039, 7.69386)
-visible = false
 mesh = SubResource("BoxMesh_oklgo")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnemySpawner"]
-visible = false
 shape = SubResource("BoxShape3D_ebi87")
 
 [node name="main_camera" parent="." instance=ExtResource("12_je1pq")]
 transform = Transform3D(0.0566579, 0, 0.998394, 0, 1, 0, -0.998394, 0, 0.0566579, 10.5104, 6.82814, 0)
-visible = false
 is_enemy = true
 
 [node name="Turret" parent="." instance=ExtResource("5_rcr1x")]
 transform = Transform3D(1, -0.000631163, 0.000640167, 0.000631569, 1, -0.000662779, -0.000639767, 0.000663165, 1, 10.363, 1.35582, 0.0737114)
-visible = false
 debug_mode = true
 detection_radius = 5.0
 
 [node name="TurretM" parent="." instance=ExtResource("13_0tso4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.46142, 1.28737, -2.01338)
-visible = false
 debug_mode = true
 detection_radius = 5.0
 
