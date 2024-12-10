@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cgpw7jwcreeku"]
+[gd_scene load_steps=35 format=3 uid="uid://cgpw7jwcreeku"]
 
 [ext_resource type="Script" path="res://scripts/EnemySpawner.gd" id="1_f6dcx"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="1_u4k6d"]
@@ -65,6 +65,13 @@ material = SubResource("StandardMaterial3D_q8nm7")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ebi87"]
 
+[sub_resource type="Curve3D" id="Curve3D_ftodj"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -29.3516, 2.62028, -10.6844, 0, 0, 0, 0, 0, 0, -29.3607, 2.61256, 0.785696, 0, 0, 0, 0, 0, 0, -18.7605, 2.49278, 0.754355, 0, 0, 0, 0, 0, 0, -18.7862, 2.50065, 18.2122, 0, 0, 0, 0, 0, 0, -9.75292, 2.54097, 18.2841, 0, 0, 0, 0, 0, 0, -9.90038, 2.77098, -5.59645, 0, 0, 0, 0, 0, 0, -9.75053, 2.55991, -27.3549, 0, 0, 0, 0, 0, 0, 1.03153, 2.43916, -27.3674, 0, 0, 0, 0, 0, 0, 1.23678, 2.51002, -5.86382, 0, 0, 0, 0, 0, 0, 1.21334, 2.50083, 10.971, 0, 0, 0, 0, 0, 0, 11.6454, 2.47481, 11.1708, 0, 0, 0, 0, 0, 0, 11.8195, 2.5856, -2.1001, 0, 0, 0, 0, 0, 0, 18.2828, 2.55657, -2.04155, 0, 0, 0, 0, 0, 0, 18.2493, 2.62827, -16.1072, 0, 0, 0, 0, 0, 0, 30.6878, 2.57938, -16.0311),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 15
+
 [node name="World" type="Node3D"]
 transform = Transform3D(0.999995, -0.00311328, 0.000721761, 0.00311416, 0.999994, -0.001219, -0.000717969, 0.00122124, 0.999999, -0.220264, 1.21166, 0.0610809)
 
@@ -91,7 +98,7 @@ shader_params/u_tile_reduction = null
 environment = SubResource("Environment_5n4yu")
 
 [node name="surface" parent="." instance=ExtResource("3_snqtl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0517941, 0.0156708, -0.0248566)
+transform = Transform3D(1, -6.62681e-10, 0, 2.63185e-11, 1, 0, 0, 5.82077e-10, 1, 0.0544146, 2.34511, 6.39244)
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("7_saagv")
@@ -102,7 +109,7 @@ script = ExtResource("7_saagv")
 script = ExtResource("8_u885u")
 
 [node name="Town" type="Node3D" parent="."]
-transform = Transform3D(0.99612, 0.0880077, 0, -0.0880077, 0.99612, 0, 0, 0, 1, 4.08128, 8.46747, 14.8815)
+transform = Transform3D(0.99612, 0.0880077, 0, -0.0880077, 0.99612, 0, -1.74623e-10, 8.14907e-10, 1, 29.4214, 8.33957, -25.3035)
 script = ExtResource("8_wqoua")
 
 [node name="WallSystem" type="StaticBody3D" parent="Town"]
@@ -116,6 +123,7 @@ script = ExtResource("9_2j7tf")
 shape = SubResource("SeparationRayShape3D_5psaf")
 
 [node name="TownBoundaryMesh" type="MeshInstance3D" parent="Town"]
+transform = Transform3D(1, 4.89399e-09, -5.82077e-11, -2.56614e-09, 1, -1.16415e-10, 0, 1.16415e-10, 1, 0.327059, -3.83814, 0.00469589)
 mesh = SubResource("CapsuleMesh_g7kwa")
 
 [node name="Buildings" type="Node3D" parent="Town"]
@@ -123,10 +131,9 @@ mesh = SubResource("CapsuleMesh_g7kwa")
 [node name="Castle" type="StaticBody3D" parent="Town/Buildings"]
 transform = Transform3D(0.999988, 0.00483455, -5.58532e-06, -0.00483454, 0.999988, -3.96371e-06, 5.56605e-06, 3.99072e-06, 1, -10, 2.5, 5)
 script = ExtResource("9_30kl7")
-building_name = "castle"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Town/Buildings/Castle"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+transform = Transform3D(3, 1.46822e-08, 4.65661e-10, 1.46526e-08, 3, 0, 2.32831e-10, 0, 3, 0.47411, -5.26293, 0.00645828)
 mesh = SubResource("CapsuleMesh_gdpei")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Town/Buildings/Castle"]
@@ -137,10 +144,9 @@ shape = SubResource("BoxShape3D_m8mvl")
 
 [node name="Research" type="StaticBody3D" parent="Town/Buildings"]
 script = ExtResource("9_hhoq0")
-building_name = "research"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Town/Buildings/Research"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5, 1.5, 5)
+transform = Transform3D(3, 1.4682e-08, 0, -1.5149e-08, 3, -2.32831e-10, 0, 0, 3, 5.38576, -3.02705, 5.00554)
 mesh = SubResource("PrismMesh_ggmeb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Town/Buildings/Research"]
@@ -152,29 +158,28 @@ shape = SubResource("CapsuleShape3D_ycahs")
 
 [node name="Factory" type="StaticBody3D" parent="Town/Buildings"]
 script = ExtResource("10_mnfw5")
-building_name = "factory"
 
 [node name="ProductionArea" type="Area3D" parent="Town/Buildings/Factory"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Town/Buildings/Factory"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.5, 0, 5)
+transform = Transform3D(3, 1.46817e-08, 0, -1.51495e-08, 3, -6.98492e-10, 0, 0, 3, -3.19522, -4.28565, 5.33002)
 mesh = SubResource("SphereMesh_ulq6k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Town/Buildings/Factory"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+transform = Transform3D(3, 1.46817e-08, 0, -1.51495e-08, 3, -6.98492e-10, 0, 0, 3, 0.270029, 0.0230923, 0.0677605)
 shape = SubResource("CylinderShape3D_1n8ka")
 
 [node name="Igloo" parent="." instance=ExtResource("14_riq8w")]
-transform = Transform3D(0.298858, 0, 0.0261467, 0, 0.3, 0, -0.0261467, 0, 0.298858, -5.12058, 0.873238, 24.4681)
+transform = Transform3D(0.298858, -2.33598e-10, 0.0261467, -3.27418e-11, 0.3, 1.16415e-10, -0.0261467, 1.16415e-10, 0.298858, -17.4145, 1.41333, 15.5618)
 
 [node name="Igloo2" parent="." instance=ExtResource("14_riq8w")]
-transform = Transform3D(3.57746e-09, 0, -0.3, 0, 0.3, 0, 0.3, 0, 3.57746e-09, -26.081, 1.02634, -11.0574)
+transform = Transform3D(3.62343e-09, -1.75362e-10, -0.3, 0, 0.3, -5.00222e-11, 0.3, 8.73115e-11, 3.59432e-09, -26.0715, 3.23322, -14.717)
 
 [node name="Igloo3" parent="." instance=ExtResource("14_riq8w")]
-transform = Transform3D(-1.31134e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-08, 22.4661, 0.794435, 1.49499)
+transform = Transform3D(-1.31404e-08, -1.17154e-10, 0.3, 0, 0.3, 3.83977e-11, -0.3, 5.82077e-11, -1.31258e-08, 35.9183, 3.68225, -1.87684)
 
 [node name="Igloo4" parent="." instance=ExtResource("14_riq8w")]
-transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, 5.846, 0.86745, -25.3869)
+transform = Transform3D(-0.3, -4.66514e-10, -2.6339e-08, -1.9682e-10, 0.3, -2.32831e-10, 2.62662e-08, 2.32831e-10, -0.3, -7.43443, 3.46703, -21.5803)
 
 [node name="EnemySpawner" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3456, 1.53817, -24.2003)
@@ -202,3 +207,19 @@ detection_radius = 5.0
 [node name="TurretC" parent="." instance=ExtResource("14_2kbs7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75577, 1.33773, -9.36463)
 detection_radius = 5.0
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_ftodj")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
+polygon = PackedVector2Array(0, 0, 0.0520378, 0.0348656, 0.982431, 0.0246239, 1, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
