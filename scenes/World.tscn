@@ -5,7 +5,7 @@
 [ext_resource type="Resource" path="res://mapterrain/data.hterrain" id="2_nkggy"]
 [ext_resource type="PackedScene" uid="uid://c3qbhftm3v3re" path="res://scenes/surface.tscn" id="3_snqtl"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_xxooc"]
-[ext_resource type="PackedScene" uid="uid://ck8dje7r6rv2v" path="res://scenes/Turret.tscn" id="5_rcr1x"]
+[ext_resource type="PackedScene" uid="uid://ck8dje7r6rv2v" path="res://scenes/turret.tscn" id="5_rcr1x"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="7_saagv"]
 [ext_resource type="Script" path="res://scripts/penguin_manager.gd" id="8_u885u"]
 [ext_resource type="Script" path="res://scripts/town.gd" id="8_wqoua"]
