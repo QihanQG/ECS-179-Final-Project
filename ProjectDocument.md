@@ -17,7 +17,6 @@ The penguins are in trouble! Mischievous seals and bears are invading their icy 
 
 **Describe the steps you took in your role as producer. Typical items include group scheduling mechanisms, links to meeting notes, descriptions of team logistics problems with their resolution, project organization tools (e.g., timelines, dependency/task tracking, Gantt charts, etc.), and repository management methodology.**
 
-### Student Information
 *Name: asdasdasd*   
 *Email: asdasdas*   
 *Github: asdasda*
