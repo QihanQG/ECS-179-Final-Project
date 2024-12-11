@@ -46,13 +46,26 @@ The penguins are in trouble! Mischievous seals and bears are invading their icy 
 
 ## Animation and Visuals
 
+The goal for our 3D game was to create a visually coherent game that had characters, assets, and objects that flowed/worked well together. Early on, as a team we decided that we wanted our game to have a cartoonish almost Roblox-style aesthetic that is partially blocky and not overly realstic. It needed an arcade feel. I began by looking for free-to-use assets online and stubled upon poly.pizza which provides access to thousands of poly 3D models for free. This is where I found most of the asset models for our game. 
+
 **List your assets, including their sources and licenses.**
+With poly.pizza I was able to find many of the character models that we used for our game inluding:
+
+* Pengiun - https://poly.pizza/m/9Ift-39Akov
+* Turret - https://poly.pizza/m/ekTQhbJId7
+* Castle - https://poly.pizza/m/opTOmcN3o9
+* Igloo - https://poly.pizza/m/4CNw6ZPb4x3
+* Seal - https://poly.pizza/m/45HRvXYpvUG
+
+I downloaded these assets from poly.pizza as .glb files and imported them directly into our project under assets -> models. Here, other memebers of the group could use the assets for their portions of the game development. 
 
 **Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
+As far as building the map, we only needed to create a single map as it made the most sense for the implication of our game as a tower defense game as normally, the map stays the same with variables being number of enemies or difficulty of enemies. In addition, the map acts as a "sandbox" for the game player as they are able to add turrets and other defences to help combat the enemies so it would not made sens to rotate between different maps. 
+I worked with world-building to create an icy-border for the map using a Godot-plugin called Heightmap Terrain which allowed me to construct the terrain of the map making mountain/hill terrain. 
 
 *Name: Maxim Saschin*   
 *Email: mnsaschin@ucdavis.edu*   
-*Github: *
+*Github: MaximSaschin*
 
 ## Game Logic
 
