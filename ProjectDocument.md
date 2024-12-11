@@ -30,9 +30,7 @@ The penguins are in trouble! Mischievous seals and bears are invading their icy 
 
 ![](Layout.jpg)
 
-![](Main.jpeg) 
-
-![](Pause.jpeg) 
+![](Main.jpeg) ![](Pause.jpeg) 
 
 *Name: Brian Nguyen*   
 *Email: btinguyen@ucdavis.edu*   
