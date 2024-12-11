@@ -12,11 +12,11 @@ var target_position: Vector3
 var barrel_ref: Vector3  # barrel reference point, i.e the barrel position
 var enemies: String = "enemies"
 
-
-@export var rotation_speed: float = 20.0
-@export var projectile_speed: float = 120.0
-@export var lock_on_till_death: bool = true
-@export var debug_mode: bool = true
+var damage: int = 10.0
+var rotation_speed: float = 20.0
+var projectile_speed: float = 120.0
+var lock_on_till_death: bool = true
+var debug_mode: bool = true
 
 var max_lock_on_angle: float = 90.0
 var max_pitch_up: float =  -60  
@@ -75,7 +75,7 @@ func initialize(parent_node, rotation_area: Node3D, mount_rotation_pitch:Node3D,
 	self.detection_area = detection_area
 	self.spawn_points = spawn_points
 	self.projectile_scene = projectile_scene
-	
+	self.damage = damage
 	
 	# Initialize detection radius
 	var collision_shape = detection_area.get_children()
@@ -450,6 +450,8 @@ func shoot():
 		var forward_direction = get_forward_direction_from_yaw_and_pitch(rotation_vector)
 		
 		projectile.global_rotation = rotation_vector
+		
+		projectile.damage = damage
 		
 		if projectile is RigidBody3D:
 			projectile.linear_velocity = forward_direction * projectile_speed

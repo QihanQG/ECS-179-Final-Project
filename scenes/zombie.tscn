@@ -2467,7 +2467,7 @@ bones/40/rotation = Quaternion(5.17213e-09, -5.55111e-17, -2.77556e-17, 1)
 bones/40/scale = Vector3(1, 1, 1)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Skeleton3D"]
-transform = Transform3D(0.86348, 0.0347941, 0.503181, 0.0669946, 0.980867, -0.182791, -0.499913, 0.191547, 0.844628, -3.73881e-15, 6.62556, 0.0336198)
+transform = Transform3D(0.863481, 0.034794, 0.503181, 0.0669946, 0.980867, -0.182791, -0.499913, 0.191547, 0.844628, -3.73881e-15, 6.62556, 0.0336198)
 bone_name = "mixamorig_Hips"
 bone_idx = 0
 use_external_skeleton = true

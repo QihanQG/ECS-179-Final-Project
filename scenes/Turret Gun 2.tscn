@@ -1,6 +1,6 @@
-[gd_scene load_steps=11 format=4 uid="uid://c2t8ktpfyjh8l"]
+[gd_scene load_steps=12 format=4 uid="uid://c2t8ktpfyjh8l"]
 
-[ext_resource type="Script" path="res://scripts/turreC.gd" id="1_uk4t3"]
+[ext_resource type="Script" path="res://scripts/turretC.gd" id="1_uk4t3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x1hqf"]
 resource_name = "Black"
@@ -203,6 +203,9 @@ shadow_mesh = SubResource("ArrayMesh_3j4su")
 radius = 20.0
 height = 40.0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ljcfn"]
+size = Vector3(1, 0.7, 1)
+
 [node name="TurretC" type="Node3D"]
 script = ExtResource("1_uk4t3")
 
@@ -241,3 +244,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.474, 0.585)
 
 [node name="detection_area" type="CollisionShape3D" parent="DetectionArea"]
 shape = SubResource("CapsuleShape3D_hrbkc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.299982, 0)
+shape = SubResource("BoxShape3D_ljcfn")
+
+[node name="Area3D" type="Area3D" parent="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015597, 0.297373, 0)
+shape = SubResource("BoxShape3D_ljcfn")
+
+[connection signal="body_entered" from="StaticBody3D/Area3D" to="." method="_on_area_3d_body_entered"]

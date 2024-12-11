@@ -16,3 +16,9 @@ func _on_body_entered(body):
 	if body.has_method("take_damage"):
 		body.take_damage(damage)
 	queue_free()  
+
+func get_damage() -> float:
+	return damage
+
+func set_damage(new_damage: float) -> void:
+	damage = new_damage
