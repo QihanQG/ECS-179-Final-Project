@@ -60,7 +60,7 @@ With poly.pizza I was able to find many of the character models that we used for
 <img src="scripts/pengiun.jpg" alt="pengiun" width="150" height="200"><img src="scripts/turret.jpg" alt="turret" width="200" height="200"><img src="scripts/castle.jpg" alt="castle" width="225" height="200">
 <img src="scripts/igloo.jpg" alt="igloo" width="200" height="200"><img src="scripts/seal.jpg" alt="seal" width="200" height="200">
 
-I downloaded these assets from poly.pizza as .glb files and imported them directly into our project under assets -> models. Here, other memebers of the group could use the assets for their portions of the game development. 
+I downloaded these assets from poly.pizza as .glb files and imported them directly into our project under assets -> models. Here, other members of the group could use the assets for their portions of the game development. 
 
 **Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
 
