@@ -51,7 +51,7 @@ The goal for our 3D game was to create a visually coherent game that had charact
 **List your assets, including their sources and licenses.**
 With poly.pizza I was able to find many of the character models that we used for our game inluding:
 
-* Pengiun - https://poly.pizza/m/9Ift-39Akov ![](scripts/pengiun.jpg)
+* Pengiun - https://poly.pizza/m/9Ift-39Akov <img src="scripts/pengiun.jpg" alt="Pengiun" width="200" height="300">
 * Turret - https://poly.pizza/m/ekTQhbJId7 ![](scripts/turret.jpg)
 * Castle - https://poly.pizza/m/opTOmcN3o9 ![](scripts/castle.jpg)
 * Igloo - https://poly.pizza/m/4CNw6ZPb4x3 ![](scripts/igloo.jpg)
