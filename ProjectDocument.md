@@ -66,7 +66,7 @@ I downloaded these assets from poly.pizza as .glb files and imported them direct
 
 As far as building the map, we only needed to create a single map as it made the most sense for the implication of our game as a tower defense game as normally, the map stays the same with variables being number of enemies or difficulty of enemies. In addition, the map acts as a "sandbox" for the game player as they are able to add turrets and other defences to help combat the enemies so it would not made sens to rotate between different maps. 
 I worked with world-building to create an icy-border for the map using a Godot-plugin called Heightmap Terrain which allowed me to construct the terrain of the map making mountain/hill terrain. 
-<img src="scripts/mapoverview.jpg" alt="mapoverview" width="500" height="500">
+<img src="scripts/mapoverview.jpg" alt="mapoverview" width="800" height="500">
 
 *Name: Maxim Saschin*   
 *Email: mnsaschin@ucdavis.edu*   
