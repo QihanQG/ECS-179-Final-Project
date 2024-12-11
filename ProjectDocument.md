@@ -28,7 +28,11 @@ The penguins are in trouble! Mischievous seals and bears are invading their icy 
 
 **Add an entry for each platform or input style your project supports.**
 
-![](Layout.jpg) 
+![](Layout.jpg)
+
+![](PauseMenu.jpg) 
+
+![](MainMenu.jpg) 
 
 *Name: Brian Nguyen*   
 *Email: btinguyen@ucdavis.edu*   
