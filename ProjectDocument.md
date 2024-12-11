@@ -51,11 +51,11 @@ The goal for our 3D game was to create a visually coherent game that had charact
 **List your assets, including their sources and licenses.**
 With poly.pizza I was able to find many of the character models that we used for our game inluding:
 
-* Pengiun - https://poly.pizza/m/9Ift-39Akov
-* Turret - https://poly.pizza/m/ekTQhbJId7
-* Castle - https://poly.pizza/m/opTOmcN3o9
-* Igloo - https://poly.pizza/m/4CNw6ZPb4x3
-* Seal - https://poly.pizza/m/45HRvXYpvUG
+* Pengiun - https://poly.pizza/m/9Ift-39Akov ![](pengiun.jpg)
+* Turret - https://poly.pizza/m/ekTQhbJId7 ![](turret.jpg)
+* Castle - https://poly.pizza/m/opTOmcN3o9 ![](castle.jpg)
+* Igloo - https://poly.pizza/m/4CNw6ZPb4x3 ![](igloo.jpg)
+* Seal - https://poly.pizza/m/45HRvXYpvUG ![](seal.jpg)
 
 I downloaded these assets from poly.pizza as .glb files and imported them directly into our project under assets -> models. Here, other memebers of the group could use the assets for their portions of the game development. 
 
