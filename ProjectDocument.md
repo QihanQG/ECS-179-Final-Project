@@ -29,9 +29,7 @@ The penguins are in trouble! Mischievous seals and bears are invading their icy 
 **Add an entry for each platform or input style your project supports.**
 
 *Name: Brian Nguyen*
-
 *Email: btinguyen@ucdavis.edu*
-
 *Github: briantinnguyen*
 
 ## Movement/Physics
