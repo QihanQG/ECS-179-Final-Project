@@ -53,7 +53,7 @@ With poly.pizza I was able to find many of the character models that we used for
 
 * Pengiun - https://poly.pizza/m/9Ift-39Akov ![](pengiun.jpg)
 * Turret - https://poly.pizza/m/ekTQhbJId7 ![](turret.jpg)
-* Castle - https://poly.pizza/m/opTOmcN3o9 ![](castle.jpg)
+* Castle - https://poly.pizza/m/opTOmcN3o9 ![](scripts/castle.jpg)
 * Igloo - https://poly.pizza/m/4CNw6ZPb4x3 ![](igloo.jpg)
 * Seal - https://poly.pizza/m/45HRvXYpvUG ![](seal.jpg)
 
