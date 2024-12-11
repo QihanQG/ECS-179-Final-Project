@@ -323,6 +323,8 @@ func get_target_velocity(target: Node3D) -> Vector3:
 		return target.linear_velocity
 	elif target is CharacterBody3D:
 		return target.velocity
+	elif target is StaticBody3D:
+		return Vector3.ZERO
 	elif target.has_property("velocity"):
 		return target.velocity
 	elif target.has_method("get_velocity"):

@@ -15,6 +15,7 @@ var fire_rate_bonus: float = 0.02
 var damage_bonus: float = 2.0
 
 func _ready() -> void:
+	add_to_group("friendly")
 	current_health = max_health
 	var timer = Timer.new()
 	add_child(timer)
@@ -54,8 +55,9 @@ func get_turret_upgrades() -> Dictionary:
 
 
 func take_damage(damage: float) -> void:
-	current_health = max(0, current_health - damage)
+	current_health -= damage
 	var health_percentage = (current_health / max_health) * 100
 	if health_percentage <= min_health_percentage or current_health <= 0:
 		is_functional = false
 		current_health = 0
+		queue_free()

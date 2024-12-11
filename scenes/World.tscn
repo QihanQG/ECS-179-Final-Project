@@ -218,6 +218,11 @@ transform = Transform3D(1, -1.96337e-10, 0, 2.63185e-11, 1, 0, 0, 1.16415e-10, 1
 debug_mode = true
 detection_radius = 5.0
 
+[node name="TurretM2" parent="." instance=ExtResource("13_0tso4")]
+transform = Transform3D(1, -8.95568e-10, 0, 2.63185e-11, 1, 0, 0, 6.98492e-10, 1, 2.23934, 3.79653, 19.833)
+debug_mode = true
+detection_radius = 5.0
+
 [node name="TurretC" parent="." instance=ExtResource("14_2kbs7")]
 transform = Transform3D(1, -1.96337e-10, 0, 2.63185e-11, 1, 0, 0, 1.16415e-10, 1, -1.74788, 3.87266, -9.36772)
 debug_mode = true
