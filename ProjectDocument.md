@@ -17,12 +17,8 @@ The penguins are in trouble! Mischievous seals and bears are invading their icy 
 
 **Describe the steps you took in your role as producer. Typical items include group scheduling mechanisms, links to meeting notes, descriptions of team logistics problems with their resolution, project organization tools (e.g., timelines, dependency/task tracking, Gantt charts, etc.), and repository management methodology.**
 
-*Name: asdasdasd*   
-*Email: asdasdas*   
-*Github: asdasda*
-
-*Name: Cheng-yuan Liu*
-*Email: cgyliu@ucdavis.edu*
+*Name: Cheng-yuan Liu*   
+*Email: cgyliu@ucdavis.edu*   
 *Github: *
 
 ## User Interface and Input
@@ -32,17 +28,17 @@ The penguins are in trouble! Mischievous seals and bears are invading their icy 
 
 **Add an entry for each platform or input style your project supports.**
 
-*Name: Brian Nguyen*
-*Email: btinguyen@ucdavis.edu*
+*Name: Brian Nguyen*   
+*Email: btinguyen@ucdavis.edu*   
 *Github: briantinnguyen*
 
 ## Movement/Physics
 
 **Describe the basics of movement and physics in your game. Is it the standard physics model? What did you change or modify? Did you make your movement scripts that do not use the physics system?**
 
-*Name: Penelope Phan*
-*Email: peaphan@ucdavis.edu*
-*Github:*
+*Name: Penelope Phan*   
+*Email: peaphan@ucdavis.edu*   
+*Github: *
 
 ## Animation and Visuals
 
@@ -50,25 +46,25 @@ The penguins are in trouble! Mischievous seals and bears are invading their icy 
 
 **Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
 
-*Name: Maxim Saschin*
-*Email: mnsaschin@ucdavis.edu*
-*Github:*
+*Name: Maxim Saschin*   
+*Email: mnsaschin@ucdavis.edu*   
+*Github: *
 
 ## Game Logic
 
 **Document the game states and game data you managed and the design patterns you used to complete your task.**
 
-*Name: Qihan Guan*
-*Email: qgguan@ucdavis.edu*
-*Github:*
+*Name: Qihan Guan*   
+*Email: qgguan@ucdavis.edu*   
+*Github: *
 
 # Sub-Roles
 
 ## Weapons System
 
-*Name: Qihan Guan*
-*Email: qgguan@ucdavis.edu*
-*Github:*
+*Name: Qihan Guan*   
+*Email: qgguan@ucdavis.edu*   
+*Github: *
 
 ## Audio
 
@@ -78,9 +74,9 @@ The penguins are in trouble! Mischievous seals and bears are invading their icy 
 
 **Document the sound style.** 
 
-*Name: Penelope Phan*
-*Email: peaphan@ucdavis.edu*
-*Github:*
+*Name: Penelope Phan*   
+*Email: peaphan@ucdavis.edu*   
+*Github: *
 
 ## Gameplay Testing
 
@@ -88,16 +84,16 @@ The penguins are in trouble! Mischievous seals and bears are invading their icy 
 
 **Summarize the key findings from your gameplay tests.**
 
-*Name: Maxim Saschin*
-*Email: mnsaschin@ucdavis.edu*
-*Github:*
+*Name: Maxim Saschin*   
+*Email: mnsaschin@ucdavis.edu*   
+*Github: *
 
 ## Narrative Design
 
 **Document how the narrative is present in the game via assets, gameplay systems, and gameplay.** 
 
-*Name: Cheng-yuan Liu*
-*Email: cgyliu@ucdavis.edu*
+*Name: Cheng-yuan Liu*   
+*Email: cgyliu@ucdavis.edu*   
 *Github: *
 
 ## Press Kit and Trailer
@@ -108,16 +104,16 @@ When making the trailer for Pengine Patrol: Arctic Defense, I wanted to show off
 
 I picked music that felt exciting and fun, adding sound effects like snowballs hitting seals to bring it to life. For the screenshots, I chose scenes that show the coolest parts of the game—penguins fighting back, seals charging in, and the icy Arctic world. I kept it simple, making sure everything looks fun and clear for anyone who sees it.
 
-*Name: Brian Nguyen*
-*Email: btinguyen@ucdavis.edu*
+*Name: Brian Nguyen*   
+*Email: btinguyen@ucdavis.edu*   
 *Github: briantinnguyen*
 
 ## Game Feel and Polish
 
 **Document what you added to and how you tweaked your game to improve its game feel.**
 
-*Name: Brian Nguyen*
-*Email: btinguyen@ucdavis.edu*
+*Name: Brian Nguyen*   
+*Email: btinguyen@ucdavis.edu*   
 *Github: briantinnguyen*
 
 # External Code, Ideas, and Structure #
