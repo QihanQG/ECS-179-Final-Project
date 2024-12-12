@@ -46,7 +46,7 @@ The penguins are in trouble! Mischievous seals and bears are invading their icy 
 
 ## Animation and Visuals
 
-The goal for our 3D game was to create a visually coherent game that had characters, assets, and objects that flowed/worked well together. Early on, as a team we decided that we wanted our game to have a cartoonish almost Roblox-style aesthetic that is partially blocky and not overly realstic. It needed an arcade feel. I began by looking for free-to-use assets online and stubled upon poly.pizza which provides access to thousands of poly 3D models for free. This is where I found most of the asset models for our game. 
+The goal for our 3D game was to create a visually coherent game that had characters, assets, and objects that flowed/worked well together. As a team we decided to create an arctic-themed tower defense game where penguins would be protecting their supply of fish from attacking waves of seal and polar bear enemies. Early on, as a team we decided that we wanted our game to have a cartoonish almost Roblox-style aesthetic that is partially blocky and not overly realstic. It needed an arcade feel. I began by looking for free-to-use assets online and stubled upon poly.pizza which provides access to thousands of poly 3D models for free. This is where I found most of the asset models for our game. 
 
 **List your assets, including their sources and licenses.**
 With poly.pizza I was able to find many of the character models that we used for our game inluding:
@@ -61,6 +61,9 @@ With poly.pizza I was able to find many of the character models that we used for
 <img src="scripts/igloo.jpg" alt="igloo" width="200" height="200"><img src="scripts/seal.jpg" alt="seal" width="200" height="200">
 
 I downloaded these assets from poly.pizza as .glb files and imported them directly into our project under assets -> models. Here, other members of the group could use the assets for their portions of the game development. 
+
+Animation: 
+I have never had experience animating 3D models and assets and even little experience animating 2D sprites. However, I was able to use a program called Maximo - https://www.mixamo.com/ - which greatly simplifies the animation process for 3D models. I imported a character asset from poly.pizza and placed joints at the knees, wrists, chin, and groin of the 3D model. The software then creates a skeleton with weight (rigs) and animates the imported model. Unfortunately, the model must be a human-like character since the animations are made to replicate human actions and not animals. Becuase of this, I had to choose a humanistic model of a pengiun character from poly.pizza in order to get the animations properly working. Because of the tight time constraint, this was the simplest way to handle animation. However if given more time, I think that I could have learned to rig my own models and animate them in Blender which would allow me to animate four-legged animals for the game. As of right now, we kept the 4-legged animals 
 
 **Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
 
