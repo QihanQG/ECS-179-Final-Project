@@ -6,6 +6,7 @@ extends Node3D
 @onready var turret_spawner: StaticBody3D = $"../Turret_spawner"
 @onready var turret_mounts = $fortress/AreaD3
 
+
 # Resource management
 var resources: int = 1000
 
@@ -24,8 +25,8 @@ signal wall_upgraded(level: int)
 
 func _ready() -> void:
 	print("Town initialized at: ", global_position)
-	if factory and turret_spawner:
-		factory.turret_spawn_location = turret_spawner.global_position
+	#if factory and turret_spawner:
+		#factory.turret_spawn_location = turret_spawner.global_position
 	setup_turret_mounts()
 
 func setup_turret_mounts() -> void:

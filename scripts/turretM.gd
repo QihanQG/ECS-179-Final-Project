@@ -22,11 +22,11 @@ var turret: Turret
 @onready var projectile_spawn_point: Marker3D = $body/head/at_barrel/barrel/projectile_spawn_point
 
 var projectile_scene = preload("res://scenes/projectiles.tscn")  
-
+var factory: Factory
 
 func _ready():
 	
-	
+	add_to_group("turrets")
 	var projectile_spawn_points: Array[Marker3D] = [projectile_spawn_point]
 	
 	# Instantiate the Turret class
@@ -54,8 +54,9 @@ func _process(delta: float):
 
 
 func take_damage(damage: float) -> void:
-	current_health = max(0, current_health - damage)
+	current_health -= damage
 	if current_health <= 0:
+		factory.turret_destroyed(self)
 		queue_free()  
 
 func _on_area_3d_body_entered(body: Node3D) -> void:

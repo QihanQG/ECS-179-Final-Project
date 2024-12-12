@@ -36,8 +36,7 @@ func upgrade_wall_defense() -> void:
 	emit_signal("wall_upgraded", wall_upgrade_level)
 
 func on_wall_destroyed() -> void:
-	# Handle wall destruction
-	pass
+	queue_free()
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("projectiles"):
