@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dg8u420hkdeu8"
+path="res://.godot/imported/Balloon start riding 1.wav-a0aec24c7cd1d46ab9644384b174c06a.sample"
+
+[deps]
+
+source_file="res://8-16bit+Sound+assets+(x25)/sfx pack/Balloon start riding 1.wav"
+dest_files=["res://.godot/imported/Balloon start riding 1.wav-a0aec24c7cd1d46ab9644384b174c06a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

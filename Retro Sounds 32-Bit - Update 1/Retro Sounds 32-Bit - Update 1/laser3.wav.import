@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cl4jcu0s8i6x0"
+path="res://.godot/imported/laser3.wav-d948be371ad18c9261615350e1810ee0.sample"
+
+[deps]
+
+source_file="res://Retro Sounds 32-Bit - Update 1/Retro Sounds 32-Bit - Update 1/laser3.wav"
+dest_files=["res://.godot/imported/laser3.wav-d948be371ad18c9261615350e1810ee0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

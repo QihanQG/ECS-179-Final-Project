@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cxg24m02kbyxn"
+path="res://.godot/imported/turnoff2.wav-38708899e722f538229aed3587bf11e4.sample"
+
+[deps]
+
+source_file="res://Retro Sounds 32-Bit - Update 1/Retro Sounds 32-Bit - Update 1/turnoff2.wav"
+dest_files=["res://.godot/imported/turnoff2.wav-38708899e722f538229aed3587bf11e4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

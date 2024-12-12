@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://drs25meqy24nt"
+path="res://.godot/imported/Explosion3.wav-4c7b0685a88bd2aa0601e9fa8eb647f3.sample"
+
+[deps]
+
+source_file="res://8-16bit+Sound+assets+(x25)/sfx pack/Explosion3.wav"
+dest_files=["res://.godot/imported/Explosion3.wav-4c7b0685a88bd2aa0601e9fa8eb647f3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

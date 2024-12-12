@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bqe4g0sak60uk"
+path="res://.godot/imported/error4.wav-2d520bdcc1d1c2298ec9e80b1b3811fc.sample"
+
+[deps]
+
+source_file="res://Retro Sounds 32-Bit - Update 1/Retro Sounds 32-Bit - Update 1/error4.wav"
+dest_files=["res://.godot/imported/error4.wav-2d520bdcc1d1c2298ec9e80b1b3811fc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

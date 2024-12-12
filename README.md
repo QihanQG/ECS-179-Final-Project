@@ -17,3 +17,13 @@ The castle will spawn about X amount of penguins in half a minute. You can place
 The main defense unit consists of a variety of turrets, each with special roles. Some are basic gun turrets, others cannon turrets. There are also healer penguins that can restore health and provide buffs. Penguins and turrets can be enhanced with upgrades and gadgets, including shields, specialized bullets, different cannon types, and more. The monsters are numerous but generally slow-moving. Most rely on physical attacks, though some are capable of firing projectiles.
 
 Resources systems:  Passive overtime, After completing each wave, Bonus for good performance( the town takes less damage),  Managed by a single mining/production building?
+
+
+
+
+## Attribution
+
+"Lego" (https://skfb.ly/MEGs) by Jody_Hong is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+Rigging and animations by Adobe mixamo
+
+Animations and rigging by adobe mixamo

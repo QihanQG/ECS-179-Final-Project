@@ -5,13 +5,18 @@ var parent_node: Node
 var rotation_area: Node3D
 var mount_rotation_pitch: Node3D
 var detection_area: Area3D
-var spawn_point: Marker3D
+var spawn_points: Array[Marker3D] = []
 var projectile_scene: PackedScene
 
-@export var rotation_speed: float = 20.0
-@export var projectile_speed: float = 120.0
-@export var lock_on_till_death: bool = true
-@export var debug_mode: bool = true
+var target_position: Vector3 
+var barrel_ref: Vector3  # barrel reference point, i.e the barrel position
+var enemies: String = "enemies"
+
+var damage: int = 10.0
+var rotation_speed: float = 20.0
+var projectile_speed: float = 120.0
+var lock_on_till_death: bool = true
+var debug_mode: bool = true
 
 var max_lock_on_angle: float = 90.0
 var max_pitch_up: float =  -60  
@@ -46,6 +51,7 @@ var fire_rate: float:
 		if shoot_timer:
 			shoot_timer.wait_time = value
 			
+var detection_shape: CapsuleShape3D
 
 var detection_radius: float:
 	get:
@@ -57,17 +63,20 @@ var detection_radius: float:
 
 
 
-var detection_shape: CapsuleShape3D
 
-func initialize(parent_node, rotation_area: Node3D, mount_rotation_pitch:Node3D, detection_area: Area3D, spawn_point: Marker3D, projectile_scene: PackedScene):
+func initialize(parent_node, rotation_area: Node3D, mount_rotation_pitch:Node3D, detection_area: Area3D, spawn_points: Array[Marker3D], projectile_scene: PackedScene, barrel_ref: Node3D = null):
+	
+	if barrel_ref:
+		self.barrel_ref = barrel_ref.global_position
+
 	self.parent_node = parent_node
 	self.rotation_area = rotation_area
 	self.mount_rotation_pitch = mount_rotation_pitch
 	self.detection_area = detection_area
-	self.spawn_point = spawn_point
+	self.spawn_points = spawn_points
 	self.projectile_scene = projectile_scene
+	self.damage = damage
 	
-		
 	# Initialize detection radius
 	var collision_shape = detection_area.get_children()
 	for child in detection_area.get_children():
@@ -75,10 +84,6 @@ func initialize(parent_node, rotation_area: Node3D, mount_rotation_pitch:Node3D,
 			detection_shape = child.shape
 			_detection_radius = detection_shape.radius  
 			break
-	
-	
-	
-	
 	
 	# Connect signals
 	detection_area.connect("body_entered", Callable(self, "_on_detection_area_body_entered"))
@@ -94,16 +99,16 @@ func initialize(parent_node, rotation_area: Node3D, mount_rotation_pitch:Node3D,
 	if debug_mode:
 		setup_debug()
 
+
 func process(delta):
 	if debug_mode:
 		draw_angle_boundaries()
 	aim_mode()
 
 
-
 func _on_detection_area_body_entered(body: Node3D) -> void:
 	#print("Body entered: ", body.name)
-	if body.is_in_group("enemies"):
+	if body.is_in_group(enemies):
 		potential_targets.append(body)
 		print(body.name)
 		
@@ -111,12 +116,10 @@ func _on_detection_area_body_entered(body: Node3D) -> void:
 	#print(body.name)
 
 func _on_detection_area_body_exited(body: Node3D) -> void:
-	if body.is_in_group("enemies"):
+	if body.is_in_group(enemies):
 		potential_targets.erase(body)
 		if body == current_target:
 			current_target = null
-
-
 
 
 
@@ -245,14 +248,42 @@ func calculate_angles(target_position: Vector3) -> Dictionary:
 
 
 
+func compute_aim_angles_with_offset(target_pos: Vector3) -> Dictionary:
+	var pivot_body = rotation_area.global_position
+	var pivot_head = mount_rotation_pitch.global_position
+	
+	# Calculate Yaw (horizontal rotation) and  Determine the vector to align the turret with the target
+	var horizontal_alignment_vector = pivot_body - (target_pos - pivot_body)
+	horizontal_alignment_vector.y = pivot_body.y   # Ignore the vertical component Y for horizontal rotation
+
+	
+	var displacement_to_target_vertical = target_pos - pivot_head
+	# Horizontal Distance = sqrt(x^2 + z^2) (flat distance on the ground).
+	var target_horizontal_distance = Vector2(displacement_to_target_vertical.x, displacement_to_target_vertical.z).length()
+	var target_vertical_distance = displacement_to_target_vertical.y
+	var target_pitch_angle = atan2(target_vertical_distance, target_horizontal_distance)
+	
+	# when barrel reference point is provided
+	if barrel_ref != Vector3.ZERO:
+		var barrel_offset = barrel_ref - pivot_head
+		target_vertical_distance = displacement_to_target_vertical.y - barrel_offset.y
+		target_pitch_angle = atan2(target_vertical_distance, target_horizontal_distance)
+	
+	target_pitch_angle = -target_pitch_angle  
+	
+	return {
+		"horizontal_alignment": horizontal_alignment_vector,
+		"pitch_angle": target_pitch_angle,
+		"horizontal_distance": target_horizontal_distance,
+		"vertical_distance": target_vertical_distance
+	}
+
 func aim_at_target(target_pos: Vector3):
 	
-	# Calculate prediction time based on projectile speed
 	var delta = parent_node.get_process_delta_time()
 
 	# If there is a current target, estimate its future position using simple linear prediction
 	if current_target:
-		
 		var target_velocity = get_target_velocity(current_target)
 		if target_velocity != Vector3.ZERO:
 			# Vector from turret to target's current position
@@ -265,48 +296,24 @@ func aim_at_target(target_pos: Vector3):
 			
 			# Predicted future position of the target
 			target_pos += target_velocity * time_to_intercept
+			
+	var aim_info = compute_aim_angles_with_offset(target_pos)
 
-	# Calculate Yaw (horizontal rotation) and  Determine the vector to align the turret with the target
-	var horizontal_alignment_vector = rotation_area.global_position - (target_pos - rotation_area.global_position)
-	
-	# Ignore the vertical component Y for horizontal rotation
-	horizontal_alignment_vector.y = rotation_area.global_position.y
-
-	# Create a transform matrix that looks at the target position
-	var target_orientation_transform = rotation_area.global_transform.looking_at(horizontal_alignment_vector)
+	# Create a transform matrix that looks at the target position and apply yaw rotation
+	var target_orientation_transform = rotation_area.global_transform.looking_at(aim_info["horizontal_alignment"])
 	var target_orientation_basis = target_orientation_transform.basis
-
-	# Interpolate between the turret's current basis and the desired basis
 	var interpolated_yaw_basis = rotation_area.global_transform.basis.slerp(target_orientation_basis, rotation_speed * delta)
 	rotation_area.global_transform.basis = interpolated_yaw_basis
 
 	# Calculate Pitch (vertical rotation) : Vector from the turret's vertical mount to the target's position
-	var displacement_to_target_vertical = target_pos - mount_rotation_pitch.global_position
 
-	# Horizontal Distance = sqrt(x^2 + z^2) (flat distance on the ground).
-	var target_horizontal_distance = Vector2(displacement_to_target_vertical.x, displacement_to_target_vertical.z).length()
-	
-	# Vertical Distance = height difference
-	var target_vertical_distance = displacement_to_target_vertical.y
-
-	# tan(angle) = Vertical Distance / Horizontal Distance
-	var target_pitch_angle = atan2(target_vertical_distance, target_horizontal_distance)
-
-	# Godot inverted angle 
-	target_pitch_angle = -target_pitch_angle
-
-	# limitation
-	target_pitch_angle = clamp(target_pitch_angle, deg_to_rad(max_pitch_up), deg_to_rad(max_pitch_down))
-
-	# Interpolate the mount's pitch rotation 
+	#Apply pitch rotation
+	var target_pitch_angle = clamp(aim_info["pitch_angle"], deg_to_rad(max_pitch_up), deg_to_rad(max_pitch_down))
 	var current_pitch_rotation = mount_rotation_pitch.rotation.x
 	mount_rotation_pitch.rotation.x = lerp_angle(current_pitch_rotation, target_pitch_angle, rotation_speed * delta)
-
-
+	
 	if debug_mode:
 		update_debug_info(target_pos)
-
-
 
 
 
@@ -316,6 +323,8 @@ func get_target_velocity(target: Node3D) -> Vector3:
 		return target.linear_velocity
 	elif target is CharacterBody3D:
 		return target.velocity
+	elif target is StaticBody3D:
+		return Vector3.ZERO
 	elif target.has_property("velocity"):
 		return target.velocity
 	elif target.has_method("get_velocity"):
@@ -340,16 +349,15 @@ func calculate_predicted_position(target_position: Vector3) -> Vector3:
 	if target_velocity == Vector3.ZERO:
 		return target_position
 
-	# Define known values
 	var turret_position = rotation_area.global_position
 	var relative_target_position = target_position - turret_position  # Vector from turret to target
 	var target_speed_squared = target_velocity.length_squared()
 	var projectile_speed_squared = projectile_speed * projectile_speed
 
 	# Quadratic equation: a * t^2 + b * t + c = 0
-	var a = target_speed_squared - projectile_speed_squared            # Coefficient a
-	var b = 2 * target_velocity.dot(relative_target_position)          # Coefficient b
-	var c = relative_target_position.length_squared()                  # Coefficient c
+	var a = target_speed_squared - projectile_speed_squared            
+	var b = 2 * target_velocity.dot(relative_target_position)          
+	var c = relative_target_position.length_squared()                  
 
 	# Discriminant: Δ = b^2 - 4 * a * c
 	var discriminant = b * b - 4 * a * c
@@ -434,18 +442,21 @@ func _on_shoot_timer_timeout():
 
 
 func shoot():
-	var projectile = projectile_scene.instantiate()
-	parent_node.add_child(projectile)
-	projectile.global_position = spawn_point.global_position
-	
-	var rotation_vector = Vector3(mount_rotation_pitch.global_rotation.x, rotation_area.global_rotation.y, 0 )
-	
-	var forward_direction = get_forward_direction_from_yaw_and_pitch(rotation_vector)
-	
-	projectile.global_rotation = rotation_vector
-	
-	if projectile is RigidBody3D:
-		projectile.linear_velocity = forward_direction * projectile_speed
+	for spawn_point in spawn_points:
+		var projectile = projectile_scene.instantiate()
+		parent_node.add_child(projectile)
+		projectile.global_position = spawn_point.global_position
+		
+		var rotation_vector = Vector3(mount_rotation_pitch.global_rotation.x, rotation_area.global_rotation.y, 0 )
+		
+		var forward_direction = get_forward_direction_from_yaw_and_pitch(rotation_vector)
+		
+		projectile.global_rotation = rotation_vector
+		
+		projectile.damage = damage
+		
+		if projectile is RigidBody3D:
+			projectile.linear_velocity = forward_direction * projectile_speed
 	
 	# Reset shooting state
 	can_shoot = false
@@ -572,7 +583,6 @@ func draw_angle_boundaries():
 	var left_bound = forward_dir.rotated(Vector3.UP, left_angle)
 	var right_bound = forward_dir.rotated(Vector3.UP, right_angle)
 
-	# Draw boundary lines
 	DebugDraw3D.draw_line(
 		start_pos,
 		start_pos + left_bound * line_length,
@@ -594,11 +604,7 @@ func draw_angle_boundaries():
 		var current_vector = forward_dir.rotated(Vector3.UP, angle_t)
 		var current_point = start_pos + current_vector * line_length
 		
-		DebugDraw3D.draw_line(
-			prev_point,
-			current_point,
-			Color(1, 0, 0, 0.5)  # Semi-transparent red
-		)
+		DebugDraw3D.draw_line(prev_point,current_point,Color(1, 0, 0, 0.5) )
 		prev_point = current_point
 
 	if debug_labels.has("vision_boundary"):
@@ -625,7 +631,7 @@ func draw_detection_radius():
 		
 		DebugDraw3D.draw_line(from, to, Color.BLUE)
 		if debug_labels.has("detection_label"):
-			debug_labels["detection_label"].position = center + Vector3(0, 1.2, -10.5) 
+			debug_labels["detection_label"].position =  Vector3(0,3.5,0) 
 			debug_labels["detection_label"].scale = Vector3(4,4,4)
 			debug_labels["detection_label"].text = "Detection Radius: %.1f" % detection_radius
 

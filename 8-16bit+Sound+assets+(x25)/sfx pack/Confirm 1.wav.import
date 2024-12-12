@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cblreyc7irau0"
+path="res://.godot/imported/Confirm 1.wav-aebcad31a49577a4543078e27e17afa0.sample"
+
+[deps]
+
+source_file="res://8-16bit+Sound+assets+(x25)/sfx pack/Confirm 1.wav"
+dest_files=["res://.godot/imported/Confirm 1.wav-aebcad31a49577a4543078e27e17afa0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
