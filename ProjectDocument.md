@@ -86,7 +86,17 @@ I worked with world-building to create an icy-border for the map using a Godot-p
 My role initially included handling the enemy and unit(turret) behaviors, but it became a broader role in the overall Game logic. I first implemented yaw rotation (horizontal) using basic vector math, using dot product to find the angle between the turret's forward vector and target vector, cross product's Y component, and using the sign to determine rotation direction (clockwise/counterclockwise).
 The next challenge was adding pitch rotation (vertical) and handling both axes concurrently and seamlessly with respect to the turret design. But this required me to change my initial approach from a simple vector-based. Eventually,  i learned that i could put separate pivot points on the turret model to handle the yaw rotations and pitch rotations separately. And use arctangent calculations for pitch angles. And implemented angle constraints for the turret's movements to remain realistic and within its design limitations.
 
-After this, I spent some time making the turret script more modular and implementing more features/modes.
+After this, I spent time refining the turret movements, implementing more features/modes,  adding more debugging features, and making it more modular for other members to approach and modify. Then finally implement it on the the turret models provided by Maxim, it was a bit challenging as the model meshes only have two parts. But I was able to make it work with some tricks.
+
+
+<img src="imgs/turret_prototype.png" alt="seal" width="200" height="200">
+
+<img src="imgs/turret_1.png" alt="igloo" width="200" height="200">
+
+<img src="imgs/turret_2.png" alt="seal" width="200" height="200">
+
+
+
 
 # Sub-Roles
 
