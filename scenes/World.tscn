@@ -87,7 +87,7 @@ transform = Transform3D(0.999995, -0.00311328, 0.000721761, 0.00311416, 0.999994
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
-light_color = Color(0.821789, 0.821789, 0.821789, 1)
+light_color = Color(0.843184, 0.843184, 0.843184, 1)
 shadow_enabled = true
 
 [node name="HTerrain" type="Node3D" parent="."]
