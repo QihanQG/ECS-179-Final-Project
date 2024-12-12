@@ -67,6 +67,7 @@ I downloaded these assets from poly.pizza as .glb files and imported them direct
 
 Animation: 
 I have limited experience animating 2D sprites and no prior experience animating 3D models or assets. However, I used a program called Mixamo - https://www.mixamo.com/, which simplifies the 3D animation process significantly. I started by importing a character asset from poly.pizza and positioned joints at key areas such as the knees, wrists, chin, and groin of the 3D model. Mixamo then automatically generated a skeleton with weights (rigs) and applied animations to the model.
+<img src="scripts/maximo.jpg" alt="maximo" width="400" height="200"><img src="scripts/maximo_work.jpg" alt="maximo_work" width="300" height="225">
 
 Since Mixamo is designed for human-like characters, the animations are tailored to mimic human movements rather than animals. To work around this limitation, I selected a humanoid penguin character from poly.pizza to ensure the animations functioned correctly. Given the tight time constraints, this approach was the most efficient solution for animating the character.
 
