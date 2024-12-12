@@ -37,6 +37,8 @@ I created the main menu, which serves as the starting point for the game. It pro
 
 In addition to designing the main and pause menus, I also implemented the game's top-down view and input controls. The top-down view was crucial for giving players a clear perspective of the tower defense game, this allows them to strategize effectively and place towers. I positioned the camera to ensure it captures the entire play while maintaining the game's arctic theme. For the input controls, I focused on creating a smooth experience for navigating the map. I implemented WASD camera movement, mouse scrolling for zoom, and camera boundary restriction to ensure the user doesn't go off the map. These controls were designed to be responsive and user-friendly.
 
+<img src="imgs/controls.png" alt="" width="400" height="200">
+
 ## Movement/Physics
 
 **Describe the basics of movement and physics in your game. Is it the standard physics model? What did you change or modify? Did you make your movement scripts that do not use the physics system?**
@@ -141,6 +143,16 @@ Lego" (https://skfb.ly/MEGs) by Jody_Hong
 *Email: cgyliu@ucdavis.edu*   
 *Github: *
 
+## Game Feel and Polish
+
+For game feel, one of the key improvements I made was addressing the brightness issue in the game. Initially, the game environment was too dark, which made it difficult for players to see the map and its contents. To fix this issue, I added a sun scene to enhance the lighting giving the game a more aesthetically pleasing environment. This fix not only improved visibility but it complemented the Arctic theme. This adjustment significantly enhanced the overall visual experience and ensured future gameplay was functional and enjoyable.
+
+<img src="imgs/dark.png" alt="" width="400" height="200"> <img src="imgs/bright.png" alt="" width="400" height="200">
+
+*Name: Brian Nguyen*   
+*Email: btinguyen@ucdavis.edu*   
+*Github: briantinnguyen*
+
 ## Press Kit and Trailer
 
 **Include links to your presskit materials and trailer.**
@@ -148,14 +160,6 @@ Lego" (https://skfb.ly/MEGs) by Jody_Hong
 When making the trailer for Pengine Patrol: Arctic Defense, I wanted to show off the main parts of the game in a fun and simple way. The trailer starts with a quick look at the icy Arctic and the penguin colony, then jumps into gameplay. You see snowball cannons firing, penguins building forts, and seals trying to steal fish. I made sure to include special moves, like icy blasts, to show how exciting the game gets. The trailer ends with a big call to action: "Protect the Arctic!"
 
 I picked music that felt exciting and fun, adding sound effects like snowballs hitting seals to bring it to life. For the screenshots, I chose scenes that show the coolest parts of the game—penguins fighting back, seals charging in, and the icy Arctic world. I kept it simple, making sure everything looks fun and clear for anyone who sees it.
-
-*Name: Brian Nguyen*   
-*Email: btinguyen@ucdavis.edu*   
-*Github: briantinnguyen*
-
-## Game Feel and Polish
-
-**Document what you added to and how you tweaked your game to improve its game feel.**
 
 *Name: Brian Nguyen*   
 *Email: btinguyen@ucdavis.edu*   
