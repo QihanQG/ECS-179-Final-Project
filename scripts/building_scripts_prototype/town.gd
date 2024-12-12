@@ -52,10 +52,10 @@ func _input(event: InputEvent) -> void:
 		#spend_resources(turret_2_cost)
 		
 	# Research upgrades testing
-	#if event.is_action_pressed("upgrade_weapons"): # R
-		#research_building.set_research_focus(research_building.ResearchFocus.WEAPONS) 
-	#elif event.is_action_pressed("upgrade_walls"): # T
-		#research_building.set_research_focus(research_building.ResearchFocus.WALLS) 
+	if event.is_action_pressed("upgrade_weapons"): # R
+		research_building.set_research_focus(research_building.ResearchFocus.WEAPONS) 
+	elif event.is_action_pressed("upgrade_walls"): # T
+		research_building.set_research_focus(research_building.ResearchFocus.WALLS) 
 
 func can_afford(cost: int) -> bool:
 	return resources >= cost
