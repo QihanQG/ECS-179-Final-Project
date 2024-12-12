@@ -33,7 +33,7 @@ My primary task in the development of our tower defense game focused on the user
 
 I created the main menu, which serves as the starting point for the game. It provides options for starting a new game, loading, and quitting the game. I also created the pause menu that provides players with basic game session options. The menu includes the ability to resume the game or quit the game entirely. This menu enhances the overall user experience. 
 
-<img src="imgs/Main.png" alt="" width="8200" height="400"><img src="imgs/Pause.png" alt="" width="200" height="400">
+<img src="imgs/Main.png" alt="" width="200" height="400"><img src="imgs/Pause.png" alt="" width="200" height="400">
 
 In addition to designing the main and pause menus, I also implemented the game's top-down view and input controls. The top-down view was crucial for giving players a clear perspective of the tower defense game, this allows them to strategize effectively and place towers. I positioned the camera to ensure it captures the entire play while maintaining the game's arctic theme. For the input controls, I focused on creating a smooth experience for navigating the map. I implemented WASD camera movement, mouse scrolling for zoom, and camera boundary restriction to ensure the user doesn't go off the map. These controls were designed to be responsive and user-friendly.
 
