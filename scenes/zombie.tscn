@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=4 uid="uid://brrjjrvdtpxot"]
 
-[ext_resource type="Script" path="res://scripts/zombie.gd" id="1_cwdr4"]
+[ext_resource type="Script" path="res://scripts/zombie_walk_script.gd" id="1_cwdr4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jtsjd"]
 size = Vector3(15.2646, 15, 10)
@@ -2168,6 +2168,8 @@ _data = {
 }
 
 [node name="zombie" type="CharacterBody3D" node_paths=PackedStringArray("walk", "attack", "turn_right", "turn_left", "idle", "death", "run")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -29.86, 3.68, -11.48)
+visible = false
 script = ExtResource("1_cwdr4")
 walk = NodePath("walk")
 attack = NodePath("attack")
@@ -2467,7 +2469,7 @@ bones/40/rotation = Quaternion(5.17213e-09, -5.55111e-17, -2.77556e-17, 1)
 bones/40/scale = Vector3(1, 1, 1)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Skeleton3D"]
-transform = Transform3D(0.863481, 0.034794, 0.503181, 0.0669946, 0.980867, -0.182791, -0.499913, 0.191547, 0.844628, -3.73881e-15, 6.62556, 0.0336198)
+transform = Transform3D(0.863481, 0.034794, 0.503181, 0.0669946, 0.980867, -0.182791, -0.499913, 0.191547, 0.844628, 0, 6.62556, 0.0336189)
 bone_name = "mixamorig_Hips"
 bone_idx = 0
 use_external_skeleton = true
