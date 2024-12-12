@@ -7,13 +7,15 @@ var turret: Turret
 @export var debug_mode: bool = false
 @export var lock_on_til_death = true
 @export var detection_radius: float = 10
+@export var pitc_up_max: float = 45
+@export var pitch_down_min: float = 10
 @export var fire_rate: float = 1
 @export var projectile_speed: float = 100
 @export var rotation_speed: float = 10
 
 
 @export var pitch_up_max: float = 60
-@export var pitch_down_max: float = 40
+@export var pitch_up_min: float = 40
 
 
 @onready var parent_node: Node3D = $"."
@@ -22,17 +24,15 @@ var turret: Turret
 @onready var detection_area: Area3D = $DetectionArea
 @onready var projectile_spawn_marker: Marker3D = $body/head/projectile_spawn_marker
 
-var was_factory_spawned: bool = false 
 var projectile_scene = preload("res://scenes/projectiles.tscn")  
 
 
-var factory: Factory 
-
+var factory: Factory
 
 func _ready():
 	
 	add_to_group("turrets")
-	add_to_group("friendly_projectiles")
+	
 	var projectile_spawn_points: Array[Marker3D] = [projectile_spawn_marker]
 
 	# Instantiate the Turret class
@@ -49,24 +49,20 @@ func _ready():
 	turret.debug_mode = debug_mode
 	turret.target_mode = Turret.TargetMode.NORMAL 
 	turret.max_pitch_up =  -pitch_up_max
-	turret.max_pitch_down = pitch_down_max
+	turret.max_pitch_down = pitch_up_min
 	turret.damage = damage
 func _process(delta: float):
 	if turret:
 		turret.process(delta)
 		turret.draw_detection_radius()
 
-func set_factory_spawned() -> void:
-	was_factory_spawned = true
 
 func take_damage(damage: float) -> void:
-	current_health -= damage
+	current_health -= current_health - damage
 	if current_health <= 0:
-		if factory and was_factory_spawned:
-			factory.turret_destroyed(self)
-	queue_free()  
+		factory.turret_destroyed(self)
+		queue_free()  
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body.is_in_group("projectiles") and not body.is_in_group("friendly_projectiles"):
-		if body.has_method("get_damage"):
-			take_damage(body.damage)
+	if body.has_method("get_damage"):
+		take_damage(body.damage)

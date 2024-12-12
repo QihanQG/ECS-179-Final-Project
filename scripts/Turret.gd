@@ -446,12 +446,12 @@ func shoot():
 		var projectile = projectile_scene.instantiate()
 		parent_node.add_child(projectile)
 		projectile.global_position = spawn_point.global_position
-		projectile.global_rotation = spawn_point.global_rotation 
 		
 		var rotation_vector = Vector3(mount_rotation_pitch.global_rotation.x, rotation_area.global_rotation.y, 0 )
 		
 		var forward_direction = get_forward_direction_from_yaw_and_pitch(rotation_vector)
 		
+		projectile.global_rotation = rotation_vector
 		
 		projectile.damage = damage
 		

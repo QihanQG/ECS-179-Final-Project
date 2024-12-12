@@ -1,7 +1,6 @@
 extends Node3D  
 
 var turret: Turret
-var factory: Factory
 
 @export var damage: int = 100
 @export var current_health: int = 100
@@ -23,14 +22,11 @@ var factory: Factory
 @onready var projectile_spawn_point: Marker3D = $body/head/at_barrel/barrel/projectile_spawn_point
 
 var projectile_scene = preload("res://scenes/projectiles.tscn")  
-
-var was_factory_spawned: bool = false 
-
+var factory: Factory
 
 func _ready():
 	
 	add_to_group("turrets")
-	add_to_group("friendly_projectiles")
 	var projectile_spawn_points: Array[Marker3D] = [projectile_spawn_point]
 	
 	# Instantiate the Turret class
@@ -56,17 +52,13 @@ func _process(delta: float):
 		turret.process(delta)
 		turret.draw_detection_radius()
 
-func set_factory_spawned() -> void:
-	was_factory_spawned = true
-	
+
 func take_damage(damage: float) -> void:
 	current_health -= damage
 	if current_health <= 0:
-		if factory and was_factory_spawned:
-			factory.turret_destroyed(self)
-	queue_free()  
+		factory.turret_destroyed(self)
+		queue_free()  
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body.is_in_group("projectiles") and not body.is_in_group("friendly_projectiles"):
-		if body.has_method("get_damage"):
-			take_damage(body.damage)
+	if body.has_method("get_damage"):
+		take_damage(body.damage)

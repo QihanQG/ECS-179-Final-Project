@@ -3,9 +3,6 @@ extends DurativeController
 
 
 var speed: float = 10.0
-var animation_done = false
-var ani_timer : Timer
-signal completed 
 
 func _init(player: AnimationPlayer, speed: float, duration: float, character: CharacterBody3D):
 	super._init(player, duration, character)
@@ -16,10 +13,6 @@ func setup_animation(anim):
 
 func execute():
 	super.execute()
-	ani_timer = Timer.new()
-	add_child(ani_timer)
-	ani_timer.start(duration)
-	ani_timer.timeout.connect(on_animation_complete)
 	if is_moving:
 		adjust_animation_speed()
 
@@ -31,8 +24,4 @@ func adjust_animation_speed():
 		print("Adjusted run animation speed scale to:", speed_scale)
 
 func on_animation_complete():
-	animation_done = true
 	character.velocity = Vector3.ZERO
-	if ani_timer:
-		ani_timer.queue_free()
-	emit_signal("completed")

@@ -250,7 +250,6 @@ skeleton = NodePath("")
 shape = SubResource("CapsuleShape3D_nb4n5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.313363, 0.0723871)
