@@ -23,18 +23,19 @@ The penguins are in trouble! Mischievous seals and bears are invading their icy 
 
 ## User Interface and Input
 
-**Describe your user interface and how it relates to gameplay. This can be done via the template.**
-**Describe the default input configuration.**
-
-**Add an entry for each platform or input style your project supports.**
-
-![](Layout.jpg)
-
-![](Main.jpeg) ![](Pause.jpeg) 
-
 *Name: Brian Nguyen*   
 *Email: btinguyen@ucdavis.edu*   
 *Github: briantinnguyen*
+
+My primary task in the development of our tower defense game focused on the user interface and input, ensuring that the game was intuitive, responsive, and enjoyable for players. One of my first responsibilities was designing a wireframe for the layout, which served as a blueprint for the game's user interface. I started by mapping out the key elements the players would need to interact with during gameplay. The layout included elements like the enemy's spawn point, the road, the end road, and the overall design for the enemy path. This layout not only provided a clear structure for the game world but also helped guide groupmates in their respective task. 
+
+<img src="imgs/Layout.jpg" alt="" width="800" height="475">
+
+I created the main menu, which serves as the starting point for the game. It provides options for starting a new game, loading, and quitting the game. I also created the pause menu that provides players with basic game session options. The menu includes the ability to resume the game or quit the game entirely. This menu enhances the overall user experience. 
+
+<img src="imgs/Main.png" alt="" width="8200" height="400"><img src="imgs/Pause.png" alt="" width="200" height="400">
+
+In addition to designing the main and pause menus, I also implemented the game's top-down view and input controls. The top-down view was crucial for giving players a clear perspective of the tower defense game, this allows them to strategize effectively and place towers. I positioned the camera to ensure it captures the entire play while maintaining the game's arctic theme. For the input controls, I focused on creating a smooth experience for navigating the map. I implemented WASD camera movement, mouse scrolling for zoom, and camera boundary restriction to ensure the user doesn't go off the map. These controls were designed to be responsive and user-friendly.
 
 ## Movement/Physics
 
