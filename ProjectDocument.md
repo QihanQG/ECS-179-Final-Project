@@ -84,18 +84,23 @@ I worked with world-building to create an icy-border for the map using a Godot-p
 *Github: *
 
 My role initially included handling the enemy and unit(turret) behaviors, but it became a broader role in the overall Game logic. I first implemented yaw rotation (horizontal) using basic vector math, using dot product to find the angle between the turret's forward vector and target vector, cross product's Y component, and using the sign to determine rotation direction (clockwise/counterclockwise).
-The next challenge was adding pitch rotation (vertical) and handling both axes concurrently and seamlessly with respect to the turret design. But this required me to change my initial approach from a simple vector-based. Eventually,  i learned that i could put separate pivot points on the turret model to handle the yaw rotations and pitch rotations separately. And use arctangent calculations for pitch angles. And implemented angle constraints for the turret's movements to remain realistic and within its design limitations.
+The next challenge was adding pitch rotation (vertical) and handling both axes concurrently and seamlessly with respect to the turret design. But this required me to change my initial approach from a simple vector-based. Eventually,  I learned that I could put separate pivot points on the turret model to handle the yaw rotations and pitch rotations separately. And use arctangent calculations for pitch angles. And implemented angle constraints for the turret's movements to remain realistic and within its design limitations.
 
 After this, I spent time refining the turret movements, implementing more features/modes,  adding more debugging features, and making it more modular for other members to approach and modify. Then finally implement it on the the turret models provided by Maxim, it was a bit challenging as the model meshes only have two parts. But I was able to make it work with some tricks.
 
 
-<img src="imgs/turret_prototype.png" alt="seal" width="200" height="200">
+<img src="imgs/turret_prototype.png" alt="seal" width="400" height="200"><img src="imgs/turret_1.png" alt="igloo" width="400" height="200">
 
-<img src="imgs/turret_1.png" alt="igloo" width="200" height="200">
-
-<img src="imgs/turret_2.png" alt="seal" width="200" height="200">
+<img src="imgs/turret_2.png" alt="seal" width="400" height="200">
 
 
+Next, I implemented the durative movement commands for the enemies, initially, this was Penelope Phan's role but we decided to switch and she provided me with the initial template. But we didn't have our enemy model yet, So I found a Lego model to use as zombies and used Adobe Mixamo to do the auto-rigging. Getting this set up in Godot was trickier than I expected, I hadn't done much with animations before, so I spent quite a bit of time figuring out how to properly structure the scene and model to work with the animations. The biggest headache was fixing issues where the meshes and skeleton transforms didn't line up correctly. Once I got past those hurdles I was able to use my experience from exercise 1 to implement the durative cmds scripts for the zombie movement.
+
+Then I work with  Cheng-yuan to implement the building/town scripts.
+
+#### assets:
+Lego" (https://skfb.ly/MEGs) by Jody_Hong 
+(http://creativecommons.org/licenses/by/4.0/). Rigging and animations by Adobe mixamo
 
 
 # Sub-Roles
