@@ -224,13 +224,13 @@ mesh = SubResource("ArrayMesh_q8gc8")
 skeleton = NodePath("")
 
 [node name="left_gun" type="Node3D" parent="body/head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278, 0.474, 0.585)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278, 0.474, 0.606606)
 
 [node name="projectile_L" type="Marker3D" parent="body/head/left_gun"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0234196)
 
 [node name="right_gun" type="Node3D" parent="body/head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.278, 0.474, 0.585)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.278, 0.474, 0.605143)
 
 [node name="projectile_R" type="Marker3D" parent="body/head/right_gun"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0232762)
@@ -246,6 +246,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.474, 0.585)
 shape = SubResource("CapsuleShape3D_hrbkc")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.299982, 0)

@@ -20,8 +20,8 @@ var death_command: DeathCommand
 var run_command: RunCommand
 
 func _ready():
-	print("Script starting...")
-	
+	#print("Script starting...")
+	add_to_group("enemies")
 
 	walk_command = WalkCommand.new(walk, walk_speed, 20, self)
 	attack_command = AttackCommand.new(attack, 1.0, self)

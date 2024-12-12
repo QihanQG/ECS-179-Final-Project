@@ -1,5 +1,9 @@
 class_name DurativeController
 extends Node
+'Implementation: Penelope - made the bone code, final connection to all actions,
+ added different walks, connected to ZombieWalkScript.gd and
+ Qihan - edited barebone code to work with animation player,fixed my errors '
+
 
 var animation_player: AnimationPlayer
 var duration: float = 3.0
@@ -34,7 +38,7 @@ func _process(delta):
 			timer -= delta
 			if timer <= 0:
 				animation_player.stop()
-				print("Animation has stopped after given duration.")
+				#print("Animation has stopped after given duration.")
 				on_animation_complete()
 				self.is_moving = false
 				set_process(false)
@@ -48,3 +52,4 @@ func stop():
 		animation_player.stop()
 		is_moving = false
 		on_animation_complete()
+	

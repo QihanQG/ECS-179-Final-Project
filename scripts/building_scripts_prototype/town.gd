@@ -27,31 +27,8 @@ func _ready() -> void:
 	print("Town initialized at: ", global_position)
 	#if factory and turret_spawner:
 		#factory.turret_spawn_location = turret_spawner.global_position
-	setup_turret_mounts()
 
-func setup_turret_mounts() -> void:
-	if not turret_mounts:
-		push_error("AreaD3 node not found")
-		return
-		
-	var mount_count = 8
-	for i in range(mount_count):
-		var angle = (i / float(mount_count)) * TAU
-		var pos = Vector3(
-			cos(angle) * (town_radius - 0.5),
-			2.0,  # Mount height
-			sin(angle) * (town_radius - 0.5)
-		)
-		create_turret_mount(pos)
 
-func create_turret_mount(position: Vector3) -> void:
-	if not turret_mounts:
-		return
-		
-	var mount = Marker3D.new()
-	turret_mounts.add_child(mount)
-	mount.global_position = position
-	mount.look_at(global_position, Vector3.UP)
 
 func upgrade_wall_defense() -> void:
 	wall_upgrade_level += 1
@@ -75,10 +52,10 @@ func _input(event: InputEvent) -> void:
 		#spend_resources(turret_2_cost)
 		
 	# Research upgrades testing
-	if event.is_action_pressed("upgrade_weapons"): # R
-		research_building.set_research_focus(research_building.ResearchFocus.WEAPONS) 
-	elif event.is_action_pressed("upgrade_walls"): # T
-		research_building.set_research_focus(research_building.ResearchFocus.WALLS) 
+	#if event.is_action_pressed("upgrade_weapons"): # R
+		#research_building.set_research_focus(research_building.ResearchFocus.WEAPONS) 
+	#elif event.is_action_pressed("upgrade_walls"): # T
+		#research_building.set_research_focus(research_building.ResearchFocus.WALLS) 
 
 func can_afford(cost: int) -> bool:
 	return resources >= cost

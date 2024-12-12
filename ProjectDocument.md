@@ -23,18 +23,21 @@ The penguins are in trouble! Mischievous seals and bears are invading their icy 
 
 ## User Interface and Input
 
-**Describe your user interface and how it relates to gameplay. This can be done via the template.**
-**Describe the default input configuration.**
-
-**Add an entry for each platform or input style your project supports.**
-
-![](Layout.jpg)
-
-![](Main.jpeg) ![](Pause.jpeg) 
-
 *Name: Brian Nguyen*   
 *Email: btinguyen@ucdavis.edu*   
 *Github: briantinnguyen*
+
+My primary task in the development of our tower defense game focused on the user interface and input, ensuring that the game was intuitive, responsive, and enjoyable for players. One of my first responsibilities was designing a wireframe for the layout, which served as a blueprint for the game's user interface. I started by mapping out the key elements the players would need to interact with during gameplay. The layout included elements like the enemy's spawn point, the road, the end road, and the overall design for the enemy path. This layout not only provided a clear structure for the game world but also helped guide groupmates in their respective task. 
+
+<img src="imgs/Layout.jpg" alt="" width="800" height="475">
+
+I created the main menu, which serves as the starting point for the game. It provides options for starting a new game, loading, and quitting the game. I also created the pause menu that provides players with basic game session options. The menu includes the ability to resume the game or quit the game entirely. This menu enhances the overall user experience. 
+
+<img src="imgs/Main.png" alt="" width="400" height="200"> <img src="imgs/Pause.png" alt="" width="400" height="200">
+
+In addition to designing the main and pause menus, I also implemented the game's top-down view and input controls. The top-down view was crucial for giving players a clear perspective of the tower defense game, this allows them to strategize effectively and place towers. I positioned the camera to ensure it captures the entire play while maintaining the game's arctic theme. For the input controls, I focused on creating a smooth experience for navigating the map. I implemented WASD camera movement, mouse scrolling for zoom, and camera boundary restriction to ensure the user doesn't go off the map. These controls were designed to be responsive and user-friendly.
+
+<img src="imgs/controls.png" alt="" width="400" height="200">
 
 ## Movement/Physics
 
@@ -83,10 +86,24 @@ I worked with world-building to create an icy-border for the map using a Godot-p
 *Email: qgguan@ucdavis.edu*   
 *Github: *
 
-My role initially included handling the enemy and unit(turret) behaviors, but it became a broader role in the overall Game logic. I first implemented yaw rotation (horizontal) using basic vector math, using dot product to find the angle between the turret's forward vector and target vector, cross product's Y component, and using the sign to determine rotation direction (clockwise/counterclockwise).
-The next challenge was adding pitch rotation (vertical) and handling both axes concurrently and seamlessly with respect to the turret design. But this required me to change my initial approach from a simple vector-based. Eventually,  i learned that i could put separate pivot points on the turret model to handle the yaw rotations and pitch rotations separately. And use arctangent calculations for pitch angles. And implemented angle constraints for the turret's movements to remain realistic and within its design limitations.
+My role initially included handling the enemy and unit(turret) behaviors, but it became a broader role in the overall Game logic. I first implemented yaw rotation (horizontal) using basic vector math, using dot product to find the angle between the turret's forward vector and target vector, cross product's Y component, and using the sign to determine rotation direction (clockwise/counterclockwise). The next challenge was adding pitch rotation (vertical) and handling both axes concurrently and seamlessly with respect to the turret design. Which required me to change my initial approach from a simple vector-math based to a more complex approach that could handle both rotational axes simultaneously. Eventually, I learned that I could put separate pivot points on the turret model to handle the yaw rotations and pitch rotations separately. And use arctangent calculations for pitch angles. And implemented angle constraints for the turret's movements to remain realistic and within its design limitations.
 
-After this, I spent some time making the turret script more modular and implementing more features/modes.
+After this, I spent time refining the turret movements, implementing more features/modes,  adding more debugging features, and making it more modular for other members to approach and modify. Then finally implementing it on the turret models provided by Maxim, it was a bit challenging as the model meshes only have two parts, the base and top. But I was able to make it work with some tricks.
+
+
+<img src="imgs/turret_prototype.png" alt="seal" width="400" height="200"><img src="imgs/turret_1.png" alt="igloo" width="400" height="200">
+
+<img src="imgs/turret_2.png" alt="seal" width="400" height="200">
+
+
+Next, I implemented the durative movement commands for the enemies, initially, this was Penelope Phan's role but we decided to switch and she provided me with the initial template/implementation. But we didn't have our enemy model yet, So I found a Lego model to use as zombies and used Adobe Mixamo to do the auto-rigging. Getting this set up in Godot was trickier than I expected, I hadn't done much with animations/designs before, so I spent quite a bit of time figuring out how to properly structure the scene and model to work with the animations. The biggest headache was fixing issues where the meshes and skeleton transforms didn't line up correctly, especially during animations. Once I got past those hurdles I was able to use my experience from exercise 1 to implement the durative cmds scripts for the zombie movement, the only hurdle was getting around the transition during the animation replay. 
+
+Then I work with Cheng-yuan to implement the building/town scripts.
+
+#### assets:
+Lego" (https://skfb.ly/MEGs) by Jody_Hong 
+(http://creativecommons.org/licenses/by/4.0/). Rigging and animations by Adobe mixamo
+
 
 # Sub-Roles
 
@@ -126,6 +143,16 @@ After this, I spent some time making the turret script more modular and implemen
 *Email: cgyliu@ucdavis.edu*   
 *Github: *
 
+## Game Feel and Polish
+
+For game feel, one of the key improvements I made was addressing the brightness issue in the game. Initially, the game environment was too dark, which made it difficult for players to see the map and its contents. To fix this issue, I added a sun scene to enhance the lighting giving the game a more aesthetically pleasing environment. This fix not only improved visibility but it complemented the Arctic theme. This adjustment significantly enhanced the overall visual experience and ensured future gameplay was functional and enjoyable.
+
+<img src="imgs/dark.png" alt="" width="400" height="200"> <img src="imgs/bright.png" alt="" width="400" height="200">
+
+*Name: Brian Nguyen*   
+*Email: btinguyen@ucdavis.edu*   
+*Github: briantinnguyen*
+
 ## Press Kit and Trailer
 
 **Include links to your presskit materials and trailer.**
@@ -133,14 +160,6 @@ After this, I spent some time making the turret script more modular and implemen
 When making the trailer for Pengine Patrol: Arctic Defense, I wanted to show off the main parts of the game in a fun and simple way. The trailer starts with a quick look at the icy Arctic and the penguin colony, then jumps into gameplay. You see snowball cannons firing, penguins building forts, and seals trying to steal fish. I made sure to include special moves, like icy blasts, to show how exciting the game gets. The trailer ends with a big call to action: "Protect the Arctic!"
 
 I picked music that felt exciting and fun, adding sound effects like snowballs hitting seals to bring it to life. For the screenshots, I chose scenes that show the coolest parts of the game—penguins fighting back, seals charging in, and the icy Arctic world. I kept it simple, making sure everything looks fun and clear for anyone who sees it.
-
-*Name: Brian Nguyen*   
-*Email: btinguyen@ucdavis.edu*   
-*Github: briantinnguyen*
-
-## Game Feel and Polish
-
-**Document what you added to and how you tweaked your game to improve its game feel.**
 
 *Name: Brian Nguyen*   
 *Email: btinguyen@ucdavis.edu*   

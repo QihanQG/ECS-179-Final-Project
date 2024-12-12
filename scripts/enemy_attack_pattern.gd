@@ -9,7 +9,7 @@ func spawn_enemies():
 	_king_penguin.started_loop = true
 	battle_loop();
 	
-	func battle_loop():
+func battle_loop():
 		# TODO : ONCE MAP IS DONE ADD IN THE MOVEMENT LOOPS
 
 func _physics_process(delta: float) -> void:
