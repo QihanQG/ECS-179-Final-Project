@@ -63,6 +63,11 @@ size = Vector3(1, 2, 1)
 transform = Transform3D(0.999995, -0.00311328, 0.000721761, 0.00311416, 0.999994, -0.001219, -0.000717969, 0.00122124, 0.999999, -0.220264, 1.21166, 0.0610809)
 script = ExtResource("1_6ovhc")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_color = Color(0.821789, 0.821789, 0.821789, 1)
+shadow_enabled = true
+
 [node name="HTerrain" type="Node3D" parent="."]
 script = ExtResource("1_u4k6d")
 centered = true
@@ -120,7 +125,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_ebi87")
 
 [node name="main_camera" parent="." instance=ExtResource("12_je1pq")]
-transform = Transform3D(0.999391, 0.0344309, -0.00569999, -2.91038e-11, 0.163326, 0.986573, 0.0348995, -0.985971, 0.163226, 0.409182, 34.8513, 4.82895)
+transform = Transform3D(1, -6.98492e-09, 2.25555e-09, 2.60343e-11, 0.258819, 0.965926, -2.91038e-10, -0.965926, 0.258819, -1.53223, 46.8428, 8.09926)
 is_friendly = true
 
 [node name="Turret_Friendly" parent="." instance=ExtResource("5_rcr1x")]
