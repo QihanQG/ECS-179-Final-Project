@@ -2,7 +2,7 @@ class_name Factory
 extends StaticBody3D
 
 const Turret_1 = preload("res://scenes/Turret Gun.tscn")
-const Turret_2 = preload("res://scenes/Turret.tscn")
+const Turret_2 = preload("res://scenes/Turret Gun 2.tscn")
 const Turret_protype = preload("res://scenes/Turret.tscn")
 
 @onready var turret_spawn_1: Marker3D = $"../../turret_spawn_1"
@@ -22,8 +22,6 @@ var is_operational: bool = true
 
 var spawn_points: Array[Marker3D]
 var occupied_spawn_points: Array[Marker3D] = []
-
-
 signal turret_spawned(turret: Node)
 
 
@@ -54,7 +52,6 @@ func spawn_turret(turret_type: int = 0) -> void:
 
 	var spawn_point = spawn_point_available()
 	if not spawn_point:
-		print("No available spawn points!")
 		return
 	
 	var turret_scene: PackedScene
@@ -69,6 +66,7 @@ func spawn_turret(turret_type: int = 0) -> void:
 		turret.scale = Vector3(0.5,0.5,0.5) #make he turret 50% smaller
 		turret.global_position = spawn_point.global_position
 		turret.add_to_group("turret")
+		turret.set_factory_spawned()
 		
 		#spawn point taken
 		occupied_spawn_points.append(spawn_point)
