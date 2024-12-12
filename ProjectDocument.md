@@ -49,19 +49,21 @@ In addition to designing the main and pause menus, I also implemented the game's
 
 ## Animation and Visuals
 
-The goal for our 3D game was to create a visually coherent game that had characters, assets, and objects that flowed/worked well together. As a team we decided to create an arctic-themed tower defense game where penguins would be protecting their supply of fish from attacking waves of seal and polar bear enemies. Early on, as a team we decided that we wanted our game to have a cartoonish almost Roblox-style aesthetic that is partially blocky and not overly realstic. It needed an arcade feel. I began by looking for free-to-use assets online and stubled upon poly.pizza which provides access to thousands of poly 3D models for free. This is where I found most of the asset models for our game. 
+The objective for our 3D game was to create a visually cohesive experience where the characters, assets, and objects complemented each other seamlessly. As a team, we decided on an arctic-themed tower defense game in which penguins defend their precious supply of fish against waves of enemies, including seals and polar bears. From the outset, we envisioned a cartoonish, Roblox-inspired aesthetic—partially blocky, colorful, and intentionally unrealistic—to give the game an engaging arcade feel.
+
+To bring this vision to life, I began searching for free-to-use assets online. During this process, I discovered [poly.pizza](https://poly.pizza/), a great resource offering thousands of free, high-quality poly 3D models. This platform became my go-to in sourcing most of the asset models for our game, from characters to environmental elements. By leveraging these assets, we were able to achieve a consistent and playful visual style that aligned with our creative direction and gameplay mechanics.
 
 **List your assets, including their sources and licenses.**
 With poly.pizza I was able to find many of the character models that we used for our game inluding:
 
-* Pengiun - https://poly.pizza/m/2GSHsxaDIo
+* Penguin - https://poly.pizza/m/2GSHsxaDIo
 * Turret - https://poly.pizza/m/ekTQhbJId7 
 * Castle - https://poly.pizza/m/opTOmcN3o9 
 * Igloo - https://poly.pizza/m/4CNw6ZPb4x3
-* Seal - https://poly.pizza/m/45HRvXYpvUG
+* Tree - https://poly.pizza/m/3pWKPFASEn-
 
-<img src="scripts/pengiun.jpg" alt="pengiun" width="150" height="200"><img src="scripts/turret.jpg" alt="turret" width="200" height="200"><img src="scripts/castle.jpg" alt="castle" width="225" height="200">
-<img src="scripts/igloo.jpg" alt="igloo" width="200" height="200"><img src="scripts/seal.jpg" alt="seal" width="200" height="200">
+<img src="scripts/pengiuncharacter.jpg" alt="pengiuncharacter" width="150" height="200"><img src="scripts/turret.jpg" alt="turret" width="200" height="200"><img src="scripts/castle.jpg" alt="castle" width="225" height="200">
+<img src="scripts/igloo.jpg" alt="igloo" width="200" height="200"><img src="scripts/tree.jpg" alt="tree" width="200" height="200">
 
 I downloaded these assets from poly.pizza as .glb files and imported them directly into our project under assets -> models. Here, other members of the group could use the assets for their portions of the game development. 
 
