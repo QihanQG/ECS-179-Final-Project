@@ -1,4 +1,4 @@
-class_name WalkCommand
+class_name WalkLongCommand
 extends DurativeController
 
 var speed: float = 5.0
@@ -16,11 +16,10 @@ func setup_animation(anim):
 func execute():
 	super.execute()
 	animation_done = false
-	if not ani_timer:
-		ani_timer = Timer.new()
-		add_child(ani_timer)
-		ani_timer.start(duration)
-		ani_timer.timeout.connect(on_animation_complete)
+	ani_timer = Timer.new()
+	add_child(ani_timer)
+	ani_timer.start(duration)
+	ani_timer.timeout.connect(on_animation_complete)
 	if is_moving:
 		adjust_animation_speed()
 
@@ -36,5 +35,4 @@ func on_animation_complete():
 	character.velocity = Vector3.ZERO
 	if ani_timer:
 		ani_timer.queue_free()
-		ani_timer = null
 	emit_signal("completed")

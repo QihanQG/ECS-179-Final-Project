@@ -6,6 +6,7 @@ var timer: Timer
 
 func _ready():
 	add_to_group("projectiles")
+	add_to_group("friendly_projectiles")
 	var timer = Timer.new()
 	add_child(timer)
 	timer.wait_time = lifetime

@@ -1,8 +1,9 @@
 extends Node3D  
 
 var turret: Turret
+@onready var factory: Factory
 
-@export var damage: int = 100
+@export var damage: int = 10
 @export var current_health: int = 100
 @export var target_groups: String = "friendly"
 @export var debug_mode: bool = false
@@ -25,13 +26,17 @@ var turret: Turret
 
 var projectile_scene = preload("res://scenes/projectiles.tscn")  
 
-var factory: Factory
 
+var was_factory_spawned: bool = false
+
+
+	
 func _ready():
 	
 	add_to_group("turrets")
+	add_to_group("friendly_projectiles")
 	var projectile_spawn_points: Array[Marker3D] = [projectile_l,projectile_r]
-	
+	current_health = current_health
 	# Instantiate the Turret class
 	turret = Turret.new()
 	turret.initialize(parent_node, body, head, detection_area, projectile_spawn_points, projectile_scene, center_pos)
@@ -54,13 +59,17 @@ func _process(delta: float):
 		turret.process(delta)
 		turret.draw_detection_radius()
 
+func set_factory_spawned() -> void:
+	was_factory_spawned = true
 
 func take_damage(damage: float) -> void:
 	current_health -= damage
 	if current_health <= 0:
-		factory.turret_destroyed(self)
+		if factory and was_factory_spawned:  
+			factory.turret_destroyed(self)
 		queue_free()  
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body.has_method("get_damage"):
-		take_damage(body.damage)
+	if body.is_in_group("projectiles") and not body.is_in_group("friendly_projectiles"):
+		if body.has_method("get_damage"):
+			take_damage(body.damage)
