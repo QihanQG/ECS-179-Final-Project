@@ -16,7 +16,7 @@ attack the base/villager penguin '
 @export var walk_speed: float = 5.0
 @export var run_speed: float = 10.0 
 
-var total_health: int = 100
+var total_health: int = 1000
 var _death:bool = false
 
 
@@ -37,7 +37,7 @@ var run_command: RunCommand
 func _ready():
 	
 	add_to_group("enemies")
-	
+	add_to_group("zombies")
 
 	walk_command = WalkCommand.new(walk, walk_speed, 6, self)
 	walk_long_command = WalkLongCommand.new(walk, walk_speed, 15, self)
@@ -100,13 +100,6 @@ func _physics_process(_delta):
 		velocity = Vector3.ZERO
 	move_and_slide()
 
-func take_damage(turret_damage:int):
-	total_health -= turret_damage
-	if total_health <= 0 :
-		await start_death()
-		stop_all()
-		self.visible = false
-		queue_free()
 
 
 func start_walk():
@@ -164,3 +157,20 @@ func stop_all():
 	turn_left_command.stop()
 	idle_command.stop()
 	death_command.stop()
+
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.is_in_group("projectiles") :
+		if body.has_method("get_damage"):
+			take_damage(body.damage) 
+			print("zombies healths: ", total_health)
+
+func take_damage(damage: float) -> void:
+	total_health -= damage
+	print(total_health)
+	if total_health <= 0:
+		await start_death()
+		stop_all()
+		self.visible = false
+		queue_free()
