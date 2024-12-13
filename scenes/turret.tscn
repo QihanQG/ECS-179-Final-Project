@@ -181,7 +181,7 @@ shape = SubResource("CylinderShape3D_hocs4")
 
 [node name="DetectionArea" type="Area3D" parent="."]
 
-[node name="detection_area" type="CollisionShape3D" parent="DetectionArea"]
+[node name="detection_shape" type="CollisionShape3D" parent="DetectionArea"]
 shape = SubResource("CapsuleShape3D_227vo")
 
 [node name="BasePlate" parent="." instance=ExtResource("2_kvinj")]

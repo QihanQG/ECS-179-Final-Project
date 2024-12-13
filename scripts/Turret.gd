@@ -50,22 +50,29 @@ var fire_rate: float:
 		_fire_rate = value
 		if shoot_timer:
 			shoot_timer.wait_time = value
-			
-var detection_shape: CapsuleShape3D
 
+var detection_shape: CapsuleShape3D
 var detection_radius: float:
 	get:
 		return _detection_radius
 	set(value):
 		_detection_radius = value
-		if detection_shape:
-			detection_shape.radius = value
+		if detection_area:
+			for child in detection_area.get_children():
+				if child is CollisionShape3D and child.shape:
+					
+					# Duplicate the shape
+					var new_shape = child.shape.duplicate()
+					new_shape.radius = value
+					new_shape.height = value * 2
+					child.shape = new_shape  # Then reassign the shape
+					break
 
 
 
 
 func initialize(parent_node, rotation_area: Node3D, mount_rotation_pitch:Node3D, detection_area: Area3D, spawn_points: Array[Marker3D], projectile_scene: PackedScene, barrel_ref: Node3D = null):
-	
+	await parent_node.get_tree().process_frame
 	if barrel_ref:
 		self.barrel_ref = barrel_ref.global_position
 
@@ -77,14 +84,19 @@ func initialize(parent_node, rotation_area: Node3D, mount_rotation_pitch:Node3D,
 	self.projectile_scene = projectile_scene
 	self.damage = damage
 	
-	# Initialize detection radius
-	var collision_shape = detection_area.get_children()
-	for child in detection_area.get_children():
-		if child is CollisionShape3D and child.shape is CapsuleShape3D:
-			detection_shape = child.shape
-			_detection_radius = detection_shape.radius  
-			break
 	
+	# Initialize detection radius
+	if detection_area:
+		for child in detection_area.get_children():
+			if child is CollisionShape3D:
+				if child.shape is CapsuleShape3D:
+					detection_shape = child.shape  # Store reference to the shape
+					_detection_radius = child.shape.radius  # The initial radius
+					break
+	
+	detect_existing_targets()
+	detection_area.monitoring = true
+	detection_area.monitorable = true
 	# Connect signals
 	detection_area.connect("body_entered", Callable(self, "_on_detection_area_body_entered"))
 	detection_area.connect("body_exited", Callable(self, "_on_detection_area_body_exited"))
@@ -104,6 +116,23 @@ func process(delta):
 	if debug_mode:
 		draw_angle_boundaries()
 	aim_mode()
+
+
+
+
+
+func detect_existing_targets():
+	# Manually check for targets already inside the detection area
+	if detection_area:
+		var overlapping_bodies = detection_area.get_overlapping_bodies()
+		for body in overlapping_bodies:
+			if body.is_in_group(enemies) and body not in potential_targets:
+				potential_targets.append(body)
+				if current_target == null:
+					current_target = body
+				print("Detected existing target:", body.name)
+
+
 
 
 func _on_detection_area_body_entered(body: Node3D) -> void:
@@ -323,8 +352,6 @@ func get_target_velocity(target: Node3D) -> Vector3:
 		return target.linear_velocity
 	elif target is CharacterBody3D:
 		return target.velocity
-	elif target is StaticBody3D:
-		return Vector3.ZERO
 	elif target.has_property("velocity"):
 		return target.velocity
 	elif target.has_method("get_velocity"):
@@ -446,12 +473,12 @@ func shoot():
 		var projectile = projectile_scene.instantiate()
 		parent_node.add_child(projectile)
 		projectile.global_position = spawn_point.global_position
-		projectile.global_rotation = spawn_point.global_rotation 
 		
 		var rotation_vector = Vector3(mount_rotation_pitch.global_rotation.x, rotation_area.global_rotation.y, 0 )
 		
 		var forward_direction = get_forward_direction_from_yaw_and_pitch(rotation_vector)
 		
+		projectile.global_rotation = rotation_vector
 		
 		projectile.damage = damage
 		

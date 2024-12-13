@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://brrjjrvdtpxot"]
+[gd_scene load_steps=23 format=4 uid="uid://brrjjrvdtpxot"]
 
 [ext_resource type="Script" path="res://scripts/zombie_walk_script.gd" id="1_cwdr4"]
 
@@ -2167,9 +2167,13 @@ _data = {
 "mixamo_com": SubResource("Animation_pi2vo")
 }
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fnr54"]
+radius = 0.0005
+height = 2.87
+
 [node name="zombie" type="CharacterBody3D" node_paths=PackedStringArray("walk", "attack", "turn_right", "turn_left", "idle", "death", "run")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -29.86, 3.68, -11.48)
-visible = false
+collision_mask = 3
 script = ExtResource("1_cwdr4")
 walk = NodePath("walk")
 attack = NodePath("attack")
@@ -2528,3 +2532,9 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_7f07m")
 }
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.6917)
+shape = SubResource("CapsuleShape3D_fnr54")

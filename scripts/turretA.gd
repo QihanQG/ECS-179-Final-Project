@@ -6,7 +6,7 @@ var turret: Turret
 @export var target_group: String = "enemies"
 @export var debug_mode: bool = false
 @export var lock_on_til_death = true
-@export var detection_radius: float = 10
+@export var detection_radius: float
 @export var fire_rate: float = 1
 @export var projectile_speed: float = 100
 @export var rotation_speed: float = 10
@@ -21,6 +21,8 @@ var turret: Turret
 @onready var head: Node3D = $body/head
 @onready var detection_area: Area3D = $DetectionArea
 @onready var projectile_spawn_marker: Marker3D = $body/head/projectile_spawn_marker
+@onready var detection_shape: CollisionShape3D = $DetectionArea/detection_shape
+
 
 var was_factory_spawned: bool = false 
 var projectile_scene = preload("res://scenes/projectiles.tscn")  
@@ -30,7 +32,6 @@ var factory: Factory
 
 
 func _ready():
-	
 	add_to_group("turrets")
 	add_to_group("friendly_projectiles")
 	var projectile_spawn_points: Array[Marker3D] = [projectile_spawn_marker]

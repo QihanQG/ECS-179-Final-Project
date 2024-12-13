@@ -5,7 +5,7 @@ var factory: Factory
 
 @export var damage: int = 100
 @export var current_health: int = 100
-@export var target_group: String = "friendly"
+@export var target_group: String = "enemies"
 @export var debug_mode: bool = false
 @export var lock_on_til_death = true
 @export var detection_radius: float = 10
@@ -33,15 +33,17 @@ func _ready():
 	add_to_group("friendly_projectiles")
 	var projectile_spawn_points: Array[Marker3D] = [projectile_spawn_point]
 	
+	
 	# Instantiate the Turret class
 	turret = Turret.new()
 	turret.initialize(parent_node, body, head, detection_area, projectile_spawn_points, projectile_scene,barrel)
-
+	
+	
 	# properties
+	turret.lock_on_till_death = lock_on_til_death
+	turret.detection_radius = detection_radius
 	turret.enemies = target_group
 	turret.barrel_ref = barrel.global_position	
-	turret.detection_radius = detection_radius
-	turret.lock_on_till_death = lock_on_til_death
 	turret.rotation_speed = rotation_speed
 	turret.projectile_speed = projectile_spee
 	turret.fire_rate = fire_rate
@@ -62,9 +64,7 @@ func set_factory_spawned() -> void:
 func take_damage(damage: float) -> void:
 	current_health -= damage
 	if current_health <= 0:
-		if factory and was_factory_spawned:
-			factory.turret_destroyed(self)
-	queue_free()  
+		queue_free()  
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("projectiles") and not body.is_in_group("friendly_projectiles"):
