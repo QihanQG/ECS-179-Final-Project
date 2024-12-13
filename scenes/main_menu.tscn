@@ -85,6 +85,11 @@ size = Vector3(1, 2, 1)
 transform = Transform3D(0.999995, -0.00311328, 0.000721761, 0.00311416, 0.999994, -0.001219, -0.000717969, 0.00122124, 0.999999, -0.220264, 1.21166, 0.0610809)
 script = ExtResource("1_gvoss")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(0.843184, 0.843184, 0.843184, 1)
+shadow_enabled = true
+
 [node name="HTerrain" type="Node3D" parent="."]
 script = ExtResource("1_jkm60")
 centered = true

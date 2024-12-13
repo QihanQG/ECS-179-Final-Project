@@ -49,29 +49,41 @@ In addition to designing the main and pause menus, I also implemented the game's
 
 ## Animation and Visuals
 
-The goal for our 3D game was to create a visually coherent game that had characters, assets, and objects that flowed/worked well together. As a team we decided to create an arctic-themed tower defense game where penguins would be protecting their supply of fish from attacking waves of seal and polar bear enemies. Early on, as a team we decided that we wanted our game to have a cartoonish almost Roblox-style aesthetic that is partially blocky and not overly realstic. It needed an arcade feel. I began by looking for free-to-use assets online and stubled upon poly.pizza which provides access to thousands of poly 3D models for free. This is where I found most of the asset models for our game. 
+### 3D Models and Assets
+The objective for our 3D game was to create a visually cohesive experience where the characters, assets, and objects complemented each other seamlessly. As a team, we decided on an arctic-themed tower defense game in which penguins defend their precious supply of fish against waves of enemies, including seals and polar bears. From the outset, we envisioned a cartoonish, Roblox-inspired aesthetic—partially blocky, colorful, and intentionally unrealistic—to give the game an engaging arcade feel.
+
+To bring this vision to life, I began searching for free-to-use assets online. During this process, I discovered [poly.pizza](https://poly.pizza/), a great resource offering thousands of free, high-quality poly 3D models. This platform became my go-to in sourcing most of the asset models for our game, from characters to environmental elements. By leveraging these assets, we were able to achieve a consistent and playful visual style that aligned with our creative direction and gameplay mechanics.
 
 **List your assets, including their sources and licenses.**
 With poly.pizza I was able to find many of the character models that we used for our game inluding:
 
-* Pengiun - https://poly.pizza/m/9Ift-39Akov
+* Penguin - https://poly.pizza/m/2GSHsxaDIo
 * Turret - https://poly.pizza/m/ekTQhbJId7 
 * Castle - https://poly.pizza/m/opTOmcN3o9 
 * Igloo - https://poly.pizza/m/4CNw6ZPb4x3
-* Seal - https://poly.pizza/m/45HRvXYpvUG
+* Tree - https://poly.pizza/m/3pWKPFASEn-
 
-<img src="scripts/pengiun.jpg" alt="pengiun" width="150" height="200"><img src="scripts/turret.jpg" alt="turret" width="200" height="200"><img src="scripts/castle.jpg" alt="castle" width="225" height="200">
-<img src="scripts/igloo.jpg" alt="igloo" width="200" height="200"><img src="scripts/seal.jpg" alt="seal" width="200" height="200">
+<img src="scripts/pengiuncharacter.jpg" alt="pengiuncharacter" width="225" height="200"><img src="scripts/turret.jpg" alt="turret" width="200" height="200"><img src="scripts/castle.jpg" alt="castle" width="250" height="200">
+<img src="scripts/igloo.jpg" alt="igloo" width="200" height="200"><img src="scripts/tree.jpg" alt="tree" width="150" height="200">
 
 I downloaded these assets from poly.pizza as .glb files and imported them directly into our project under assets -> models. Here, other members of the group could use the assets for their portions of the game development. 
 
-Animation: 
-I have never had experience animating 3D models and assets and even little experience animating 2D sprites. However, I was able to use a program called Maximo - https://www.mixamo.com/ - which greatly simplifies the animation process for 3D models. I imported a character asset from poly.pizza and placed joints at the knees, wrists, chin, and groin of the 3D model. The software then creates a skeleton with weight (rigs) and animates the imported model. Unfortunately, the model must be a human-like character since the animations are made to replicate human actions and not animals. Becuase of this, I had to choose a humanistic model of a pengiun character from poly.pizza in order to get the animations properly working. Because of the tight time constraint, this was the simplest way to handle animation. However if given more time, I think that I could have learned to rig my own models and animate them in Blender which would allow me to animate four-legged animals for the game. As of right now, we kept the 4-legged animals 
+### Animation
+I have limited experience animating 2D sprites and no prior experience animating 3D models or assets. However, I used a program called [Maximo](https://www.mixamo.com/), which simplifies the 3D animation process significantly. I started by importing a character asset from poly.pizza and positioned joints at key areas such as the knees, wrists, chin, and groin of the 3D model. Mixamo then automatically generated a skeleton with weights (rigs) and applied animations to the model.
 
+<img src="scripts/maximo_work.jpg" alt="maximo_work" width="550" height="350"><img src="scripts/maximo.jpg" alt="maximo" width="800" height="400">
+
+Since Mixamo is designed for human-like characters, the animations are tailored to mimic human movements rather than animals. To work around this limitation, I selected a humanoid penguin character from poly.pizza to ensure the animations functioned correctly. Given the tight time constraints, this approach was the most efficient solution for animating the character.
+
+If I had more time, I would have explored creating custom rigs and animations in Blender. This would have allowed me to animate non-humanoid characters, such as four-legged animals, expanding the possibilities for the game.
+
+### Map/World-Building
 **Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
 
-As far as building the map, we only needed to create a single map as it made the most sense for the implication of our game as a tower defense game as normally, the map stays the same with variables being number of enemies or difficulty of enemies. In addition, the map acts as a "sandbox" for the game player as they are able to add turrets and other defences to help combat the enemies so it would not made sens to rotate between different maps. 
-I worked with world-building to create an icy-border for the map using a Godot-plugin called Heightmap Terrain which allowed me to construct the terrain of the map making mountain/hill terrain. 
+When designing the map for our game, we decided to create a single, well-crafted map, as it aligned well with the mechanics and objectives of our tower defense gameplay. In most tower defense games, the map remains constant while the variables—such as the number of enemies, their difficulty, or their spawn frequency—change over time. Additionally, the map serves as a "sandbox" for players, providing a space where they can strategically place turrets and defenses to combat waves of enemies. Switching between maps as the game progresses would have disrupted this core gameplay loop and diminished the strategic depth we wanted to offer.
+
+As I helped with the world-building, I was responsible for crafting the icy terrain and adding environmental details to bring our arctic theme to life. I used a Godot plugin called [Heightmap Terrain](https://godotengine.org/asset-library/asset/231) to sculpt the landscape, creating mountain ridges and hill-like terrain to serve as natural borders for the map. Beyond shaping the terrain, I positioned several 3D models, such as an igloo where the enemies spawn, a castle that the enemies are trying to attack, and other structures, to define the map's visual identity and strategic points. To enhance the game's overall feel, I incorporated smaller details like scattered trees, ice walls, and other environmental elements, creating a visually engaging and immersive arctic battlefield. These touches not only improved the map's aesthetic but also contributed to the game's atmosphere, making it more enjoyable and memorable for players.
+
 <img src="scripts/mapoverview.jpg" alt="mapoverview" width="800" height="500">
 
 *Name: Maxim Saschin*   
