@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dxgsjwvwdy3qq"]
+[gd_scene load_steps=38 format=3 uid="uid://dxgsjwvwdy3qq"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_gvoss"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="1_jkm60"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c3qbhftm3v3re" path="res://scenes/surface.tscn" id="4_k3qld"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="5_mwx78"]
 [ext_resource type="Script" path="res://scripts/penguin_manager.gd" id="6_jlj3g"]
+[ext_resource type="Script" path="res://scripts/zombie.gd" id="9_uti7g"]
 [ext_resource type="PackedScene" uid="uid://ctppybj5h66e" path="res://assets/models/Igloo.glb" id="12_lsh2i"]
 [ext_resource type="Script" path="res://scripts/EnemySpawner.gd" id="13_rw57q"]
 [ext_resource type="PackedScene" uid="uid://dmr4dd1quowrh" path="res://scenes/camera.tscn" id="14_escxk"]
@@ -125,6 +126,9 @@ script = ExtResource("6_jlj3g")
 
 [node name="zombie" parent="." instance=ExtResource("18_0yr86")]
 transform = Transform3D(0.499997, 0.00155708, -0.000358984, -0.00155664, 0.499997, 0.00061062, 0.000360884, -0.000609499, 0.5, -29.1803, 3.67523, -13.4312)
+
+[node name="Node3D" type="Node3D" parent="zombie"]
+script = ExtResource("9_uti7g")
 
 [node name="Town" type="Node3D" parent="."]
 transform = Transform3D(0.99612, 0.0880077, 0, -0.0880077, 0.99612, 0, -1.74623e-10, 8.14907e-10, 1, 29.4214, 8.33957, -25.3035)
