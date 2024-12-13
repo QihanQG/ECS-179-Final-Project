@@ -22,8 +22,6 @@ Pause: `ESC` to pause or quit the game entirely.
 
 **Describe the steps you took in your role as producer. Typical items include group scheduling mechanisms, links to meeting notes, descriptions of team logistics problems with their resolution, project organization tools (e.g., timelines, dependency/task tracking, Gantt charts, etc.), and repository management methodology.**
 
-
-
 *Name: Cheng-yuan Liu*   
 *Email: cgyliu@ucdavis.edu*   
 *Github: *ccc2d8850
@@ -36,7 +34,7 @@ Pause: `ESC` to pause or quit the game entirely.
 
 ### User Interface
 
-My primary task in the development of our tower defense game focused on the user interface and input, ensuring that the game was intuitive, responsive, and enjoyable for players. One of my first responsibilities was designing a wireframe for the layout, which served as a blueprint for the game's user interface. I started by mapping out the key elements the players would need to interact with during gameplay. The layout included elements like the enemy's spawn point, the road, the end road, the overall design for the enemy path and the town. 
+My primary task in the development of our tower defense game focused on the user interface and input, ensuring that the game was intuitive, responsive, and enjoyable for players. One of my first responsibilities was designing a wireframe for the layout, which served as a blueprint for the game's user interface. I started by mapping out the key elements the players would need to interact with during gameplay. The layout included elements like the enemy's spawn point, the road, the end road, the overall design for the enemy path and the town. I was resposible for creating the path.
 
 <img src="imgs/Layout.jpg" alt="" width="800" height="475">
 
