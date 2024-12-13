@@ -16,10 +16,14 @@ The penguins are in trouble! Mischievous seals and bears are invading their icy 
 ## Producer
 
 **Describe the steps you took in your role as producer. Typical items include group scheduling mechanisms, links to meeting notes, descriptions of team logistics problems with their resolution, project organization tools (e.g., timelines, dependency/task tracking, Gantt charts, etc.), and repository management methodology.**
+We mainly communicate via discord group chat, so most of our meeting notes are stored there, include but not limited to - map terrain problems, enemy animation, turret integration, etc. We had two official meetings, one is planning, assigned each job prior to our initial implementation, and another is before the deadline to coordinate each functionalities, and I will say we fix the issues efficiently after the meeting. I had checked in with our members once a week to track the progress, and we mostly follow the timeline in the initial gameplan, except a slightly behind at the very last week, I'll just drop the progress report link below. I'll say I didnt really do this role very well, since I primarily focus on town/buildings implementation, and we didnt really faced a problem on git-based workflow, everythings pretty much merged well amazingly.
+
+Project timeline (inside initial gameplan): https://docs.google.com/document/d/1GZWn_SmqQvAIgVN7532S8e85JhK0-5KoybL1oGKh4r8/edit?tab=t.0 
+Progress report : https://docs.google.com/document/d/1KQmFBPK5jppJ9UUhGbMz5CHWgYjXk1dk-KPUlCqqudk/edit?tab=t.0
 
 *Name: Cheng-yuan Liu*   
 *Email: cgyliu@ucdavis.edu*   
-*Github: *
+*Github: *ccc2d8850
 
 ## User Interface and Input
 
@@ -126,6 +130,12 @@ Then I work with Cheng-yuan to implement the building/town scripts.
 Lego" (https://skfb.ly/MEGs) by Jody_Hong 
 (http://creativecommons.org/licenses/by/4.0/). Rigging and animations by Adobe mixamo
 
+*Name: Cheng-yuan Liu*   
+*Email: cgyliu@ucdavis.edu*   
+*Github: *ccc2d8850
+
+I first create a base building template for our buildings to extend (resource, factory, wall, castle), but something went off after one of the many commits. So after that I decide to just use a town to hold all the buildings inside, and place wall system onto the town itself. Originally, I want to make our turrets able to place on the wall mount points to grant player more options and a more strategic gameplay, but we change the plan so I discard the functionality. Secondly, I built a game manager/manager tester script to better handle the game stage such as : game start, game end, resources change, etc. via various signals. And finally, I implemented the functionalites of each buildings. For me the most difficult part is to test each building while not having a playable game, when everything is still raw, it's real hard to really see how things will go after some siginificant changes, it also made me have to modify some tiny stuff almost after each commits. Another siginificant challenge for me was setting up the mesh/collision/area all kinds of nodes under each building to handle the functionalities, I dont really know why the mesh instance for each buildings keep going off, so its very hard for me to test the scripts.
+
 
 # Sub-Roles
 
@@ -160,10 +170,12 @@ Lego" (https://skfb.ly/MEGs) by Jody_Hong
 ## Narrative Design
 
 **Document how the narrative is present in the game via assets, gameplay systems, and gameplay.** 
+ 
+ We dont really have a narrative design since the game itself is pretty straightforward, so i mainly spend my time on game logic (town/buildings implementation). We do provide the core game background in the icy arctic-based scene, include igloo, penguin, etc., besides, I mostly spend my time on buildings/town logic implementation.  
 
 *Name: Cheng-yuan Liu*   
 *Email: cgyliu@ucdavis.edu*   
-*Github: *
+*Github: *ccc2d8850
 
 ## Game Feel and Polish
 
