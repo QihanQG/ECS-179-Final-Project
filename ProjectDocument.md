@@ -126,11 +126,7 @@ disabling the transformation.
 
 ![](https://github.com/QihanQG/ECS-179-Final-Project/blob/main/imgs/zombie_walk_.gif)
 
-Then I work with Cheng-yuan to implement the building/town scripts.
-
-#### assets:
-Lego" (https://skfb.ly/MEGs) by Jody_Hong 
-(http://creativecommons.org/licenses/by/4.0/). Rigging and animations by Adobe mixamo
+Then I work with Cheng Yuan to implement the building/town scripts. Given the time constraint, we decided to keep it simple. The research building passively upgrades turret attributes as long as its health remains above 20%. But only newly spawned turrets inherit these upgrades. The production building spawns turrets at predefined fortress points, tracking availability and only spawning at unoccupied locations.
 
 *Name: Cheng-yuan Liu*   
 *Email: cgyliu@ucdavis.edu*   
@@ -139,13 +135,20 @@ Lego" (https://skfb.ly/MEGs) by Jody_Hong
 I first create a base building template for our buildings to extend (resource, factory, wall, castle), but something went off after one of the many commits. So after that I decide to just use a town to hold all the buildings inside, and place wall system onto the town itself. Originally, I want to make our turrets able to place on the wall mount points to grant player more options and a more strategic gameplay, but we change the plan so I discard the functionality. Secondly, I built a game manager/manager tester script to better handle the game stage such as : game start, game end, resources change, etc. via various signals. And finally, I implemented the functionalites of each buildings. For me the most difficult part is to test each building while not having a playable game, when everything is still raw, it's real hard to really see how things will go after some siginificant changes, it also made me have to modify some tiny stuff almost after each commits. Another siginificant challenge for me was setting up the mesh/collision/area all kinds of nodes under each building to handle the functionalities, I dont really know why the mesh instance for each buildings keep going off, so its very hard for me to test the scripts.
 
 
+
+#### assets:
+Lego" (https://skfb.ly/MEGs) by Jody_Hong 
+(http://creativecommons.org/licenses/by/4.0/). Rigging and animations by Adobe mixamo
+
 # Sub-Roles
 
-## Weapons System
+## Weapons System/ Debugging
 
 *Name: Qihan Guan*   
 *Email: qgguan@ucdavis.edu*   
 *Github: *
+
+My sub role is practically the same as my main, the general game logic and mechanics. This involves debugging scripts or fixing scenes.
 
 ## Audio
 
