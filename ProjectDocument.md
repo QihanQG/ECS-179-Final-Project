@@ -86,15 +86,15 @@ With poly.pizza I was able to find many of the character models that we used for
 * Igloo - https://poly.pizza/m/4CNw6ZPb4x3
 * Tree - https://poly.pizza/m/3pWKPFASEn-
 
-<img src="scripts/pengiuncharacter.jpg" alt="pengiuncharacter" width="225" height="200"><img src="scripts/turret.jpg" alt="turret" width="200" height="200"><img src="scripts/castle.jpg" alt="castle" width="250" height="200">
-<img src="scripts/igloo.jpg" alt="igloo" width="200" height="200"><img src="scripts/tree.jpg" alt="tree" width="150" height="200">
+<img src="imgs/pengiuncharacter.jpg" alt="pengiuncharacter" width="225" height="200"><img src="imgs/turret.jpg" alt="turret" width="200" height="200"><img src="imgs/castle.jpg" alt="castle" width="250" height="200">
+<img src="imgs/igloo.jpg" alt="igloo" width="200" height="200"><img src="imgs/tree.jpg" alt="tree" width="150" height="200">
 
 I downloaded these assets from poly.pizza as .glb files and imported them directly into our project under assets -> models. Here, other members of the group could use the assets for their portions of the game development. 
 
 ### Animation
 I have limited experience animating 2D sprites and no prior experience animating 3D models or assets. However, I used a program called [Maximo](https://www.mixamo.com/), which simplifies the 3D animation process significantly. I started by importing a character asset from poly.pizza and positioned joints at key areas such as the knees, wrists, chin, and groin of the 3D model. Mixamo then automatically generated a skeleton with weights (rigs) and applied animations to the model.
 
-<img src="scripts/maximo_work.jpg" alt="maximo_work" width="550" height="350"><img src="scripts/maximo.jpg" alt="maximo" width="800" height="400"><img src="scripts/penguinrun-ezgif.com-video-to-gif-converter.gif" alt="penguinrun" width="300" height="400">
+<img src="imgs/maximo_work.jpg" alt="maximo_work" width="550" height="350"><img src="imgs/maximo.jpg" alt="maximo" width="800" height="400"><img src="imgs/penguinrun-ezgif.com-video-to-gif-converter.gif" alt="penguinrun" width="300" height="400">
 
 Since Mixamo is designed for human-like characters, the animations are tailored to mimic human movements rather than animals. To work around this limitation, I selected a humanoid penguin character from poly.pizza to ensure the animations functioned correctly. Given the tight time constraints, this approach was the most efficient solution for animating the character.
 
@@ -107,7 +107,7 @@ When designing the map for our game, we decided to create a single, well-crafted
 
 As I helped with the world-building, I was responsible for crafting the icy terrain and adding environmental details to bring our arctic theme to life. I used a Godot plugin called [Heightmap Terrain](https://godotengine.org/asset-library/asset/231) to sculpt the landscape, creating mountain ridges and hill-like terrain to serve as natural borders for the map. Beyond shaping the terrain, I positioned several 3D models, such as an igloo where the enemies spawn, a castle that the enemies are trying to attack, and other structures, to define the map's visual identity and strategic points. To enhance the game's overall feel, I incorporated smaller details like scattered trees, ice walls, and other environmental elements, creating a visually engaging and immersive arctic battlefield. These touches not only improved the map's aesthetic but also contributed to the game's atmosphere, making it more enjoyable and memorable for players.
 
-<img src="scripts/mapoverview.jpg" alt="mapoverview" width="800" height="500">
+<img src="imgs/mapoverview.jpg" alt="mapoverview" width="800" height="500">
 
 ## Game Logic
 
