@@ -49,6 +49,7 @@ In addition to designing the main and pause menus, I also implemented the game's
 
 ## Animation and Visuals
 
+### 3D Models and Assets
 The objective for our 3D game was to create a visually cohesive experience where the characters, assets, and objects complemented each other seamlessly. As a team, we decided on an arctic-themed tower defense game in which penguins defend their precious supply of fish against waves of enemies, including seals and polar bears. From the outset, we envisioned a cartoonish, Roblox-inspired aesthetic—partially blocky, colorful, and intentionally unrealistic—to give the game an engaging arcade feel.
 
 To bring this vision to life, I began searching for free-to-use assets online. During this process, I discovered [poly.pizza](https://poly.pizza/), a great resource offering thousands of free, high-quality poly 3D models. This platform became my go-to in sourcing most of the asset models for our game, from characters to environmental elements. By leveraging these assets, we were able to achieve a consistent and playful visual style that aligned with our creative direction and gameplay mechanics.
@@ -67,19 +68,22 @@ With poly.pizza I was able to find many of the character models that we used for
 
 I downloaded these assets from poly.pizza as .glb files and imported them directly into our project under assets -> models. Here, other members of the group could use the assets for their portions of the game development. 
 
-Animation: 
+### Animation
 I have limited experience animating 2D sprites and no prior experience animating 3D models or assets. However, I used a program called [Maximo](https://www.mixamo.com/), which simplifies the 3D animation process significantly. I started by importing a character asset from poly.pizza and positioned joints at key areas such as the knees, wrists, chin, and groin of the 3D model. Mixamo then automatically generated a skeleton with weights (rigs) and applied animations to the model.
 
-<img src="scripts/maximo_work.jpg" alt="maximo_work" width="550" height="400"><img src="scripts/maximo.jpg" alt="maximo" width="700" height="400">
+<img src="scripts/maximo_work.jpg" alt="maximo_work" width="550" height="350"><img src="scripts/maximo.jpg" alt="maximo" width="800" height="400">
 
 Since Mixamo is designed for human-like characters, the animations are tailored to mimic human movements rather than animals. To work around this limitation, I selected a humanoid penguin character from poly.pizza to ensure the animations functioned correctly. Given the tight time constraints, this approach was the most efficient solution for animating the character.
 
 If I had more time, I would have explored creating custom rigs and animations in Blender. This would have allowed me to animate non-humanoid characters, such as four-legged animals, expanding the possibilities for the game.
 
+### Map/World-Building
 **Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
 
-As far as building the map, we only needed to create a single map as it made the most sense for the implication of our game as a tower defense. Normally, in a tower defense game the map stays the same with the changing variables being number of enemies or difficulty of enemies. In addition, the map acts as a "sandbox" for the game player as they are able to add turrets and other defences to help combat the enemies so it would make little sense to rotate between different maps as the game progressed. 
-I worked as a world-builder to create an icy-border for the map using a Godot-plugin called Heightmap Terrain which allowed me to construct the terrain of the map making mountain/hill terrain. I also added in and positioned some of the 3D models into the map such as the igloo, castle, and other structures. I added small details to the map such as trees and ice walls to help improve the overall game feel. 
+When designing the map for our game, we decided to create a single, well-crafted map, as it aligned well with the mechanics and objectives of our tower defense gameplay. In most tower defense games, the map remains constant while the variables—such as the number of enemies, their difficulty, or their spawn frequency—change over time. Additionally, the map serves as a "sandbox" for players, providing a space where they can strategically place turrets and defenses to combat waves of enemies. Switching between maps as the game progresses would have disrupted this core gameplay loop and diminished the strategic depth we wanted to offer.
+
+As I helped with the world-building, I was responsible for crafting the icy terrain and adding environmental details to bring our arctic theme to life. I used a Godot plugin called [Heightmap Terrain](https://godotengine.org/asset-library/asset/231) to sculpt the landscape, creating mountain ridges and hill-like terrain to serve as natural borders for the map. Beyond shaping the terrain, I positioned several 3D models, such as an igloo where the enemies spawn, a castle that the enemies are trying to attack, and other structures, to define the map's visual identity and strategic points. To enhance the game's overall feel, I incorporated smaller details like scattered trees, ice walls, and other environmental elements, creating a visually engaging and immersive arctic battlefield. These touches not only improved the map's aesthetic but also contributed to the game's atmosphere, making it more enjoyable and memorable for players.
+
 <img src="scripts/mapoverview.jpg" alt="mapoverview" width="800" height="500">
 
 *Name: Maxim Saschin*   
