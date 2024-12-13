@@ -6,10 +6,15 @@ The penguins are in trouble! Mischievous seals and bears are invading their icy 
 
 ## Gameplay Explanation ##
 
-**In this section, explain how the game should be played. Treat this as a manual within a game. Explaining the button mappings and the most optimal gameplay strategy is encouraged.**
+The players can move around the map using `WSDA` keys and `all mouse click` buttons. To start the game player can either choose new game to enter. Once entered, the player will set up tower defenses and click the "Ready" button on the screen when they want the round to begin.
 
+Movement: Move by using the keys `WSDA`. Press `W` to go forward; `S` to move backwards; `D` to go right; `A` to go left: `scroll-wheel up` to zoom in; `scrool-wheel down ` to zoom out.
 
-**Add it here if you did work that should be factored into your grade but does not fit easily into the proscribed roles! Please include links to resources and descriptions of game-related material that does not fit into roles here.**
+Turret placement: `mouse left-click` to select anything on the UI including turret options.
+
+Cancel: `mouse right-click` to cancel
+
+Pause: `ESC` to pause or quit the game entirely.
 
 # Main Roles #
 
@@ -224,7 +229,7 @@ With these improvements, playtesters agreed the game has strong potential to del
 
 For game feel, one of the key improvements I made was addressing the brightness issue in the game. Initially, the game environment was too dark, which made it difficult for players to see the map and its contents. To fix this issue, I added a sun scene to enhance the lighting giving the game a more aesthetically pleasing environment. 
 
-Additionally, I worked on positioning key structures like igloos, ensuring they all fit into the team. I created the path and refined it. The terrain was improved by smoothing out the surfaced and evened it out.
+Additionally, I worked on positioning key structures like igloos, and our defense tower ensuring they all fit into their correct positions. I was responsible for creating the path and made improvements by cleaning up the terrain's blockage. The terrain was improved by smoothing out the surfaced, layering, and removing.
 
 <img src="imgs/dark.png" alt="" width="400" height="150"> <img src="imgs/bright.png" alt="" width="400" height="150"> <img src="imgs/cleanup.png" alt="" width="400" height="150">
 
