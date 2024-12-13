@@ -28,14 +28,14 @@ func _ready():
 	_spawn_interval_timer.one_shot = false
 	add_child(_spawn_interval_timer)
 	_spawn_interval_timer.timeout.connect(spawn_zombie)
-	_spawn_interval_timer.start()
+	#_spawn_interval_timer.start()
 	"_wave_interval_timer = Timer.new()
 	_wave_interval_timer.wait_time = _wave_interval
 	_wave_interval_timer.one_shot = true
 	add_child(_wave_interval_timer)
 	_wave_interval_timer.timeout.connect(spawn_wave)"
 	
-	spawn_zombie()
+	#spawn_zombie()
 	
 "func spawn_wave():
 	if _total_zombie_in_wave == 0 :
@@ -58,3 +58,13 @@ func spawn_zombie():
 			_current_zombie_count += 1
 	else:
 		_spawn_interval_timer.stop()
+		
+
+
+# Brian's implementation of start spawn function
+func start_spawning():
+	print("Starting zombie spawning...")
+	_current_zombie_wave = 0
+	_current_zombie_count = 0
+	_spawn_interval_timer.start()  # Start the spawn interval timer
+	spawn_zombie()  # Optionally spawn the first zombie immediately

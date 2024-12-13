@@ -20,3 +20,14 @@ func toggle_pause_menu():
 	else:
 		pause_menu.hide()
 		Engine.time_scale = 1  # Resume the game logic
+
+
+
+# Ready button 
+
+@onready var zombie_spawner: ZombieSpawner = $ZombieSpawner  # Replace $ZombieSpawner with the correct node path
+
+
+func _on_button_pressed():
+	$UI/Control/ReadyButton.hide()
+	zombie_spawner.start_spawning()

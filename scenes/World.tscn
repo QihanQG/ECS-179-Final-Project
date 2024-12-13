@@ -206,7 +206,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_ebi87")
 
 [node name="main_camera" parent="." instance=ExtResource("12_je1pq")]
-transform = Transform3D(1, -6.8103e-09, 2.19734e-09, 2.62617e-11, 0.258819, 0.965926, -1.74623e-10, -0.965926, 0.258819, -3.18287, 53.8925, 7.69623)
+transform = Transform3D(1, -6.8685e-09, 2.24099e-09, 2.6148e-11, 0.258819, 0.965926, -2.91038e-10, -0.965926, 0.258819, -3.62707, 53.8939, 7.69591)
 is_friendly = true
 
 [node name="Turret_Friendly" parent="." instance=ExtResource("5_rcr1x")]
@@ -249,6 +249,7 @@ path_joined = false
 
 [node name="zombie" parent="." instance=ExtResource("18_arnwj")]
 transform = Transform3D(0.499997, 0.00155708, -0.000358984, -0.00155664, 0.499997, 0.00061062, 0.000360884, -0.000609499, 0.5, -29.86, 3.67972, -11.4862)
+visible = false
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="zombie"]
 transform = Transform3D(1.99999, -0.00622657, 0.00144353, 0.00622833, 1.99999, -0.002438, -0.00143594, 0.00244248, 2, 59.7592, -7.20143, 22.9205)
@@ -278,3 +279,30 @@ mesh = SubResource("BoxMesh_2saqr")
 shape = SubResource("BoxShape3D_b2ehf")
 
 [node name="PauseMenu" parent="." instance=ExtResource("17_686rf")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="ReadyButton" type="Button" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -62.0
+offset_top = 27.0
+offset_right = 64.0
+offset_bottom = 90.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "Ready"
+
+[connection signal="pressed" from="UI/Control/ReadyButton" to="." method="_on_button_pressed"]

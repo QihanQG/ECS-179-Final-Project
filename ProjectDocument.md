@@ -73,7 +73,7 @@ I downloaded these assets from poly.pizza as .glb files and imported them direct
 ### Animation
 I have limited experience animating 2D sprites and no prior experience animating 3D models or assets. However, I used a program called [Maximo](https://www.mixamo.com/), which simplifies the 3D animation process significantly. I started by importing a character asset from poly.pizza and positioned joints at key areas such as the knees, wrists, chin, and groin of the 3D model. Mixamo then automatically generated a skeleton with weights (rigs) and applied animations to the model.
 
-<img src="scripts/maximo_work.jpg" alt="maximo_work" width="550" height="350"><img src="scripts/maximo.jpg" alt="maximo" width="800" height="400">
+<img src="scripts/maximo_work.jpg" alt="maximo_work" width="550" height="350"><img src="scripts/maximo.jpg" alt="maximo" width="800" height="400"><img src="scripts/penguinrun-ezgif.com-video-to-gif-converter.gif" alt="penguinrun" width="300" height="400">
 
 Since Mixamo is designed for human-like characters, the animations are tailored to mimic human movements rather than animals. To work around this limitation, I selected a humanoid penguin character from poly.pizza to ensure the animations functioned correctly. Given the tight time constraints, this approach was the most efficient solution for animating the character.
 
@@ -122,11 +122,7 @@ disabling the transformation.
 
 ![](https://github.com/QihanQG/ECS-179-Final-Project/blob/main/imgs/zombie_walk_.gif)
 
-Then I work with Cheng-yuan to implement the building/town scripts.
-
-#### assets:
-Lego" (https://skfb.ly/MEGs) by Jody_Hong 
-(http://creativecommons.org/licenses/by/4.0/). Rigging and animations by Adobe mixamo
+Then I work with Cheng Yuan to implement the building/town scripts. Given the time constraint, we decided to keep it simple. The research building passively upgrades turret attributes as long as its health remains above 20%. But only newly spawned turrets inherit these upgrades. The production building spawns turrets at predefined fortress points, tracking availability and only spawning at unoccupied locations.
 
 *Name: Cheng-yuan Liu*   
 *Email: cgyliu@ucdavis.edu*   
@@ -135,13 +131,20 @@ Lego" (https://skfb.ly/MEGs) by Jody_Hong
 
 
 
+
+#### assets:
+Lego" (https://skfb.ly/MEGs) by Jody_Hong 
+(http://creativecommons.org/licenses/by/4.0/). Rigging and animations by Adobe mixamo
+
 # Sub-Roles
 
-## Weapons System
+## Weapons System/ Debugging
 
 *Name: Qihan Guan*   
 *Email: qgguan@ucdavis.edu*   
 *Github: *
+
+My sub role is practically the same as my main, the general game logic and mechanics. This involves debugging scripts or fixing scenes.
 
 ## Audio
 
