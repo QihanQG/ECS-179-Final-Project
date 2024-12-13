@@ -162,7 +162,7 @@ My sub role is practically the same as my main, the general game logic and mecha
 
 **link to the full results of my gameplay tests:**
 
-[Observations and Playtester Comments](Observations_and_Playtester_Comments.pdf)
+[Observations and Playtester Comments](imgs/Observations_and_Playtester_Comments.pdf)
 
 ### Playtesting Feedback Summary
 
@@ -189,14 +189,14 @@ User Interface & Controls:
 Theming of buttons didn’t fully match the game’s aesthetic.
 A tutorial screen with controls and game rules was requested for better onboarding.
 The high camera angle made gameplay difficult to follow.
+
 Suggested Improvements:
-Gameplay Enhancements: Add more turrets, enemy types, abilities, and longer rounds to increase complexity and engagement. Incorporate a story or narrative for a more cohesive experience.
-Bug Fixes: Ensure zombies behave as intended and can damage the castle. Address animation clunkiness.
-Onboarding: Create a tutorial or onboarding screen to explain controls, rules, and objectives clearly.
-Polish: Refine user interface elements to match the game’s theme, and adjust the camera for better visibility.
-Replayability: Introduce new mechanics to prevent repetitiveness and enhance long-term player interest.
-Target Audience:
-The game is aimed at fans of tower defense games, especially kids and teenagers, due to its simplicity.
+* Gameplay Enhancements: Add more turrets, enemy types, abilities, and longer rounds to increase complexity and engagement. Incorporate a story or narrative for a more cohesive experience.
+* Bug Fixes: Ensure zombies behave as intended and can damage the castle. Address animation clunkiness.
+* Onboarding: Create a tutorial or onboarding screen to explain controls, rules, and objectives clearly.
+* Polish: Refine user interface elements to match the game’s theme, and adjust the camera for better visibility.
+* Replayability: Introduce new mechanics to prevent repetitiveness and enhance long-term player interest.
+* Target Audience: The game is aimed at fans of tower defense games, especially kids and teenagers, due to its simplicity.
 
 With these improvements, playtesters agreed the game has strong potential to deliver a more enjoyable and polished experience.
 
