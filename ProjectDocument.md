@@ -20,6 +20,7 @@ The penguins are in trouble! Mischievous seals and bears are invading their icy 
 We mainly communicate via discord group chat, so most of our meeting notes are stored there, include but not limited to - map terrain problems, enemy animation, turret integration, etc. We had two official meetings, one is planning, assigned each job prior to our initial implementation, and another is before the deadline to coordinate each functionalities, and I will say we fix the issues efficiently after the meeting. I had checked in with our members once a week to track the progress, and we mostly follow the timeline in the initial gameplan, except a slightly behind at the very last week, I'll just drop the progress report link below. I'll say I didnt really do this role very well, since I primarily focus on town/buildings implementation, and we didnt really faced a problem on git-based workflow, everythings pretty much merged well amazingly.
 
 Project timeline (inside initial gameplan): https://docs.google.com/document/d/1GZWn_SmqQvAIgVN7532S8e85JhK0-5KoybL1oGKh4r8/edit?tab=t.0 
+
 Progress report : https://docs.google.com/document/d/1KQmFBPK5jppJ9UUhGbMz5CHWgYjXk1dk-KPUlCqqudk/edit?tab=t.0
 
 *Name: Cheng-yuan Liu*   
