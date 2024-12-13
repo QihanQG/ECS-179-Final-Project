@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cgpw7jwcreeku"]
+[gd_scene load_steps=42 format=3 uid="uid://cgpw7jwcreeku"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_0163h"]
 [ext_resource type="Script" path="res://scripts/EnemySpawner.gd" id="1_f6dcx"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://ctppybj5h66e" path="res://assets/models/Igloo.glb" id="14_riq8w"]
 [ext_resource type="PackedScene" uid="uid://doafwtvef1tbh" path="res://scenes/pause_menu.tscn" id="17_686rf"]
 [ext_resource type="PackedScene" uid="uid://brrjjrvdtpxot" path="res://scenes/zombie.tscn" id="18_arnwj"]
+[ext_resource type="Texture2D" uid="uid://bp13cd2q8tol" path="res://assets/models/Turret Gun.png" id="18_s655e"]
+[ext_resource type="Texture2D" uid="uid://dmmeo4ema4fvk" path="res://assets/models/Turret Gun (1).png" id="19_6ol54"]
 [ext_resource type="PackedScene" uid="uid://ghkshw57qv03" path="res://scenes/Town.tscn" id="19_s8gqc"]
 [ext_resource type="Script" path="res://scripts/zombie_spawner.gd" id="20_5k85c"]
 
@@ -84,6 +86,9 @@ size = Vector3(1, 2, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_b2ehf"]
 size = Vector3(1, 2, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_od0aq"]
+bg_color = Color(0.6, 0.6, 0.6, 0.145098)
+
 [node name="World" type="Node3D"]
 transform = Transform3D(0.999995, -0.00311328, 0.000721761, 0.00311416, 0.999994, -0.001219, -0.000717969, 0.00122124, 0.999999, -0.220264, 1.21166, 0.0610809)
 script = ExtResource("1_0163h")
@@ -140,9 +145,11 @@ shape = SubResource("SeparationRayShape3D_5psaf")
 
 [node name="TownBoundaryMesh" type="MeshInstance3D" parent="Town"]
 transform = Transform3D(1, 4.89399e-09, -5.82077e-11, -2.56614e-09, 1, -1.16415e-10, 0, 1.16415e-10, 1, 0.327059, -3.83814, 0.00469589)
+visible = false
 mesh = SubResource("CapsuleMesh_g7kwa")
 
 [node name="Buildings" type="Node3D" parent="Town"]
+visible = false
 
 [node name="Castle" type="StaticBody3D" parent="Town/Buildings"]
 transform = Transform3D(0.999988, 0.00483455, -5.58532e-06, -0.00483454, 0.999988, -3.96371e-06, 5.56605e-06, 3.99072e-06, 1, -10, 2.5, 5)
@@ -165,7 +172,6 @@ mesh = SubResource("PrismMesh_ggmeb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Town/Buildings/Research"]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-visible = false
 shape = SubResource("CapsuleShape3D_ycahs")
 
 [node name="ResearchArea" type="Area3D" parent="Town/Buildings/Research"]
@@ -182,14 +188,8 @@ mesh = SubResource("SphereMesh_ulq6k")
 transform = Transform3D(3, 1.46817e-08, 0, -1.51495e-08, 3, -6.98492e-10, 0, 0, 3, 0.270029, 0.0230923, 0.0677605)
 shape = SubResource("CylinderShape3D_1n8ka")
 
-[node name="Igloo" parent="." instance=ExtResource("14_riq8w")]
-transform = Transform3D(0.298858, -2.33598e-10, 0.0261467, -3.27418e-11, 0.3, 1.16415e-10, -0.0261467, 1.16415e-10, 0.298858, -17.4145, 1.41333, 15.5618)
-
 [node name="Igloo2" parent="." instance=ExtResource("14_riq8w")]
 transform = Transform3D(3.62343e-09, -1.75362e-10, -0.3, 0, 0.3, -5.00222e-11, 0.3, 8.73115e-11, 3.59432e-09, -26.0715, 3.23322, -14.717)
-
-[node name="Igloo3" parent="." instance=ExtResource("14_riq8w")]
-transform = Transform3D(-1.31404e-08, -1.17154e-10, 0.3, 0, 0.3, 3.83977e-11, -0.3, 5.82077e-11, -1.31258e-08, 35.9183, 3.68225, -1.87684)
 
 [node name="Igloo4" parent="." instance=ExtResource("14_riq8w")]
 transform = Transform3D(-0.3, -4.66514e-10, -2.6339e-08, -1.9682e-10, 0.3, -2.32831e-10, 2.62662e-08, 2.32831e-10, -0.3, -7.43443, 3.46703, -21.5803)
@@ -220,7 +220,7 @@ debug_mode = true
 detection_radius = 5.0
 
 [node name="TurretM2" parent="." instance=ExtResource("13_0tso4")]
-transform = Transform3D(1, -8.95568e-10, 0, 2.63185e-11, 1, 0, 0, 6.98492e-10, 1, 2.23934, 3.79653, 19.833)
+transform = Transform3D(1, -1.36117e-09, 0, 2.63185e-11, 1, 0, 0, 9.31323e-10, 1, -20.2982, 3.83897, -2.92603)
 debug_mode = true
 detection_radius = 5.0
 
@@ -266,10 +266,11 @@ transform = Transform3D(1, -2.29375e-09, 0, 2.63185e-11, 1, 0, 0, 2.09548e-09, 1
 gizmo_extents = 0.0
 
 [node name="Fortress_wall" parent="." instance=ExtResource("19_s8gqc")]
-transform = Transform3D(-1.99916, 0.00622832, 0.0574879, 0.00615567, 1.99999, -0.00261604, -0.0574957, -0.00243801, -1.99917, 6.13469, 3.48372, 23.9348)
+transform = Transform3D(-1.99916, 0.00622832, 0.0574879, 0.00615567, 1.99999, -0.00261604, -0.0574957, -0.00243801, -1.99917, 41.4856, 3.3797, -15.4995)
 
 [node name="Turret_spawner" type="StaticBody3D" parent="."]
 transform = Transform3D(1, -8.95852e-10, 0, 2.63185e-11, 1, 0, 0, 8.14907e-10, 1, 14.5791, 4.55302, 12.1149)
+visible = false
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Turret_spawner"]
 transform = Transform3D(1, -1.12914e-09, 0, 2.63185e-11, 1, 0, 0, 1.16415e-09, 1, 0, 0, 0)
@@ -282,7 +283,7 @@ shape = SubResource("BoxShape3D_b2ehf")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="UI"]
+[node name="ReadyMenu" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -292,7 +293,7 @@ offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="ReadyButton" type="Button" parent="UI/Control"]
+[node name="ReadyButton" type="Button" parent="UI/ReadyMenu"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -305,4 +306,66 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 40
 text = "Ready"
 
-[connection signal="pressed" from="UI/Control/ReadyButton" to="." method="_on_button_pressed"]
+[node name="TurretSelection" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Panel" type="Panel" parent="UI/TurretSelection"]
+layout_mode = 0
+offset_left = -106.0
+offset_top = 18.0
+offset_right = 22.0
+offset_bottom = 256.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_od0aq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/TurretSelection/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_right = 50.0
+offset_bottom = 214.0
+grow_horizontal = 2
+
+[node name="Turret1Button" type="TextureButton" parent="UI/TurretSelection/Panel/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("18_s655e")
+
+[node name="Label" type="Label" parent="UI/TurretSelection/Panel/VBoxContainer/Turret1Button"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 3.0
+offset_top = 6.0
+offset_bottom = 41.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.19, 0.19, 0.19, 1)
+theme_override_font_sizes/font_size = 25
+text = "Turret 1"
+
+[node name="Turret2Button" type="TextureButton" parent="UI/TurretSelection/Panel/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("19_6ol54")
+
+[node name="Label" type="Label" parent="UI/TurretSelection/Panel/VBoxContainer/Turret2Button"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = -3.0
+offset_right = 2.0
+offset_bottom = 32.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_font_sizes/font_size = 25
+text = "Turret 2"
+
+[connection signal="pressed" from="UI/ReadyMenu/ReadyButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="UI/TurretSelection/Panel/VBoxContainer/Turret1Button" to="." method="_on_turret_1_button_pressed"]
+[connection signal="pressed" from="UI/TurretSelection/Panel/VBoxContainer/Turret2Button" to="." method="_on_turret_2_button_pressed"]

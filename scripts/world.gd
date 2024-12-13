@@ -23,11 +23,16 @@ func toggle_pause_menu():
 
 
 
-# Ready button 
-
+# Ready button  -Brian
 @onready var zombie_spawner: ZombieSpawner = $ZombieSpawner  # Replace $ZombieSpawner with the correct node path
 
-
 func _on_button_pressed():
-	$UI/Control/ReadyButton.hide()
+	$UI/ReadyMenu/ReadyButton.hide()
 	zombie_spawner.start_spawning()
+
+# UI turrent spawn buttons
+func _on_turret_1_button_pressed() -> void:
+	pass # Replace with function body.
+
+func _on_turret_2_button_pressed() -> void:
+	pass # Replace with function body.
