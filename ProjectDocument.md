@@ -60,11 +60,11 @@ In addition to the UI responsibilities, I also implemented the game's top-down v
 
 ## Movement/Physics
 
-**Describe the basics of movement and physics in your game. Is it the standard physics model? What did you change or modify? Did you make your movement scripts that do not use the physics system?**
-
 *Name: Penelope Phan*   
 *Email: peaphan@ucdavis.edu*   
 *Github: *
+
+**Describe the basics of movement and physics in your game. Is it the standard physics model? What did you change or modify? Did you make your movement scripts that do not use the physics system?**
 
 ## Animation and Visuals
 
@@ -154,15 +154,15 @@ My sub role is practically the same as my main, the general game logic and mecha
 
 ## Audio
 
+*Name: Penelope Phan*   
+*Email: peaphan@ucdavis.edu*   
+*Github: *
+
 **List your assets, including their sources and licenses.**
 
 **Describe the implementation of your audio system.**
 
 **Document the sound style.** 
-
-*Name: Penelope Phan*   
-*Email: peaphan@ucdavis.edu*   
-*Github: *
 
 ## Gameplay Testing
 
