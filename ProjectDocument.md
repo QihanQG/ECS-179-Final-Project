@@ -160,13 +160,49 @@ My sub role is practically the same as my main, the general game logic and mecha
 
 ## Gameplay Testing
 
-**Add a link to the full results of your gameplay tests.**
+**link to the full results of my gameplay tests:**
 
-**Summarize the key findings from your gameplay tests.**
+[Observations and Playtester Comments](Observations_and_Playtester_Comments.pdf)
+
+### Playtesting Feedback Summary
+
+During playtesting sessions, two players provided feedback on various aspects of the game. While they appreciated the foundational concept and visual elements, several areas for improvement were identified.
+
+Key Observations:
+Game Concept & Visuals:
+Players liked the arctic theme, 3D visuals, and tower-defense style, which were described as engaging. However, both agreed that the gameplay felt basic and lacked depth.
+
+Clarity & Objectives:
+
+The objective of defending the castle from zombies was generally understood, but players noted a lack of clear instructions or a tutorial, causing initial confusion.
+One player wasn’t sure how to place turrets, while another didn’t immediately understand the game’s goal.
+Gameplay Mechanics:
+
+Players found the mechanics intuitive but limited, with repetitive gameplay and a lack of variety in turrets, enemies, and abilities.
+Suggestions included adding more rounds, diverse mechanics, and narrative elements similar to games like Plants vs. Zombies.
+Bugs & Errors:
+
+Zombies occasionally walked off the map or didn’t damage the castle, breaking immersion.
+The animations for zombies changing direction felt clunky.
+User Interface & Controls:
+
+Theming of buttons didn’t fully match the game’s aesthetic.
+A tutorial screen with controls and game rules was requested for better onboarding.
+The high camera angle made gameplay difficult to follow.
+Suggested Improvements:
+Gameplay Enhancements: Add more turrets, enemy types, abilities, and longer rounds to increase complexity and engagement. Incorporate a story or narrative for a more cohesive experience.
+Bug Fixes: Ensure zombies behave as intended and can damage the castle. Address animation clunkiness.
+Onboarding: Create a tutorial or onboarding screen to explain controls, rules, and objectives clearly.
+Polish: Refine user interface elements to match the game’s theme, and adjust the camera for better visibility.
+Replayability: Introduce new mechanics to prevent repetitiveness and enhance long-term player interest.
+Target Audience:
+The game is aimed at fans of tower defense games, especially kids and teenagers, due to its simplicity.
+
+With these improvements, playtesters agreed the game has strong potential to deliver a more enjoyable and polished experience.
 
 *Name: Maxim Saschin*   
 *Email: mnsaschin@ucdavis.edu*   
-*Github: *
+*Github: MaximSaschin*
 
 ## Narrative Design
 
