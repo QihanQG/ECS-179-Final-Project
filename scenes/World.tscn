@@ -1,5 +1,6 @@
-[gd_scene load_steps=37 format=3 uid="uid://cgpw7jwcreeku"]
+[gd_scene load_steps=39 format=3 uid="uid://cgpw7jwcreeku"]
 
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_0163h"]
 [ext_resource type="Script" path="res://scripts/EnemySpawner.gd" id="1_f6dcx"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="1_u4k6d"]
 [ext_resource type="Resource" path="res://mapterrain/data.hterrain" id="2_nkggy"]
@@ -12,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://co3h8fx7yc30r" path="res://scenes/Turret Gun.tscn" id="13_0tso4"]
 [ext_resource type="PackedScene" uid="uid://c2t8ktpfyjh8l" path="res://scenes/Turret Gun 2.tscn" id="14_2kbs7"]
 [ext_resource type="PackedScene" uid="uid://ctppybj5h66e" path="res://assets/models/Igloo.glb" id="14_riq8w"]
+[ext_resource type="PackedScene" uid="uid://doafwtvef1tbh" path="res://scenes/pause_menu.tscn" id="17_686rf"]
 [ext_resource type="PackedScene" uid="uid://brrjjrvdtpxot" path="res://scenes/zombie.tscn" id="18_arnwj"]
 [ext_resource type="PackedScene" uid="uid://ghkshw57qv03" path="res://scenes/Town.tscn" id="19_s8gqc"]
 [ext_resource type="Script" path="res://scripts/zombie_spawner.gd" id="20_5k85c"]
@@ -84,6 +86,7 @@ size = Vector3(1, 2, 1)
 
 [node name="World" type="Node3D"]
 transform = Transform3D(0.999995, -0.00311328, 0.000721761, 0.00311416, 0.999994, -0.001219, -0.000717969, 0.00122124, 0.999999, -0.220264, 1.21166, 0.0610809)
+script = ExtResource("1_0163h")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
@@ -273,3 +276,5 @@ mesh = SubResource("BoxMesh_2saqr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Turret_spawner"]
 shape = SubResource("BoxShape3D_b2ehf")
+
+[node name="PauseMenu" parent="." instance=ExtResource("17_686rf")]
