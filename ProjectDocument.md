@@ -235,15 +235,15 @@ Additionally, I worked on positioning key structures like igloos, and our defens
 
 ## Press Kit and Trailer
 
+*Name: Brian Nguyen*   
+*Email: btinguyen@ucdavis.edu*   
+*Github: briantinnguyen*
+
 **Include links to your presskit materials and trailer.**
 
 When making the trailer for Pengine Patrol: Arctic Defense, I wanted to show off the main parts of the game in a fun and simple way. The trailer starts with a quick look at the icy Arctic and the penguin colony, then jumps into gameplay. You see snowball cannons firing, penguins building forts, and seals trying to steal fish. I made sure to include special moves, like icy blasts, to show how exciting the game gets. The trailer ends with a big call to action: "Protect the Arctic!"
 
 I picked music that felt exciting and fun, adding sound effects like snowballs hitting seals to bring it to life. For the screenshots, I chose scenes that show the coolest parts of the game—penguins fighting back, seals charging in, and the icy Arctic world. I kept it simple, making sure everything looks fun and clear for anyone who sees it.
-
-*Name: Brian Nguyen*   
-*Email: btinguyen@ucdavis.edu*   
-*Github: briantinnguyen*
 
 # External Code, Ideas, and Structure #
 
