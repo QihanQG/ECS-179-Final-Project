@@ -65,6 +65,10 @@ In addition to the UI responsibilities, I also implemented the game's top-down v
 
 ## Animation and Visuals
 
+*Name: Maxim Saschin*   
+*Email: mnsaschin@ucdavis.edu*   
+*Github: MaximSaschin*
+
 ### 3D Models and Assets
 The objective for our 3D game was to create a visually cohesive experience where the characters, assets, and objects complemented each other seamlessly. As a team, we decided on an arctic-themed tower defense game in which penguins defend their precious supply of fish against waves of enemies, including seals and polar bears. From the outset, we envisioned a cartoonish, Roblox-inspired aesthetic—partially blocky, colorful, and intentionally unrealistic—to give the game an engaging arcade feel.
 
@@ -102,10 +106,6 @@ As I helped with the world-building, I was responsible for crafting the icy terr
 
 <img src="scripts/mapoverview.jpg" alt="mapoverview" width="800" height="500">
 
-*Name: Maxim Saschin*   
-*Email: mnsaschin@ucdavis.edu*   
-*Github: MaximSaschin*
-
 ## Game Logic
 
 **Document the game states and game data you managed and the design patterns you used to complete your task.**
@@ -116,23 +116,17 @@ As I helped with the world-building, I was responsible for crafting the icy terr
 
 My role initially included handling the enemy and unit(turret) behaviors, but it became a broader role in the overall Game logic. I first implemented yaw rotation (horizontal) using basic vector math, using dot product to find the angle between the turret's forward vector and target vector, cross product's Y component, and using the sign to determine rotation direction (clockwise/counterclockwise). The next challenge was adding pitch rotation (vertical) and handling both axes concurrently and seamlessly with respect to the turret design. Which required me to change my initial approach from a simple vector-math based to a more complex approach that could handle both rotational axes simultaneously. Eventually, I learned that I could put separate pivot points on the turret model to handle the yaw rotations and pitch rotations separately. And use arctangent calculations for pitch angles. And implemented angle constraints for the turret's movements to remain realistic and within its design limitations.
 
-
 After this, I spent time refining the turret movements, implementing more features/modes,  adding more debugging features, and making it more modular for other members to approach and modify. Then finally implementing it on the turret models provided by Maxim, it was a bit challenging as the model meshes only have two parts, the base and top. But I was able to make it work with some tricks.
-
 
 <img src="imgs/turret_prototype.png" alt="seal" width="400" height="200"><img src="imgs/turret_1.png" alt="igloo" width="400" height="200">
 
 <img src="imgs/turret_2.png" alt="seal" width="400" height="200">
 
-
 Next, I implemented the durative movement commands for the enemies, initially, this was Penelope Phan's role but we decided to switch and she provided me with the initial template/implementation. But we didn't have our enemy model yet, So I found a Lego model to use as zombies and used Adobe Mixamo to do the auto-rigging. Getting this set up in Godot was trickier than I expected, I hadn't done much with animations/designs before, so I spent quite a bit of time figuring out how to properly structure the scene and model to work with the animations. The biggest headache was fixing issues where the meshes and skeleton transforms didn't line up correctly, especially during animations. Once I got past those hurdles I was able to use my experience from exercise 1 to implement the durative cmds scripts for the zombie movement. The main challenge was handling transitions during animation replays, especially for the walk animation. The starting position didn’t match the ending position, which caused a noticeable reset when the animation looped. After some time I  discovered I could disable translation to keep the character in place while playing the animation
-
 
 ![](https://github.com/QihanQG/ECS-179-Final-Project/blob/main/imgs/zombie_walk_reset.gif)
 
-
 disabling the transformation.
-
 
 ![](https://github.com/QihanQG/ECS-179-Final-Project/blob/main/imgs/zombie_walk_.gif)
 
@@ -141,10 +135,6 @@ Then I work with Cheng Yuan to implement the building/town scripts. Given the ti
 *Name: Cheng-yuan Liu*   
 *Email: cgyliu@ucdavis.edu*   
 *Github: *ccc2d8850
-
-
-
-
 
 #### assets:
 Lego" (https://skfb.ly/MEGs) by Jody_Hong 
@@ -173,6 +163,10 @@ My sub role is practically the same as my main, the general game logic and mecha
 *Github: *
 
 ## Gameplay Testing
+
+*Name: Maxim Saschin*   
+*Email: mnsaschin@ucdavis.edu*   
+*Github: MaximSaschin*
 
 **link to the full results of my gameplay tests:**
 
@@ -214,31 +208,25 @@ Suggested Improvements:
 
 With these improvements, playtesters agreed the game has strong potential to deliver a more enjoyable and polished experience.
 
-*Name: Maxim Saschin*   
-*Email: mnsaschin@ucdavis.edu*   
-*Github: MaximSaschin*
-
 ## Narrative Design
 
 **Document how the narrative is present in the game via assets, gameplay systems, and gameplay.** 
  
- 
-
 *Name: Cheng-yuan Liu*   
 *Email: cgyliu@ucdavis.edu*   
 *Github: *ccc2d8850
 
 ## Game Feel and Polish
 
+*Name: Brian Nguyen*   
+*Email: btinguyen@ucdavis.edu*   
+*Github: briantinnguyen*
+
 For game feel, one of the key improvements I made was addressing the brightness issue in the game. Initially, the game environment was too dark, which made it difficult for players to see the map and its contents. To fix this issue, I added a sun scene to enhance the lighting giving the game a more aesthetically pleasing environment. 
 
 Additionally, I worked on positioning key structures like igloos, ensuring they all fit into the team. I created the path and refined it. The terrain was improved by smoothing out the surfaced and evened it out.
 
 <img src="imgs/dark.png" alt="" width="400" height="150"> <img src="imgs/bright.png" alt="" width="400" height="150"> <img src="imgs/cleanup.png" alt="" width="400" height="150">
-
-*Name: Brian Nguyen*   
-*Email: btinguyen@ucdavis.edu*   
-*Github: briantinnguyen*
 
 ## Press Kit and Trailer
 
