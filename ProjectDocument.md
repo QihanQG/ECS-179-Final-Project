@@ -116,6 +116,8 @@ Next, I implemented the durative movement commands for the enemies, initially, t
 
 
 disabling the transformation.
+
+
 ![](https://github.com/QihanQG/ECS-179-Final-Project/blob/main/imgs/zombie_walk_.gif)
 
 Then I work with Cheng-yuan to implement the building/town scripts.
