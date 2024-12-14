@@ -289,15 +289,4 @@ Trailer [here](https://drive.google.com/file/d/19Uil-7T4Sut2TmXeplA2jU7IaoMcxXmS
 
 Presskit [here](https://github.com/QihanQG/ECS-179-Final-Project/blob/recovered-branch/Presskit.md)
 
-# External Code, Ideas, and Structure #
-
-If your project contains code that: 1) your team did not write, and 2) does not fit cleanly into a role, please document it in this section. Please include the author of the code, where to find the code, and note which scripts, folders, or other files that comprise the external contribution. Additionally, include the license for the external code that permits you to use it. You do not need to include the license for code provided by the instruction team.
-
-If you used tutorials or other intellectual guidance to create aspects of your project, include reference to that information as well.
-
-## Project Resources
-
 [Web-playable version of your game.](https://itch.io/)  
-[Trailor](https://youtube.com)  
-[Press Kit](https://dopresskit.com/)  
-[Proposal: make your own copy of the linked doc.](https://docs.google.com/document/d/1qwWCpMwKJGOLQ-rRJt8G8zisCa2XHFhv6zSWars0eWM/edit?usp=sharing)  
