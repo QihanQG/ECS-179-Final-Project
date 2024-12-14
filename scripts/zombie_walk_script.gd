@@ -119,6 +119,7 @@ func start_short_walk():
 
 func start_attack():
 	stop_all()
+	$attack/AudioStreamPlayer3D
 	attack_command.execute()
 	await attack_command.completed
 
@@ -170,6 +171,7 @@ func take_damage(damage: float) -> void:
 	total_health -= damage
 	print(total_health)
 	if total_health <= 0:
+		$death/AudioStreamPlayer3D.play()
 		await start_death()
 		stop_all()
 		self.visible = false

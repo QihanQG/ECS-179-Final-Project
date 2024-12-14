@@ -10,9 +10,9 @@ to adjust the walking path script times as speed multiplies"
 @export var _zombie : PackedScene = load("res://scenes/zombie.tscn")
 @export var _zombie_spawn_point : Marker3D 
 @export var _zombie_wave_count : int = 2
-@export var _total_zombie_in_wave : int = 4
-@export var _spawn_interval: float = 1
-@export var _wave_interval: float = 10.0
+@export var _total_zombie_in_wave : int = 8
+@export var _spawn_interval: float = 4
+@export var _wave_interval: float = 60.0
 
 var _spawn_interval_timer: Timer 
 var _current_zombie_wave: int = 0
