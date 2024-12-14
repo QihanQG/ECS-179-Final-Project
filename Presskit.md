@@ -11,6 +11,8 @@ Join the Penguin Patrol and embark on an epic quest to protect your colony, outs
 
 <a href="https://drive.google.com/file/d/19Uil-7T4Sut2TmXeplA2jU7IaoMcxXmS/view" target="_blank">Trailer</a>
 
+### Images
+
 <img src="imgs/presskit1.png" alt="" width="500" height="200">
 
 <img src="imgs/presskit2.png" alt="" width="500" height="200">
