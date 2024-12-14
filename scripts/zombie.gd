@@ -3,7 +3,7 @@ extends Node
 
 var total_health: float = 100
 var _death:bool = false
-#var target : Castle
+var target : Castle
 
-#func _ready() ->void:
-#	target = %Castle as Castle
+func _ready() ->void:
+	target = %Castle as Castle
