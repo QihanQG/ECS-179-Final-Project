@@ -316,6 +316,15 @@ text = "Ready"
 stream = ExtResource("19_bgo87")
 autoplay = true
 
+[node name="WaveLabel" type="Label" parent="UI/ReadyMenu"]
+layout_mode = 0
+offset_left = -56.0
+offset_top = 47.0
+offset_right = -16.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+
 [node name="TurretSelection" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 1

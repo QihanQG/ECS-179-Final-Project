@@ -25,10 +25,11 @@ func toggle_pause_menu():
 
 # Ready button  -Brian
 @onready var zombie_spawner: ZombieSpawner = $ZombieSpawner  # Replace $ZombieSpawner with the correct node path
-
+@onready var wave_label: Label = $UI/ReadyMenu/WaveLabel
 func _on_button_pressed():
 	$UI/ReadyMenu/ReadyButton.hide()
 	zombie_spawner.start_spawning()
+	wave_label.text = "Wave 1/2"
 
 # UI turrent spawn buttons
 func _on_turret_1_button_pressed() -> void:
