@@ -6,16 +6,19 @@ The penguins are in trouble! Mischievous seals and bears are invading their icy 
 
 ## Gameplay Explanation ##
 
-**In this section, explain how the game should be played. Treat this as a manual within a game. Explaining the button mappings and the most optimal gameplay strategy is encouraged.**
+The players can move around the map using `WSDA` keys and `all mouse click` buttons. To start the game player can either choose new game to enter. Once entered, the player will set up tower defenses and click the "Ready" button on the screen when they want the round to begin.
 
+Movement: Move by using the keys `WSDA`. Press `W` to go forward; `S` to move backwards; `D` to go right; `A` to go left: `scroll-wheel up` to zoom in; `scrool-wheel down ` to zoom out.
 
-**Add it here if you did work that should be factored into your grade but does not fit easily into the proscribed roles! Please include links to resources and descriptions of game-related material that does not fit into roles here.**
+Turret placement: `mouse left-click` to select anything on the UI including turret options.
+
+Cancel: `mouse right-click` to cancel
+
+Pause: `ESC` to pause or quit the game entirely.
 
 # Main Roles #
 
 ## Producer
-
-**Describe the steps you took in your role as producer. Typical items include group scheduling mechanisms, links to meeting notes, descriptions of team logistics problems with their resolution, project organization tools (e.g., timelines, dependency/task tracking, Gantt charts, etc.), and repository management methodology.**
 
 *Name: Cheng-yuan Liu*   
 *Email: cgyliu@ucdavis.edu*   
@@ -35,15 +38,25 @@ Progress report : https://docs.google.com/document/d/1KQmFBPK5jppJ9UUhGbMz5CHWgY
 *Email: btinguyen@ucdavis.edu*   
 *Github: briantinnguyen*
 
-My primary task in the development of our tower defense game focused on the user interface and input, ensuring that the game was intuitive, responsive, and enjoyable for players. One of my first responsibilities was designing a wireframe for the layout, which served as a blueprint for the game's user interface. I started by mapping out the key elements the players would need to interact with during gameplay. The layout included elements like the enemy's spawn point, the road, the end road, and the overall design for the enemy path. This layout not only provided a clear structure for the game world but also helped guide groupmates in their respective task. 
+My primary task in the development of our tower defense game focused on the user interface and input, ensuring that the game was intuitive, responsive, and enjoyable for players. One of my first responsibilities was designing a wireframe for the layout, which served as a blueprint for the game's user interface. I started by mapping out the key elements the players would need to interact with during gameplay. The layout included elements like the enemy's spawn point, the road, the end road, the overall design for the enemy path, and the town. I was responsible for creating the path.
 
 <img src="imgs/Layout.jpg" alt="" width="800" height="475">
 
-I created the main menu, which serves as the starting point for the game. It provides options for starting a new game, loading, and quitting the game. I also created the pause menu that provides players with basic game session options. The menu includes the ability to resume the game or quit the game entirely. This menu enhances the overall user experience. 
+Main Menu: The main menu serves as the player's entry point to the game. It provides options such as starting a new game, loading a saved game, and exiting the game entirely. The main menu was made by duplicating the main world node, which allowed it to be implemented with a clean, intuitive user interface. In addition to the main menu, I added a 360-camera rotation around the map so that users can experience the game environment dynamically.
+
+Pause Menu: The pause menu is implemented to provide players with essential controls during the gameplay. It is an important feature that enhances user interaction by offering options to resume or quit the game. The pause menu was built within the main node while the main menu was built by duplicating the entire environment and switching scenes once a load or new game has been selected.
 
 <img src="imgs/Main.png" alt="" width="400" height="200"> <img src="imgs/Pause.png" alt="" width="400" height="200">
 
-In addition to designing the main and pause menus, I also implemented the game's top-down view and input controls. The top-down view was crucial for giving players a clear perspective of the tower defense game, this allows them to strategize effectively and place towers. I positioned the camera to ensure it captures the entire play while maintaining the game's arctic theme. For the input controls, I focused on creating a smooth experience for navigating the map. I implemented WASD camera movement, mouse scrolling for zoom, and camera boundary restriction to ensure the user doesn't go off the map. These controls were designed to be responsive and user-friendly.
+Ready: The ready function is implemented within the UI to enhance players' experience and strategy. This function activates when the player clicks on the "Ready" button on the map, triggering the start of the game and spawning the monster. This is designed to give players a fair chance to prepare their defenses before each wave. This ensures that players can come up with a strategy before each round.
+
+<img src="imgs/ready2.png" alt="" width="400" height="200"> <img src="imgs/ready.png" alt="" width="400" height="200">
+
+Tower Weapon HUD: The tower weapon head consists of draggable buttons on the main camera screen, allowing players to choose and place turrets during the game. This feature enhances the gameplay by allowing the players to select and place turrets before and during the waves. The turret buttons are placed on the top right screen to ensure players' visibility. The draggable functionality makes it easier for players to position their turret exactly where they want.
+
+<img src="imgs/hud.png" alt="" width="400" height="200">
+
+In addition to the UI responsibilities, I also implemented the game's top-down view and input controls. The top-down view is crucial for giving players a clear perspective of the tower defense and, fundamentally, the players use the top-down view angle. I positioned the camera so that it also ensures that it captures the entire play of the area while maintaining the game's arctic theme. For the input controls, the focus was to create a smooth and intuitive experience for navigating the map. WSDA keys were the main controls for camera movement. The mouse scroll wheel is for zooming in and out. The camera boundaries were also set up to ensure that players do not leave the designated game environment.
 
 <img src="imgs/controls.png" alt="" width="400" height="200">
 
@@ -236,13 +249,15 @@ We kept the story pretty simple since the game is straightforward. Instead of ha
 
 ## Game Feel and Polish
 
-For game feel, one of the key improvements I made was addressing the brightness issue in the game. Initially, the game environment was too dark, which made it difficult for players to see the map and its contents. To fix this issue, I added a sun scene to enhance the lighting giving the game a more aesthetically pleasing environment. This fix not only improved visibility but it complemented the Arctic theme. This adjustment significantly enhanced the overall visual experience and ensured future gameplay was functional and enjoyable.
-
-<img src="imgs/dark.png" alt="" width="400" height="200"> <img src="imgs/bright.png" alt="" width="400" height="200">
-
 *Name: Brian Nguyen*   
 *Email: btinguyen@ucdavis.edu*   
 *Github: briantinnguyen*
+
+For game feel, one of the key improvements I made was addressing the brightness issue in the game. Initially, the game environment was too dark, which made it difficult for players to see the map and its contents. To fix this issue, I added a sun scene to enhance the lighting giving the game a more aesthetically pleasing environment. 
+
+Additionally, I worked on positioning key structures like igloos, and our defense tower ensuring they all fit into their correct positions. I was responsible for creating the path and made improvements by cleaning up the terrain's blockage. The terrain was improved by smoothing out the surfaced, layering, and removing.
+
+<img src="imgs/dark.png" alt="" width="400" height="150"> <img src="imgs/bright.png" alt="" width="400" height="150"> <img src="imgs/cleanup.png" alt="" width="400" height="150">
 
 ## Press Kit and Trailer
 
