@@ -16,6 +16,11 @@ attack the base/villager penguin '
 @export var walk_speed: float = 5.0
 @export var run_speed: float = 10.0 
 
+var total_health: int = 100
+var _death:bool = false
+
+
+
 # Store all command instances
 var walk_command: WalkCommand
 var walk_long_command : WalkLongCommand
@@ -27,6 +32,8 @@ var idle_command: IdleCommand
 var death_command: DeathCommand
 var run_command: RunCommand
 
+
+
 func _ready():
 	
 	add_to_group("enemies")
@@ -35,7 +42,7 @@ func _ready():
 	walk_command = WalkCommand.new(walk, walk_speed, 6, self)
 	walk_long_command = WalkLongCommand.new(walk, walk_speed, 15, self)
 	walk_short_command = WalkShortCommand.new(walk, walk_speed, 4, self)
-	attack_command = AttackCommand.new(attack, 1.0, self)
+	attack_command = AttackCommand.new(attack, 10, self)
 	turn_right_command = TurnRightCommand.new(turn_right, 0.5, self)
 	turn_left_command = TurnLeftCommand.new(turn_left, 0.25, self)
 	idle_command = IdleCommand.new(idle, self)
@@ -75,7 +82,7 @@ func _ready():
 	await start_run()
 	await start_turn_left()
 	await start_short_walk()
-	
+	await start_attack()
 
 func _physics_process(_delta):
 	#print(self.velocity)
@@ -92,6 +99,15 @@ func _physics_process(_delta):
 	else:
 		velocity = Vector3.ZERO
 	move_and_slide()
+
+func take_damage(turret_damage:int):
+	total_health -= turret_damage
+	if total_health <= 0 :
+		await start_death()
+		stop_all()
+		self.visible = false
+		queue_free()
+
 
 func start_walk():
 	stop_all()
