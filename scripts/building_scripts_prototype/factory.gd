@@ -66,7 +66,8 @@ func spawn_turret(turret_type: int = 0) -> void:
 		turret.scale = Vector3(0.5,0.5,0.5) #make he turret 50% smaller
 		turret.global_position = spawn_point.global_position
 		turret.add_to_group("turret")
-		turret.set_factory_spawned()
+		if turret.has_method("set_factory_spawned"):
+			turret.set_factory_spawned()
 		
 		#spawn point taken
 		occupied_spawn_points.append(spawn_point)

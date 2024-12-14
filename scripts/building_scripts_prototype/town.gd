@@ -4,7 +4,7 @@ extends Node3D
 @onready var factory: StaticBody3D = $fortress/factory
 @onready var research_building: StaticBody3D = $fortress/research_building
 @onready var turret_spawner: StaticBody3D = $"../Turret_spawner"
-@onready var turret_mounts = $fortress/AreaD3
+@onready var turret_mounts = $fortress/Area3D
 
 
 # Resource management

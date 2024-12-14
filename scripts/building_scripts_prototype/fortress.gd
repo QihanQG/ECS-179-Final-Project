@@ -14,8 +14,8 @@ var wall_upgrade_level: int = 0
 signal wall_damaged(health: float)
 signal wall_upgraded(level: int)
 
-@onready var pause_menu = $"/root/World/UI/PauseMenu"
-@onready var game_manager = get_node("GameManager")
+@onready var pause_menu = $"/root/World/PauseMenu"
+@onready var game_manager = get_node("root/World/GameManager")
 
 func _ready():
 	wall_health = max_wall_health
