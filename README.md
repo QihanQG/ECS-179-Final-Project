@@ -18,7 +18,8 @@ The main defense unit consists of a variety of turrets, each with special roles.
 
 Resources systems:  Passive overtime, After completing each wave, Bonus for good performance( the town takes less damage),  Managed by a single mining/production building?
 
-
+## Itch.io Link
+https://penelp.itch.io/arctic-tower-defense
 
 
 ## Attribution
