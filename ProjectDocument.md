@@ -118,7 +118,8 @@ With poly.pizza I was able to find many of the character models and environmenta
 I downloaded these assets from poly.pizza as .glb files and imported them directly into our project under assets -> models. Here, other members of the group could drag the models/assets into the world and use them for their portions of the game development. From this point, I started working on the animations for the moving characters.
 
 ### Animation
-I have limited experience animating 2D sprites and no prior experience animating 3D models or assets. However, I used a program called [Maximo](https://www.mixamo.com/), which simplifies the 3D animation process significantly. I started by importing a character asset from poly.pizza and positioned joints at key areas such as the knees, wrists, chin, and groin of the 3D model. Mixamo then automatically generated a skeleton with weights (rigs) and applied animations to the model.
+
+I have limited experience animating 2D sprites and no prior experience animating 3D models or assets. However, I used a program called [Maximo](https://www.mixamo.com/), which simplifies the 3D animation process significantly. I started by importing a character asset from poly.pizza and positioned joints at key areas such as the knees, wrists, chin, and groin of the 3D model. Mixamo then automatically rigged the model by adding a skeleton with weight. From this point, I was able to apply animations to the model such as running, walking, dying, and more.
 
 <img src="imgs/maximo_work.jpg" alt="maximo_work" width="550" height="350"><img src="imgs/maximo.jpg" alt="maximo" width="800" height="400"><img src="imgs/penguinrun-ezgif.com-video-to-gif-converter.gif" alt="penguinrun" width="300" height="400">
 
