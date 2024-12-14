@@ -289,4 +289,4 @@ Penelope picked music that felt exciting and fun, adding sound effects like snow
 
 [Presskit](https://github.com/QihanQG/ECS-179-Final-Project/blob/recovered-branch/Presskit.md)
 
-[itch]([https://itch.io/](https://penelp.itch.io/arctic-tower-defense))  
+[itch](https://penelp.itch.io/arctic-tower-defense)  
