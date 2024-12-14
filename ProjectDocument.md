@@ -52,9 +52,9 @@ Ready: The ready function is implemented within the UI to enhance players' exper
 
 <img src="imgs/ready2.png" alt="" width="400" height="200"> <img src="imgs/ready.png" alt="" width="400" height="200">
 
-Tower Weapon HUD: The tower weapon head consists of draggable buttons on the main camera screen, allowing players to choose and place turrets during the game. This feature enhances the gameplay by allowing the players to select and place turrets before and during the waves. The turret buttons are placed on the top right screen to ensure players' visibility. The draggable functionality makes it easier for players to position their turret exactly where they want.
+Tower Weapon HUD & Wave Indicator: The tower weapon head consists of draggable buttons on the main camera screen, allowing players to choose and place turrets during the game. This feature enhances the gameplay by allowing the players to select and place turrets before and during the waves. The turret buttons are placed on the top right screen to ensure players' visibility. The draggable functionality makes it easier for players to position their turret exactly where they want. The wave indicator was implemented to notify players the difficulty of the level and for them to plan accordingly when placing turrets.
 
-<img src="imgs/hud.png" alt="" width="400" height="200">
+<img src="imgs/hud.png" alt="" width="400" height="200"> <img src="imgs/wave.png" alt="" width="400" height="200">
 
 In addition to the UI responsibilities, I also implemented the game's top-down view and input controls. The top-down view is crucial for giving players a clear perspective of the tower defense and, fundamentally, the players use the top-down view angle. I positioned the camera so that it also ensures that it captures the entire play of the area while maintaining the game's arctic theme. For the input controls, the focus was to create a smooth and intuitive experience for navigating the map. WSDA keys were the main controls for camera movement. The mouse scroll wheel is for zooming in and out. The camera boundaries were also set up to ensure that players do not leave the designated game environment.
 
@@ -255,9 +255,11 @@ We kept the story pretty simple since the game is straightforward. Instead of ha
 
 For game feel, one of the key improvements I made was addressing the brightness issue in the game. Initially, the game environment was too dark, which made it difficult for players to see the map and its contents. To fix this issue, I added a sun scene to enhance the lighting giving the game a more aesthetically pleasing environment. 
 
+<img src="imgs/dark.png" alt="" width="400" height="200"> <img src="imgs/bright.png" alt="" width="400" height="200"> 
+
 Additionally, I worked on positioning key structures like igloos, and our defense tower ensuring they all fit into their correct positions. I was responsible for creating the path and made improvements by cleaning up the terrain's blockage. The terrain was improved by smoothing out the surfaced, layering, and removing.
 
-<img src="imgs/dark.png" alt="" width="400" height="150"> <img src="imgs/bright.png" alt="" width="400" height="150"> <img src="imgs/cleanup.png" alt="" width="400" height="150">
+<img src="imgs/cleanup.png" alt="" width="400" height="200">
 
 ## Press Kit and Trailer
 
