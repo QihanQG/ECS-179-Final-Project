@@ -263,7 +263,9 @@ I decided to go for an 8-bit retro sound to the game, since when we first pitche
 
 link to the full results of my gameplay tests:
 
-Observations and Playtester Comments
+[Observations and Playtester Comments](imgs/Observations_and_Playtester_Comments.pdf)
+
+If the above link doesnt work, use [this.](https://docs.google.com/document/d/1McdCzd97ztOlwoe2JsPKGTWa_Gw12a06_F6TKWtnmdQ/edit?usp=sharing)
 
 ### Playtesting Feedback Summary
 
