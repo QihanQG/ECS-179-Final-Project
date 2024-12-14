@@ -24,10 +24,10 @@ var damage_reduction: float = 0.0
 signal wall_upgraded(level: int)
 
 func _ready() -> void:
+	#global_position = Vector3(33, 3.5, -5)
 	print("Town initialized at: ", global_position)
 	#if factory and turret_spawner:
 		#factory.turret_spawn_location = turret_spawner.global_position
-
 
 
 func upgrade_wall_defense() -> void:
@@ -56,6 +56,8 @@ func _input(event: InputEvent) -> void:
 		#research_building.set_research_focus(research_building.ResearchFocus.WEAPONS) 
 	#elif event.is_action_pressed("upgrade_walls"): # T
 		#research_building.set_research_focus(research_building.ResearchFocus.WALLS) 
+	#elif event.is_action_pressed("upgrade_resources"): # Y
+		#research_building.set_research_focus(research_building.ResearchFocus.RESOURCES) 
 
 func can_afford(cost: int) -> bool:
 	return resources >= cost
