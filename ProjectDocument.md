@@ -24,13 +24,18 @@ Pause: `ESC` to pause or quit the game entirely.
 *Email: cgyliu@ucdavis.edu*   
 *Github: *ccc2d8850
 
-As the project producer, I maintained effective communication channels and project management practices throughout our development cycle. Our team primarily collaborated through a dedicated Discord channel, where we documented key technical discussions ranging from map terrain challenges to enemy animation implementations and turret integration specifics.
-We have two crucial meetings: an initial planning session to align on roles and responsibilities, and a pre-deadline coordination meeting to ensure proper integration of all game functionalities. These meetings proved highly effective, particularly the final coordination session which helped us efficiently resolve outstanding integration issues.
-For tracking project progress, I conducted weekly progress check-ins with team members, monitoring adherence to our initial gameplan timeline. While we experienced a slight delay in the final week, the team generally maintained good progress throughout development. The success of our source control workflow was particularly noteworthy, with minimal merge conflicts despite parallel development streams.
+Throughout the development cycle, my role as producer focused on maintaining clear communication and project organization. Most of our day-to-day coordination happened through Discord, where we kept detailed records of technical discussions ranging from map terrain problems to enemy animation implementations and building system integrations. 
+We had two crucial full-team meetings. The first was our initial planning session where we broke down the project into manageable components and assigned roles based on everyone's will - Maxim would handle animations and assets, Brian would work on UI, Penelope would focus on movement systems, and Qihan would develop turret mechanics, while I would manage the building systems and overall project coordination. The second meeting was our pre-deadline coordination session where we identified and resolved several critical integration issues between different game systems.
+We conducted weekly progress check-ins between team members through Discord, tracking our adherence to the initial timeline and adjusting tasks as needed. These check-ins helped us identify potential bottlenecks early, like challenges with the building instances or animation integration issues. While we experienced a slight delay in the final week due to some complex integration challenges, the team maintained steady progress throughout most of the development cycle.
+For project organization, we established a structured Git workflow that helped minimize merge conflicts despite having multiple team members working on interconnected systems. We used feature branches for major implementations and maintained clear communication about when changes were being merged into the main branch. This approach proved particularly valuable when integrating the building systems with other game components like turret placement and enemy pathing.
+
+All our planning documentation and progress tracking can be found here:
 
 Project timeline (inside initial gameplan): https://docs.google.com/document/d/1GZWn_SmqQvAIgVN7532S8e85JhK0-5KoybL1oGKh4r8/edit?tab=t.0 
 
 Progress report : https://docs.google.com/document/d/1KQmFBPK5jppJ9UUhGbMz5CHWgYjXk1dk-KPUlCqqudk/edit?tab=t.0
+
+Looking back, while there were certainly challenges in coordinating a complex game project, our structured approach to communication and project management helped us deliver a functional and integrated game experience.
 
 ## User Interface and Input
 
