@@ -53,7 +53,18 @@ In addition to designing the main and pause menus, I also implemented the game's
 
 *Name: Penelope Phan*   
 *Email: peaphan@ucdavis.edu*   
-*Github: *
+*Github: penelp
+
+Movement:
+
+The end objective for movement was to have only the enemy penguins to move down a fixed path, much like the game Bloons. To do this, I worked with Qihan in developing a durative command list to include, walking, running, attacking, left and right. I created the base code for the durative commands for all the movements and as you can see below, Qihan took over a portion of my role to edit my durative command scripts in order for them to work with the type of 3D animation models and bone models that we had, as they were quite finiicky to work with. The way the path is constructed is through a durative timer, indicating how long the zombie should walk to reach the end of the path. As you can see in ZombieWalkScript.gd, Me and Qihan worked together to work around how to deal with the 3D model, the solution we settled on was to have me create a set walk list according to the path that Maxim would create. The biggest hurdle I had with this was figuring out how to work out all the timers with the animations, since they wouldnt wait for one another to finish. I had decided to use both the timer, as well as a signal "complete"  being emitted from each movmement class after each animation was finished.
+
+Much like Bloons, the enemies walk in a fixed spawn amount, with X amount of waves that the player has to fight through, for simplicity, we had chosen to do 2 waves. With the difficulty ramping up on second wave, by doubling the amount of enemies spawned from the first wave. Both the wave and the spawning system work on a timer, in which the player has to finish off the currently spawned enemies in order to start the new wave.
+
+Physics:
+The 3D models use a collisionBody3D that can be detected by the turrets implemented by Qihan, if the Zombies are able to reach the end of their path, the collision body will be detected by the wall's collision check, initiating a Game Over sequence. They are also able to take damage by decrementing the damage given by turrets using an area3d method check to measure if their body is in the turret lock group. My biggest issue from implementing the physics was dealing with the hierarchy that the zombie 3D model had, since making new hit and hurt boxes would affect the way the turret would target the zombie, so the hit box had to be attached to the base character3d body itself, with us doing away with the hurt box in favor of a insta lose once the zombies reach the castle.
+
+
 
 ## Animation and Visuals
 
@@ -130,13 +141,13 @@ disabling the transformation.
 
 Then I work with Cheng Yuan to implement the building/town scripts. Given the time constraint, we decided to keep it simple. The research building passively upgrades turret attributes as long as its health remains above 20%. But only newly spawned turrets inherit these upgrades. The production building spawns turrets at predefined fortress points, tracking availability and only spawning at unoccupied locations.
 
-I mainly focused on getting our buildings and management systems working. Here's what I worked on:
-I started by making a template that all our buildings (resource, factory, wall, castle) could use. When that got a bit messy after some updates, I switched to putting all buildings under a town node instead, which worked better. The wall system ended up being part of the town too. I originally wanted to let players place turrets on wall mount points for more strategy options, but we changed plans and had to drop that feature.
-I also created the game manager and testing scripts to handle things like starting/ending the game and managing resources. One of the trickiest parts was testing building features when we didn't have a playable game yet - it was hard to know how things would work after big changes. Another challenge was dealing with all the different nodes (mesh, collision, area) for each building. The mesh instances kept breaking for some reason, which made testing the scripts pretty frustrating.
-
 *Name: Cheng-yuan Liu*   
 *Email: cgyliu@ucdavis.edu*   
 *Github: *ccc2d8850
+
+I mainly focused on getting our buildings and management systems working. Here's what I worked on:
+I started by making a template that all our buildings (resource, factory, wall, castle) could use. When that got a bit messy after some updates, I switched to putting all buildings under a town node instead, which worked better. The wall system ended up being part of the town too. I originally wanted to let players place turrets on wall mount points for more strategy options, but we changed plans and had to drop that feature.
+I also created the game manager and testing scripts to handle things like starting/ending the game and managing resources. One of the trickiest parts was testing building features when we didn't have a playable game yet - it was hard to know how things would work after big changes. Another challenge was dealing with all the different nodes (mesh, collision, area) for each building. The mesh instances kept breaking for some reason, which made testing the scripts pretty frustrating.
 
 #### assets:
 Lego" (https://skfb.ly/MEGs) by Jody_Hong 
@@ -154,15 +165,43 @@ My sub role is practically the same as my main, the general game logic and mecha
 
 ## Audio
 
+*Name: Penelope Phan*   
+*Email: peaphan@ucdavis.edu*   
+*Github: penelp
+
+
 **List your assets, including their sources and licenses.**
+
+Free music game loop bundle 
+- https://tallbeard.itch.io/music-loop-bundle 
+
+    License 
+    
+    - http://creativecommons.org/publicdomain/zero/1.0/
+
+16 bit sound effects (planned for hit damage to wall) 
+ - https://jdwasabi.itch.io/8-bit-16-bit-sound-effects-pack
+  
+    -No licenses listed but author: https://jdwasabi.itch.io/
+  
+Retro 32 bit game sounds for select and shoot
+ - https://brainzplayz.itch.io/retro-sounds-32-bit 
+    
+    Licsense
+     - https://itch.io/game-assets/assets-cc0
+
+
+
 
 **Describe the implementation of your audio system.**
 
+I plan to have background music playing throughout the game, the general theme is to just have the player's mind engaged since it's a bit of a slwo paced game, I wanted to choose faster paced music. I plan to implement the game sounds similar to Homework 1 implementations using the callback command to play a sound when an animation play. To reduce redundancy, I am planning to implement a death sound and a turret sound so that the sounds of enemies walking doesn't overwhelm the player.
+
 **Document the sound style.** 
 
-*Name: Penelope Phan*   
-*Email: peaphan@ucdavis.edu*   
-*Github: *
+I decided to go for an 8-bit retro sound to the game, since when we first pitched the game being a Bloons-like game set in the snow, I wanted it to have a cutsey-arcade-like feel, with the 32-bit effects making the game sound colder, giving it a winter-y feel.
+
+
 
 ## Gameplay Testing
 
