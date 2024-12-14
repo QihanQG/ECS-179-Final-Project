@@ -306,6 +306,15 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 40
 text = "Ready"
 
+[node name="WaveLabel" type="Label" parent="UI/ReadyMenu"]
+layout_mode = 0
+offset_left = -62.0
+offset_top = 20.0
+offset_right = -22.0
+offset_bottom = 75.0
+theme_override_colors/font_color = Color(0, 0, 0.0313726, 1)
+theme_override_font_sizes/font_size = 40
+
 [node name="TurretSelection" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 1
