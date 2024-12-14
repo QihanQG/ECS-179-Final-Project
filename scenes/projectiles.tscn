@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5k03rcj61o2p"]
+[gd_scene load_steps=5 format=3 uid="uid://b5k03rcj61o2p"]
 
 [ext_resource type="Script" path="res://scripts/projectile.gd" id="1_6ej5u"]
+[ext_resource type="AudioStream" uid="uid://bg8ymivg44wdp" path="res://8-16bit+Sound+assets+(x25)/sfx pack/Boss hit 1.wav" id="2_70oii"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3m5bi"]
 radius = 0.05
@@ -20,5 +21,8 @@ mesh = SubResource("CapsuleMesh_3m5bi")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1)
 shape = SubResource("CapsuleShape3D_3x4av")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_70oii")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
