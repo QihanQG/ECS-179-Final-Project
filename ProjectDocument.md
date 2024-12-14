@@ -17,11 +17,17 @@ The penguins are in trouble! Mischievous seals and bears are invading their icy 
 
 **Describe the steps you took in your role as producer. Typical items include group scheduling mechanisms, links to meeting notes, descriptions of team logistics problems with their resolution, project organization tools (e.g., timelines, dependency/task tracking, Gantt charts, etc.), and repository management methodology.**
 
-
-
 *Name: Cheng-yuan Liu*   
 *Email: cgyliu@ucdavis.edu*   
 *Github: *ccc2d8850
+
+As the project producer, I maintained effective communication channels and project management practices throughout our development cycle. Our team primarily collaborated through a dedicated Discord channel, where we documented key technical discussions ranging from map terrain challenges to enemy animation implementations and turret integration specifics.
+We have two crucial meetings: an initial planning session to align on roles and responsibilities, and a pre-deadline coordination meeting to ensure proper integration of all game functionalities. These meetings proved highly effective, particularly the final coordination session which helped us efficiently resolve outstanding integration issues.
+For tracking project progress, I conducted weekly progress check-ins with team members, monitoring adherence to our initial gameplan timeline. While we experienced a slight delay in the final week, the team generally maintained good progress throughout development. The success of our source control workflow was particularly noteworthy, with minimal merge conflicts despite parallel development streams.
+
+Project timeline (inside initial gameplan): https://docs.google.com/document/d/1GZWn_SmqQvAIgVN7532S8e85JhK0-5KoybL1oGKh4r8/edit?tab=t.0 
+
+Progress report : https://docs.google.com/document/d/1KQmFBPK5jppJ9UUhGbMz5CHWgYjXk1dk-KPUlCqqudk/edit?tab=t.0
 
 ## User Interface and Input
 
@@ -140,9 +146,9 @@ Then I work with Cheng Yuan to implement the building/town scripts. Given the ti
 *Email: cgyliu@ucdavis.edu*   
 *Github: *ccc2d8850
 
-
-
-
+I mainly focused on getting our buildings and management systems working. Here's what I worked on:
+I started by making a template that all our buildings (resource, factory, wall, castle) could use. When that got a bit messy after some updates, I switched to putting all buildings under a town node instead, which worked better. The wall system ended up being part of the town too. I originally wanted to let players place turrets on wall mount points for more strategy options, but we changed plans and had to drop that feature.
+I also created the game manager and testing scripts to handle things like starting/ending the game and managing resources. One of the trickiest parts was testing building features when we didn't have a playable game yet - it was hard to know how things would work after big changes. Another challenge was dealing with all the different nodes (mesh, collision, area) for each building. The mesh instances kept breaking for some reason, which made testing the scripts pretty frustrating.
 
 #### assets:
 Lego" (https://skfb.ly/MEGs) by Jody_Hong 
@@ -211,12 +217,13 @@ I decided to go for an 8-bit retro sound to the game, since when we first pitche
 ## Narrative Design
 
 **Document how the narrative is present in the game via assets, gameplay systems, and gameplay.** 
- 
- 
 
 *Name: Cheng-yuan Liu*   
 *Email: cgyliu@ucdavis.edu*   
 *Github: *ccc2d8850
+
+We kept the story pretty simple since the game is straightforward. Instead of having a detailed narrative, we let the arctic environment and assets (like igloos and penguins) tell the story. Players can jump right in and understand what's going on without needing much explanation. You'll find the basic background in our game summary, which gives players just enough context to know what they're fighting for.
+
 
 ## Game Feel and Polish
 
