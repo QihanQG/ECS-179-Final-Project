@@ -281,12 +281,12 @@ Additionally, I worked on positioning key structures like igloos, and our defens
 *Email: peaphan@ucdavis.edu*   
 *Github: penelp
 
-When making the trailer for Pengine Patrol: Arctic Defense, I wanted to show off the main parts of the game in a fun and simple way. The trailer starts with a quick look at the icy Arctic and the penguin colony, then jumps into gameplay. You see snowball cannons firing, penguins building forts, and seals trying to steal fish. I made sure to include special moves, like icy blasts, to show how exciting the game gets. The trailer ends with a big call to action: "Protect the Arctic!"
+When making the trailer for Penguin Patrol: Arctic Defense, We wanted to show off the main parts of the game in a fun and simple way. The trailer starts with a quick look at the icy Arctic menu, then jumps into gameplay when you hit "New Game. When you click "Ready" on the main screen you see snowball cannons firing, penguins building forts, and seals trying to steal fish. Well...at least we tried to. Unfortunately due to the time constraints and schedules for our team, the game is left feeling unfinished.
 
-I picked music that felt exciting and fun, adding sound effects like snowballs hitting seals to bring it to life. For the screenshots, I chose scenes that show the coolest parts of the game—penguins fighting back, seals charging in, and the icy Arctic world. I kept it simple, making sure everything looks fun and clear for anyone who sees it.
+Penelope picked music that felt exciting and fun, adding sound effects like snowballs hitting seals to bring it to life. For the screenshots, We chose scenes that show the coolest parts of the game. We kept it simple, making sure everything looked fun and clear for anyone who saw it.
 
-Trailer [here](https://drive.google.com/file/d/19Uil-7T4Sut2TmXeplA2jU7IaoMcxXmS/view)
+[Trailer](https://drive.google.com/file/d/19Uil-7T4Sut2TmXeplA2jU7IaoMcxXmS/view)
 
-Presskit [here](https://github.com/QihanQG/ECS-179-Final-Project/blob/recovered-branch/Presskit.md)
+[Presskit](https://github.com/QihanQG/ECS-179-Final-Project/blob/recovered-branch/Presskit.md)
 
-[Web-playable version of your game.](https://itch.io/)  
+[itch]([https://itch.io/](https://penelp.itch.io/arctic-tower-defense))  
