@@ -17,7 +17,13 @@ The penguins are in trouble! Mischievous seals and bears are invading their icy 
 
 **Describe the steps you took in your role as producer. Typical items include group scheduling mechanisms, links to meeting notes, descriptions of team logistics problems with their resolution, project organization tools (e.g., timelines, dependency/task tracking, Gantt charts, etc.), and repository management methodology.**
 
+As the project producer, I maintained effective communication channels and project management practices throughout our development cycle. Our team primarily collaborated through a dedicated Discord channel, where we documented key technical discussions ranging from map terrain challenges to enemy animation implementations and turret integration specifics.
+We have two crucial meetings: an initial planning session to align on roles and responsibilities, and a pre-deadline coordination meeting to ensure proper integration of all game functionalities. These meetings proved highly effective, particularly the final coordination session which helped us efficiently resolve outstanding integration issues.
+For tracking project progress, I conducted weekly progress check-ins with team members, monitoring adherence to our initial gameplan timeline. While we experienced a slight delay in the final week, the team generally maintained good progress throughout development. The success of our source control workflow was particularly noteworthy, with minimal merge conflicts despite parallel development streams.
 
+Project timeline (inside initial gameplan): https://docs.google.com/document/d/1GZWn_SmqQvAIgVN7532S8e85JhK0-5KoybL1oGKh4r8/edit?tab=t.0 
+
+Progress report : https://docs.google.com/document/d/1KQmFBPK5jppJ9UUhGbMz5CHWgYjXk1dk-KPUlCqqudk/edit?tab=t.0
 
 *Name: Cheng-yuan Liu*   
 *Email: cgyliu@ucdavis.edu*   
@@ -47,18 +53,7 @@ In addition to designing the main and pause menus, I also implemented the game's
 
 *Name: Penelope Phan*   
 *Email: peaphan@ucdavis.edu*   
-*Github: penelp
-
-Movement:
-
-The end objective for movement was to have only the enemy penguins to move down a fixed path, much like the game Bloons. To do this, I worked with Qihan in developing a durative command list to include, walking, running, attacking, left and right. As you can see below, he took over a portion of my role to edit my durative command scripts in order for them to work with the type of 3D animation models and bone models that we had. The way the path is constructed is through a durative timer, indicating how long the zombie should walk to reach the end of the path. 
-
-Much like Bloons, the enemies walk in a fixed spawn amount, with X amount of waves that the player has to fight through, for simplicity, we had chosen to do 2 waves. With the difficulty ramping up on second wave, by doubling the amount of enemies spawned from the first wave. Both the wave and the spawning system work on a timer, in which the player has to finish off the currently spawned enemies in order to start the new wave.
-
-Physics:
-The 3D models use a collisionBody3D that can be detected by the turrets implemented by Qihan, if the Zombies are able to reach the end of their path, the collision body will be detected by the wall's collision check, initiating a Game Over sequence. They are also able to take damage by decrementing the damage given by turrets using an area3d method check to measure if their body is in the turret lock group.
-
-
+*Github: *
 
 ## Animation and Visuals
 
@@ -135,13 +130,13 @@ disabling the transformation.
 
 Then I work with Cheng Yuan to implement the building/town scripts. Given the time constraint, we decided to keep it simple. The research building passively upgrades turret attributes as long as its health remains above 20%. But only newly spawned turrets inherit these upgrades. The production building spawns turrets at predefined fortress points, tracking availability and only spawning at unoccupied locations.
 
+I mainly focused on getting our buildings and management systems working. Here's what I worked on:
+I started by making a template that all our buildings (resource, factory, wall, castle) could use. When that got a bit messy after some updates, I switched to putting all buildings under a town node instead, which worked better. The wall system ended up being part of the town too. I originally wanted to let players place turrets on wall mount points for more strategy options, but we changed plans and had to drop that feature.
+I also created the game manager and testing scripts to handle things like starting/ending the game and managing resources. One of the trickiest parts was testing building features when we didn't have a playable game yet - it was hard to know how things would work after big changes. Another challenge was dealing with all the different nodes (mesh, collision, area) for each building. The mesh instances kept breaking for some reason, which made testing the scripts pretty frustrating.
+
 *Name: Cheng-yuan Liu*   
 *Email: cgyliu@ucdavis.edu*   
 *Github: *ccc2d8850
-
-
-
-
 
 #### assets:
 Lego" (https://skfb.ly/MEGs) by Jody_Hong 
@@ -159,43 +154,15 @@ My sub role is practically the same as my main, the general game logic and mecha
 
 ## Audio
 
-*Name: Penelope Phan*   
-*Email: peaphan@ucdavis.edu*   
-*Github: penelp
-
-
 **List your assets, including their sources and licenses.**
-
-Free music game loop bundle 
-- https://tallbeard.itch.io/music-loop-bundle 
-
-    License 
-    
-    - http://creativecommons.org/publicdomain/zero/1.0/
-
-16 bit sound effects (planned for hit damage to wall) 
- - https://jdwasabi.itch.io/8-bit-16-bit-sound-effects-pack
-  
-    -No licenses listed but author: https://jdwasabi.itch.io/
-  
-Retro 32 bit game sounds for select and shoot
- - https://brainzplayz.itch.io/retro-sounds-32-bit 
-    
-    Licsense
-     - https://itch.io/game-assets/assets-cc0
-
-
-
 
 **Describe the implementation of your audio system.**
 
-I plan to have background music playing throughout the game, the general theme is to just have the player's mind engaged since it's a bit of a slwo paced game, I wanted to choose faster paced music. I plan to implement the game sounds similar to Homework 1 implementations using the callback command to play a sound when an animation play. To reduce redundancy, I am planning to implement a death sound and a turret sound so that the sounds of enemies walking doesn't overwhelm the player.
-
 **Document the sound style.** 
 
-I decided to go for an 8-bit retro sound to the game, since when we first pitched the game being a Bloons-like game set in the snow, I wanted it to have a cutsey-arcade-like feel, with the 32-bit effects making the game sound colder, giving it a winter-y feel.
-
-
+*Name: Penelope Phan*   
+*Email: peaphan@ucdavis.edu*   
+*Github: *
 
 ## Gameplay Testing
 
@@ -211,7 +178,7 @@ I decided to go for an 8-bit retro sound to the game, since when we first pitche
 
 **Document how the narrative is present in the game via assets, gameplay systems, and gameplay.** 
  
- 
+ We kept the story pretty simple since the game is straightforward. Instead of having a detailed narrative, we let the arctic environment and assets (like igloos and penguins) tell the story. Players can jump right in and understand what's going on without needing much explanation. You'll find the basic background in our game summary, which gives players just enough context to know what they're fighting for.
 
 *Name: Cheng-yuan Liu*   
 *Email: cgyliu@ucdavis.edu*   
