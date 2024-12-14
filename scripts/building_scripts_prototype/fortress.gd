@@ -6,6 +6,7 @@ extends Node3D
 @onready var main_area = $"Area3D"
 
 # Wall properties
+var building_name: String = "Fortress"
 var wall_health: float = 1000.0
 var max_wall_health: float = 1000.0
 var damage_reduction: float = 0.0
@@ -13,8 +14,8 @@ var wall_upgrade_level: int = 0
 
 signal wall_damaged(health: float)
 signal wall_upgraded(level: int)
+signal game_over(victory: bool)
 
-@onready var pause_menu = $"/root/World/PauseMenu"
 @onready var game_manager = get_node("root/World/GameManager")
 
 func _ready():
@@ -28,13 +29,15 @@ func _ready():
 		main_area.add_to_group("friendly")
 		print("Area 3D found!") #debug
 
+func add_to_friendly_group():
+	if wall_door:
+		wall_door.add_to_group("friendly")
+		print("Wall added to friendly group")
+
 func take_damage(damage: float) -> void:
 	var reduced_damage = damage * (1.0 - damage_reduction)
 	wall_health = max(0, wall_health - reduced_damage)
 	emit_signal("wall_damaged", wall_health)
-	
-	if main_area:
-		main_area.connect("body_entered", _on_area_3d_body_entered)
 	
 	if wall_health <= 0:
 		on_wall_destroyed()
@@ -49,6 +52,11 @@ func on_wall_destroyed() -> void:
 	#Get reference to GameManager and call end_game
 	if game_manager:
 		game_manager.end_game(false)
+
+func setup_collision_detection():
+	if main_area:
+		main_area.connect("body_entered", _on_area_3d_body_entered)
+		print("Collision detection setup complete")
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	print("Body entered: ", body.name)  # Debug line
@@ -65,3 +73,12 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		print("getting attack!")
 		if body.has_method("get_damage"):
 			take_damage(body.damage)
+			
+func get_damage_reduction() -> float:
+	return damage_reduction
+
+func get_wall_health() -> float:
+	return wall_health
+
+func get_max_wall_health() -> float:
+	return max_wall_health

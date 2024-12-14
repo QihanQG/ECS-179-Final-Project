@@ -99,7 +99,7 @@ func start_wave():
 func damage_building(building_name: String, damage: float):
 	emit_signal("building_damaged", building_name, damage)
 	
-	if building_name == "castle" and damage <= 0:
+	if building_name == "castle" or building_name == "fortress" and damage <= 0:
 		end_game(false)
 
 func end_game(victory: bool):

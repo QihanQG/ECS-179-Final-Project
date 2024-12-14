@@ -5,6 +5,7 @@ extends StaticBody3D
 @export var min_health_percentage: float = 20.0
 @export var update_interval: float = 5.0
 
+var building_name: String = "ResourcesBuilding"
 var research_level: int = 0
 var current_health: float
 var is_functional: bool = true

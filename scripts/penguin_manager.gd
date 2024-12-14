@@ -25,7 +25,7 @@ signal stats_updated(resource_cap: float, production_speed: float, turret_damage
 signal penguin_spawned
 
 func _ready():
-	# Start with some initial penguins
+	# Start with some penguins
 	add_penguins(3)
 
 func add_penguins(amount: int) -> void:
@@ -38,7 +38,7 @@ func assign_penguins(location: String, count: int) -> bool:
 	if count < 0 or !assigned_penguins.has(location):
 		return false
 	
-	# Check if we have enough available penguins
+	# Check 
 	var available = get_available_penguins()
 	if count > available:
 		print("Not enough available penguins! Available: ", available)

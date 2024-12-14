@@ -27,35 +27,35 @@ func run_test_sequence():
 	var game_manager = get_parent()
 	
 	match test_phase:
-		0:  # Initial state test
+		0:  
 			print("\n=== Testing Initial State ===")
 			print("Available penguins:", game_manager.get_available_penguins())
 			print("Current resources:", game_manager.get_resources())
 			test_phase += 1
 			
-		1:  # Test penguin assignment to research
+		1:  
 			print("\n=== Testing Research Assignment ===")
 			game_manager.assign_penguins("research", 2)
 			test_phase += 1
 			
-		2:  # Test penguin assignment to factory
+		2: 
 			print("\n=== Testing Factory Assignment ===")
 			game_manager.assign_penguins("factory", 2)
 			test_phase += 1
 			
-		3:  # Test resource management
+		3:  
 			print("\n=== Testing Resource Management ===")
 			game_manager.modify_resources(1000)  # Try adding resources
 			test_phase += 1
 			
-		4:  # Test turret placement
+		4:  
 			print("\n=== Testing Turret Placement ===")
 			var turret_cost = 100.0
 			if game_manager.try_place_turret(turret_cost):
 				print("Successfully placed turret! Cost: ", turret_cost)
 			test_phase += 1
 			
-		5:  # Test wave management
+		5:  
 			print("\n=== Testing Wave Management ===")
 			if game_manager.is_game_active():
 				game_manager.start_wave()

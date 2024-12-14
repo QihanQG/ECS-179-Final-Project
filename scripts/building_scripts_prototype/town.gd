@@ -1,6 +1,5 @@
 extends Node3D
 
-# Building references - matching your hierarchy
 @onready var factory: StaticBody3D = $fortress/factory
 @onready var research_building: StaticBody3D = $fortress/research_building
 @onready var turret_spawner: StaticBody3D = $"../Turret_spawner"
@@ -10,12 +9,12 @@ extends Node3D
 # Resource management
 var resources: int = 1000
 
-# Turret costs
+# costs
 @export var turret_prototype_cost: int = 100
 @export var turret_2_cost: int = 200
 @export var turret_1_cost: int = 300
 
-# Town & Wall properties
+# properties
 var town_radius: float = 15.0
 var show_debug_lines: bool = true
 var wall_upgrade_level: int = 0

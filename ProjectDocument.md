@@ -177,10 +177,35 @@ Then I work with Cheng Yuan to implement the building/town scripts. Given the ti
 *Email: cgyliu@ucdavis.edu*   
 *Github: *ccc2d8850
 
-As a core developer for the building and management systems, I implemented several critical gameplay features that form the backbone of our tower defense game. My work started with designing a building system that manages multiple structure types, including resource buildings, factories, defensive walls, and the main castle. Initially, I created a base building template with an inheritance structure, but as our game evolved, I refactored it to a more robust town-centered architecture for better management.
-The resource management system became one of my primary focuses, handling everything from resource generation and consumption to building costs and upgrades. I implemented specific features for each building type - the research building got a multi-tier upgrade system that enhances turret capabilities and provides passive bonuses, while the factory building manages turret production and spawning mechanics. The wall defense system includes damage reduction calculations and upgrade paths for strengthening defenses, turret mount points for placing turrets onto the fortress.
-One of the biggest challenges was developing the game state management system. I created a game manager that handles everything from initialization and win/loss conditions to wave progression and resource distribution. Testing was particularly tricky since we needed to verify building functionality without having a complete game amd everything. This required creating isolated test environments and mock objects, plus implementing debug visualizations to track what was happening. The node hierarchy for buildings proved especially challenging - managing collision shapes, area nodes, mesh instances, and signal connections all had to work together perfectly for the buildings to function properly.
-Integration with other game systems required careful coordination with team members' work. The building system needed to interact properly with turret functionality and respond appropriately to game state changes. Despite some technical challenges with mesh instances and collision detection that took time to resolve, the final building system became a core foundation for our gameplay mechanics. Players can manage their resources and build up defenses against incoming enemies, making strategic choices about when to upgrade or repair structures. The building management system forms an essential part of our tower defense gameplay loop, offering players decisions while trying to maintain good game balance and progression.
+As a core developer for the building and management systems, I implemented several critical gameplay features that form the foundation of our tower defense game. I developed a comprehensive building system that manages our defensive structures, including factories, research facilities, defensive walls, and the main castle. Each building type has its own unique role: factories handle turret production with different tiers of units, research buildings provide upgrades and technological advancement, and the defensive walls protect against enemy attacks with upgradeable damage reduction.
+The resource management system integrates deeply with these buildings. I implemented systems for resource generation, building costs, upgrade paths, and economy balancing. Research buildings provide strategic options through a multi-tier upgrade system that enhances turret capabilities and building performance. The factory building manages turret production with multiple unit types, each benefiting differently from research upgrades through a multiplier system (1.0x for basic turrets, up to 1.5x for advanced models).
+One of my biggest challenges was creating an effective game state management system. I developed a game manager that handles everything from game initialization to victory/defeat conditions, wave progression, and resource distribution. The building damage system ties into this, with each structure having its own health pool and the potential to affect game outcome if critical buildings are destroyed. Despite some technical challenges with node hierarchies and collision detection, the final system provides players with meaningful strategic choices in base development and defense.
+For example scripts demonstrating this work:
+
+gdscriptCopy :
+
+# From game_manager.gd
+
+var resource_cap: float = 5000.0
+var weapon_damage_multiplier: float = 1.0
+
+func upgrade_weapons() -> void:
+    weapon_damage_multiplier += weapon_damage_increase
+    print("Weapons upgraded! New multiplier: ", weapon_damage_multiplier)
+
+# From factory.gd
+
+func spawn_turret(turret_type: int = 0) -> void:
+    if current_health <= 0 or !is_operational:
+        return
+        
+    var turret_scene: PackedScene
+    match turret_type:
+        0: turret_scene = Turret_prototype
+        1: turret_scene = Turret_1
+        2: turret_scene = Turret_2
+
+The system's modular design allows for easy expansion, though time constraints meant leaving some planned features (like wall-mounted turrets) for future development. Despite these limitations, the building and management systems form the core of our gameplay loop, giving players strategic depth through resource management and base development choices.
 
 #### assets:
 Lego" (https://skfb.ly/MEGs) by Jody_Hong 
