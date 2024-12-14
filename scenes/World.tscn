@@ -129,7 +129,7 @@ debug_mode = true
 detection_radius = 5.0
 
 [node name="TurretM2" parent="." instance=ExtResource("13_0tso4")]
-transform = Transform3D(1, -8.95568e-10, 0, 2.63185e-11, 1, 0, 0, 6.98492e-10, 1, 2.23934, 3.79653, 19.833)
+transform = Transform3D(1, -1.3614e-09, 0, 2.63185e-11, 1, 0, 0, 1.16415e-09, 1, 14.0689, 3.74721, 9.59385)
 debug_mode = true
 detection_radius = 5.0
 
@@ -174,8 +174,8 @@ _zombie_spawn_point = NodePath("../ZombieMarkerSpawn")
 transform = Transform3D(1, -2.29375e-09, 0, 2.63185e-11, 1, 0, 0, 2.09548e-09, 1, 7.88966, 0.0487157, -9.39507)
 gizmo_extents = 0.0
 
-[node name="Fortress_wall" parent="." instance=ExtResource("19_s8gqc")]
-transform = Transform3D(-1.21607e-05, -0.00349064, -2, 0.00698128, 1.99999, -0.00349066, 1.99998, -0.00698131, 2.42144e-08, 30.9594, 4.17497, -15.0039)
+[node name="Town" parent="." instance=ExtResource("19_s8gqc")]
+transform = Transform3D(-1.21607e-05, -0.00349064, -2, 0.00698128, 1.99999, -0.00349066, 1.99998, -0.00698131, 2.42144e-08, 30.9603, 4.17344, -16.2568)
 
 [node name="PauseMenu" parent="." instance=ExtResource("17_686rf")]
 

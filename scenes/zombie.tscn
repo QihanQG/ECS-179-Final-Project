@@ -2481,10 +2481,14 @@ external_skeleton = NodePath("..")
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/BoneAttachment3D"]
 
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Skeleton3D/BoneAttachment3D/Area3D"]
+transform = Transform3D(0.972889, -0.00120115, -0.231269, 0.0370175, 0.987903, 0.150592, 0.22829, -0.155071, 0.961164, 0, 0, 0)
+shape = SubResource("BoxShape3D_jtsjd")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="Skeleton3D/BoneAttachment3D"]
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Skeleton3D/BoneAttachment3D/StaticBody3D"]
-transform = Transform3D(0.679743, -0.00114651, -0.203361, 0.0258636, 0.942991, 0.13242, 0.159503, -0.148021, 0.845177, 0, 0, 0)
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Skeleton3D/BoneAttachment3D/StaticBody3D"]
+transform = Transform3D(0.972889, -0.00120115, -0.231269, 0.0370175, 0.987903, 0.150592, 0.22829, -0.155071, 0.961164, 0, 0, 0)
 shape = SubResource("BoxShape3D_jtsjd")
 
 [node name="Object_2" type="MeshInstance3D" parent="Skeleton3D"]
@@ -2534,6 +2538,10 @@ libraries = {
 }
 
 [node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.95623, -0.0446926, 0.289183, 0.0597581, 0.997266, -0.0434747, -0.286449, 0.0588529, 0.956286, 0, 6.62556, 0.0336189)
+shape = SubResource("BoxShape3D_jtsjd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.6917)

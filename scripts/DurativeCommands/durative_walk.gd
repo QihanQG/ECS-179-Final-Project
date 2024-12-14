@@ -29,7 +29,7 @@ func adjust_animation_speed():
 		var ideal_speed = 3.0
 		var speed_scale = speed / ideal_speed
 		animation_player.speed_scale = speed_scale
-		print("Adjusted animation speed scale to:", speed_scale)
+		#print("Adjusted animation speed scale to:", speed_scale)
 
 func on_animation_complete():
 	animation_done = true

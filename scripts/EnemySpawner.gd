@@ -45,7 +45,4 @@ func spawn_enemy() -> void:
 		enemy.circular_motion_around(turret)
 	
 	
-
-
-	
 	print("Enemy spawned at: ", enemy.global_position)

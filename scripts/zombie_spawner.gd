@@ -51,9 +51,10 @@ func spawn_zombie():
 		if _zombie and _zombie_spawn_point:
 			var _zombie_instance = _zombie.instantiate()
 			_zombie_instance.add_to_group("enemies")
+			print(" zombie groups : ", _zombie_instance.get_groups()) #debug
 			_zombie_instance.visible = true
 			_zombie_instance.global_transform.origin = _zombie_spawn_point.global_transform.origin
-			print(_zombie_instance.global_transform.origin)
+			#print(_zombie_instance.global_transform.origin)
 			add_child(_zombie_instance)
 			_current_zombie_count += 1
 	else:
@@ -64,6 +65,7 @@ func spawn_zombie():
 # Brian's implementation of start spawn function
 func start_spawning():
 	print("Starting zombie spawning...")
+	#print(" zombie groups : ", get_groups()) #debug
 	_current_zombie_wave = 0
 	_current_zombie_count = 0
 	_spawn_interval_timer.start()  # Start the spawn interval timer

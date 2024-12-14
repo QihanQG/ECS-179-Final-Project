@@ -30,7 +30,6 @@ func _ready() -> void:
 		#factory.turret_spawn_location = turret_spawner.global_position
 
 
-
 func upgrade_wall_defense() -> void:
 	wall_upgrade_level += 1
 	damage_reduction = min(wall_upgrade_level * 0.1, 0.5)  # Max 50% damage reduction
@@ -53,12 +52,12 @@ func _input(event: InputEvent) -> void:
 		#spend_resources(turret_2_cost)
 		
 	# Research upgrades testing
-	if event.is_action_pressed("upgrade_weapons"): # R
-		research_building.set_research_focus(research_building.ResearchFocus.WEAPONS) 
-	elif event.is_action_pressed("upgrade_walls"): # T
-		research_building.set_research_focus(research_building.ResearchFocus.WALLS) 
-	elif event.is_action_pressed("upgrade_resources"): # Y
-		research_building.set_research_focus(research_building.ResearchFocus.RESOURCES) 
+	#if event.is_action_pressed("upgrade_weapons"): # R
+		#research_building.set_research_focus(research_building.ResearchFocus.WEAPONS) 
+	#elif event.is_action_pressed("upgrade_walls"): # T
+		#research_building.set_research_focus(research_building.ResearchFocus.WALLS) 
+	#elif event.is_action_pressed("upgrade_resources"): # Y
+		#research_building.set_research_focus(research_building.ResearchFocus.RESOURCES) 
 
 func can_afford(cost: int) -> bool:
 	return resources >= cost
