@@ -6,7 +6,7 @@ The penguins are in trouble! Mischievous seals and bears are invading their icy 
 
 ## Gameplay Explanation ##
 
-The players can move around the map using `WSDA` keys and `all mouse click` buttons. To start the game player can either choose new game to enter. Once entered, the player will set up tower defenses and click the "Ready" button on the screen when they want the round to begin.
+The players can move around the map using `WSDA` keys and `all mouse click` buttons. To start the game player can either choose a new game to enter. Once entered, the player will set up tower defenses by selecting the turrets located in the top right corner of the screen. To start click the "Ready" button on the middle of the screen when they want the round to begin. You survive the round when all enemies are eliminated and the tower's health is in good standing. 
 
 Movement: Move by using the keys `WSDA`. Press `W` to go forward; `S` to move backwards; `D` to go right; `A` to go left: `scroll-wheel up` to zoom in; `scrool-wheel down ` to zoom out.
 
