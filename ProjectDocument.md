@@ -63,6 +63,7 @@ The end objective for movement was to have only the enemy penguins to move down 
 ![](imgs/wave_spawner.gif)
 
 
+
 Much like Bloons, the enemies walk in a fixed spawn amount, with X amount of waves that the player has to fight through, for simplicity, we had chosen to do 2 waves. With the difficulty ramping up on second wave, by doubling the amount of enemies spawned from the first wave. Both the wave and the spawning system work on a timer, in which the player has to finish off the currently spawned enemies in order to start the new wave.
 
 
