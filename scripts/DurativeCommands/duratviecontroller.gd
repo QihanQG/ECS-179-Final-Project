@@ -18,7 +18,7 @@ func _init(player: AnimationPlayer, duration: float, character: CharacterBody3D)
 
 func execute():
 	if animation_player:
-		#print("Playing animation for", duration, "seconds...")
+		print("Playing animation for", duration, "seconds...")
 		var animations = animation_player.get_animation_list()
 		if animations.size() > 0:
 			var anim_name = animations[0]
