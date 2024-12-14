@@ -60,11 +60,9 @@ In addition to the UI responsibilities, I also implemented the game's top-down v
 
 <img src="imgs/controls.png" alt="" width="400" height="200">
 
-### Note
+### Note:
 
-I took the initiative to draft and write the initial game plan, progress report, and setup documentation for our project. Additionally, I helped facilitate team collaboration by organizing and leading meetings through Discord voice and text chats, ensuring effective communication and coordination among group members.
-
-I wanted to add here
+I took the initiative to draft and write the initial game plan, progress report, and setup documentation (summary & gameplay explaination) for our project. Additionally, I helped facilitate team collaboration by organizing meetings through Discord voice and text chats, ensuring communication and coordination among group members.
 
 ## Movement/Physics
 
