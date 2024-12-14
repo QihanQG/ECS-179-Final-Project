@@ -31,6 +31,7 @@ func setup_king_penguin():
 		king_penguin = king_penguin_scene.instantiate()
 		add_child(king_penguin)
 		king_penguin.position = Vector3(0, 0, 0)  # Center of castle
+		#king_penguin.scale = Vector3(0.5,0.5,0.5)
 
 func setup_spawn_timer():
 	penguin_spawn_timer = Timer.new()

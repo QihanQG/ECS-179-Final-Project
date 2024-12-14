@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cgpw7jwcreeku"]
+[gd_scene load_steps=28 format=3 uid="uid://cgpw7jwcreeku"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_0163h"]
 [ext_resource type="Script" path="res://scripts/EnemySpawner.gd" id="1_f6dcx"]
@@ -32,28 +32,6 @@ sky_material = SubResource("ProceduralSkyMaterial_5my2n")
 background_mode = 2
 sky = SubResource("Sky_v644a")
 
-[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_5psaf"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_g7kwa"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_gdpei"]
-height = 3.0
-rings = 0
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_m8mvl"]
-
-[sub_resource type="PrismMesh" id="PrismMesh_ggmeb"]
-left_to_right = 0.0
-size = Vector3(3, 1, 1)
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ycahs"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_ulq6k"]
-radius = 1.0
-height = 0.56
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_1n8ka"]
-
 [sub_resource type="MeshTexture" id="MeshTexture_lepjr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q8nm7"]
@@ -73,16 +51,6 @@ _data = {
 point_count = 15
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dyjmh"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j3srt"]
-albedo_color = Color(0.151276, 0.151276, 0.151276, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_2saqr"]
-material = SubResource("StandardMaterial3D_j3srt")
-size = Vector3(1, 2, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_b2ehf"]
-size = Vector3(1, 2, 1)
 
 [node name="World" type="Node3D"]
 transform = Transform3D(0.999995, -0.00311328, 0.000721761, 0.00311416, 0.999994, -0.001219, -0.000717969, 0.00122124, 0.999999, -0.220264, 1.21166, 0.0610809)
@@ -126,70 +94,11 @@ script = ExtResource("7_saagv")
 [node name="PenguinManager" type="Node" parent="GameManager"]
 script = ExtResource("8_u885u")
 
-[node name="Town" type="Node3D" parent="."]
-transform = Transform3D(0.99612, 0.0880077, 0, -0.0880077, 0.99612, 0, -1.74623e-10, 8.14907e-10, 1, 29.4214, 8.33957, -25.3035)
-
-[node name="WallSystem" type="StaticBody3D" parent="Town"]
-
-[node name="TurretMount" type="Node3D" parent="Town/WallSystem"]
-
-[node name="WallSegments" type="Node3D" parent="Town/WallSystem"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Town/WallSystem"]
-shape = SubResource("SeparationRayShape3D_5psaf")
-
-[node name="TownBoundaryMesh" type="MeshInstance3D" parent="Town"]
-transform = Transform3D(1, 4.89399e-09, -5.82077e-11, -2.56614e-09, 1, -1.16415e-10, 0, 1.16415e-10, 1, 0.327059, -3.83814, 0.00469589)
-mesh = SubResource("CapsuleMesh_g7kwa")
-
-[node name="Buildings" type="Node3D" parent="Town"]
-
-[node name="Castle" type="StaticBody3D" parent="Town/Buildings"]
-transform = Transform3D(0.999988, 0.00483455, -5.58532e-06, -0.00483454, 0.999988, -3.96371e-06, 5.56605e-06, 3.99072e-06, 1, -10, 2.5, 5)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Town/Buildings/Castle"]
-transform = Transform3D(3, 1.46822e-08, 4.65661e-10, 1.46526e-08, 3, 0, 2.32831e-10, 0, 3, 0.47411, -5.26293, 0.00645828)
-mesh = SubResource("CapsuleMesh_gdpei")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Town/Buildings/Castle"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-shape = SubResource("BoxShape3D_m8mvl")
-
-[node name="PenguinSpawn" type="Marker3D" parent="Town/Buildings/Castle"]
-
-[node name="Research" type="StaticBody3D" parent="Town/Buildings"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Town/Buildings/Research"]
-transform = Transform3D(3, 1.4682e-08, 0, -1.5149e-08, 3, -2.32831e-10, 0, 0, 3, 5.38576, -3.02705, 5.00554)
-mesh = SubResource("PrismMesh_ggmeb")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Town/Buildings/Research"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-visible = false
-shape = SubResource("CapsuleShape3D_ycahs")
-
-[node name="ResearchArea" type="Area3D" parent="Town/Buildings/Research"]
-
-[node name="Factory" type="StaticBody3D" parent="Town/Buildings"]
-
-[node name="ProductionArea" type="Area3D" parent="Town/Buildings/Factory"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Town/Buildings/Factory"]
-transform = Transform3D(3, 1.46817e-08, 0, -1.51495e-08, 3, -6.98492e-10, 0, 0, 3, -3.19522, -4.28565, 5.33002)
-mesh = SubResource("SphereMesh_ulq6k")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Town/Buildings/Factory"]
-transform = Transform3D(3, 1.46817e-08, 0, -1.51495e-08, 3, -6.98492e-10, 0, 0, 3, 0.270029, 0.0230923, 0.0677605)
-shape = SubResource("CylinderShape3D_1n8ka")
-
 [node name="Igloo" parent="." instance=ExtResource("14_riq8w")]
 transform = Transform3D(0.298858, -2.33598e-10, 0.0261467, -3.27418e-11, 0.3, 1.16415e-10, -0.0261467, 1.16415e-10, 0.298858, -17.4145, 1.41333, 15.5618)
 
 [node name="Igloo2" parent="." instance=ExtResource("14_riq8w")]
 transform = Transform3D(3.62343e-09, -1.75362e-10, -0.3, 0, 0.3, -5.00222e-11, 0.3, 8.73115e-11, 3.59432e-09, -26.0715, 3.23322, -14.717)
-
-[node name="Igloo3" parent="." instance=ExtResource("14_riq8w")]
-transform = Transform3D(-1.31404e-08, -1.17154e-10, 0.3, 0, 0.3, 3.83977e-11, -0.3, 5.82077e-11, -1.31258e-08, 35.9183, 3.68225, -1.87684)
 
 [node name="Igloo4" parent="." instance=ExtResource("14_riq8w")]
 transform = Transform3D(-0.3, -4.66514e-10, -2.6339e-08, -1.9682e-10, 0.3, -2.32831e-10, 2.62662e-08, 2.32831e-10, -0.3, -7.43443, 3.46703, -21.5803)
@@ -266,17 +175,7 @@ transform = Transform3D(1, -2.29375e-09, 0, 2.63185e-11, 1, 0, 0, 2.09548e-09, 1
 gizmo_extents = 0.0
 
 [node name="Fortress_wall" parent="." instance=ExtResource("19_s8gqc")]
-transform = Transform3D(-1.99916, 0.00622832, 0.0574879, 0.00615567, 1.99999, -0.00261604, -0.0574957, -0.00243801, -1.99917, 6.13469, 3.48372, 23.9348)
-
-[node name="Turret_spawner" type="StaticBody3D" parent="."]
-transform = Transform3D(1, -8.95852e-10, 0, 2.63185e-11, 1, 0, 0, 8.14907e-10, 1, 14.5791, 4.55302, 12.1149)
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Turret_spawner"]
-transform = Transform3D(1, -1.12914e-09, 0, 2.63185e-11, 1, 0, 0, 1.16415e-09, 1, 0, 0, 0)
-mesh = SubResource("BoxMesh_2saqr")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Turret_spawner"]
-shape = SubResource("BoxShape3D_b2ehf")
+transform = Transform3D(-1.21607e-05, -0.00349064, -2, 0.00698128, 1.99999, -0.00349066, 1.99998, -0.00698131, 2.42144e-08, 30.9594, 4.17497, -15.0039)
 
 [node name="PauseMenu" parent="." instance=ExtResource("17_686rf")]
 
