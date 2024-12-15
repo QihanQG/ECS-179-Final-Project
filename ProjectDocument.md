@@ -150,7 +150,7 @@ As I helped with the world-building, I was responsible for crafting the icy terr
 My role initially included handling the enemy and unit(turret) behaviors, but it became a broader role in the overall Game logic. I first implemented yaw rotation (horizontal) using basic vector math, using dot product to find the angle between the turret's forward vector and target vector, cross product's Y component, and using the sign to determine rotation direction (clockwise/counterclockwise). The next challenge was adding pitch rotation (vertical) and handling both axes concurrently and seamlessly with respect to the turret design. Which required me to change my initial approach from a simple vector-math based to a more complex approach that could handle both rotational axes simultaneously. Eventually, I learned that I could put separate pivot points on the turret model to handle the yaw rotations and pitch rotations separately. And use arctangent calculations for pitch angles. And implemented angle constraints for the turret's movements to remain realistic and within its design limitations.
 
 
-After this, I spent time refining the turret movements, implementing more features/modes,  adding more debugging features, and making it more modular for other members to approach and modify. Then finally implementing it on the turret models provided by Maxim, it was a bit challenging as the model meshes only have two parts, the base and top. But I was able to make it work with some tricks.
+After this, I spent time refining the turret movements, implementing more features/modes, adding more debugging features, and making it more modular for other members to approach and modify. Then finally implementing it on the turret models provided by Maxim, it was a bit challenging as the model meshes only have two parts, the base and top. But I was able to make it work with some tricks.
 
 
 <img src="imgs/turret_prototype.png" alt="seal" width="400" height="200"><img src="imgs/turret_1.png" alt="igloo" width="400" height="200">
@@ -217,10 +217,12 @@ Lego" (https://skfb.ly/MEGs) by Jody_Hong
 *Email: qgguan@ucdavis.edu*   
 *Github: QihanQG
 
-My sub-role is practically the same as my main role, which is general game logic and mechanics. This involves debugging scripts or fixing scenes, or helping other members with their scripts/models. And fixing issues with file conflicts and merges for the repository. I've also contributed to the initial game document significantly by outlining implementation details and ideas for the game. So i would say my subrole was helping the team with their requests and fixing whatevers that we have.
+My sub-role is practically the same as my main role, which is general game logic and mechanics This involves debugging scripts or fixing scenes, or helping other members with their scripts/models. And fixing issues with file conflicts and merges for the repository. I've also contributed to the [initial game document](https://github.com/QihanQG/ECS-179-Final-Project/blob/recovered-branch/GameSummary.md) significantly by outlining implementation details and ideas for the game. 
+
+So i would say my subrole was helping the team with their requests and fixing whatevers that we have.
 
 #### Others:
-I've also spent a lot of time creating the first turret model.
+I've also spent a lot of time creating the first turret model. This process gave me good experiecne and knoweldge on basic modeling in Godot and how i can improve and make my script to work with the imported turret models which only consist only of top and base meshes, rather than having multiple separate components.
 
 <img src="imgs/turretmodel.png" alt="seal">
 
