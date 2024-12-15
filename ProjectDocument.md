@@ -217,7 +217,7 @@ Lego" (https://skfb.ly/MEGs) by Jody_Hong
 *Email: qgguan@ucdavis.edu*   
 *Github: *
 
-My sub-role is practically the same as my main role, which is general game logic and mechanics. This involves debugging scripts or fixing scenes. And fixing issues with file conflicts and merges for the repository. I've also spent a lot of time outlining the implementation details and ideas for the games. And spent a lot of time making the first turret model.
+My sub-role is practically the same as my main role, which is general game logic and mechanics. This involves debugging scripts or fixing scenes, or helping other members with their scripts/models. And fixing issues with file conflicts and merges for the repository. I've also spent a lot of time outlining the implementation details and ideas for the games, and making the first turret model.
 
 ## Audio
 
