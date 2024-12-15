@@ -145,7 +145,7 @@ As I helped with the world-building, I was responsible for crafting the icy terr
 
 *Name: Qihan Guan*   
 *Email: qgguan@ucdavis.edu*   
-*Github: *
+*Github: QihanQG
 
 My role initially included handling the enemy and unit(turret) behaviors, but it became a broader role in the overall Game logic. I first implemented yaw rotation (horizontal) using basic vector math, using dot product to find the angle between the turret's forward vector and target vector, cross product's Y component, and using the sign to determine rotation direction (clockwise/counterclockwise). The next challenge was adding pitch rotation (vertical) and handling both axes concurrently and seamlessly with respect to the turret design. Which required me to change my initial approach from a simple vector-math based to a more complex approach that could handle both rotational axes simultaneously. Eventually, I learned that I could put separate pivot points on the turret model to handle the yaw rotations and pitch rotations separately. And use arctangent calculations for pitch angles. And implemented angle constraints for the turret's movements to remain realistic and within its design limitations.
 
@@ -215,7 +215,7 @@ Lego" (https://skfb.ly/MEGs) by Jody_Hong
 
 *Name: Qihan Guan*   
 *Email: qgguan@ucdavis.edu*   
-*Github: *
+*Github: QihanQG
 
 My sub-role is practically the same as my main role, which is general game logic and mechanics. This involves debugging scripts or fixing scenes, or helping other members with their scripts/models. And fixing issues with file conflicts and merges for the repository. I've also contributed to the initial game document significantly by outlining implementation details and ideas for the game. So i would say my subrole was helping the team with their requests and fixing whatevers that we have.
 
