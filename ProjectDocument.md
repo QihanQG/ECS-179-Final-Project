@@ -211,13 +211,18 @@ Lego" (https://skfb.ly/MEGs) by Jody_Hong
 
 # Sub-Roles
 
-## Weapons System/ Debugging
+## Assistance/Debugging
 
 *Name: Qihan Guan*   
 *Email: qgguan@ucdavis.edu*   
 *Github: *
 
-My sub-role is practically the same as my main role, which is general game logic and mechanics. This involves debugging scripts or fixing scenes, or helping other members with their scripts/models. And fixing issues with file conflicts and merges for the repository. I've also spent a lot of time outlining the implementation details and ideas for the games, and making the first turret model.
+My sub-role is practically the same as my main role, which is general game logic and mechanics. This involves debugging scripts or fixing scenes, or helping other members with their scripts/models. And fixing issues with file conflicts and merges for the repository. I've also contributed to the initial game document significantly by outlining implementation details and ideas for the game. So i would say my subrole was helping the team with their requests and fixing whatevers that we have.
+
+#### Others:
+I've also spent a lot of time creating the first turret model.
+
+<img src="imgs/turretmodel.png" alt="seal">
 
 ## Audio
 
